@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Massa a Massa - Concurso de Pizzarias</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Staatliches&family=Outfit:wght@300;400;600&family=Stint+Ultra+Expanded&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1D371D",
+                        "accent-red": "#B13118",
+                        "background-paper": "#EBE7DC",
+                    },
+                    fontFamily: {
+                        "slab": ["Staatliches", "sans-serif"],
+                        "condensed": ["Antonio", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                        "expanded": ["Stint Ultra Expanded", "serif"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9" + "IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EBE7DC;
+            overflow-x: hidden;
+            /* Hide horizontal scrollbar on body */
+            margin: 0;
+        }
+
+        .scroll-container {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+            height: 100vh;
+            width: 100vw;
+            padding: 0 10vw;
+            align-items: center;
+            gap: 5vw;
+            cursor: grab;
+            user-select: none;
+            /* Prevent text selection while dragging */
+        }
+
+        .scroll-container.cursor-grabbing {
+            cursor: grabbing;
+        }
+
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .arch-card-wrapper {
+            flex: 0 0 80vw;
+            max-width: 400px;
+            scroll-snap-align: center;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+            position: relative;
+        }
+
+        .arch-card {
+            border-radius: 12rem 12rem 1.5rem 1.5rem;
+            overflow: hidden;
+            position: relative;
+            height: clamp(500px, 70vh, 650px);
+            background: #1D371D;
+            box-shadow: 0 20px 50px -15px rgba(29, 55, 29, 0.4);
+            border: 4px solid #EBE7DC;
+        }
+
+        .stamp-effect {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+        }
+
+        @keyframes swipeHint {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(10px);
+            }
+        }
+
+        .swipe-hint {
+            animation: swipeHint 2s infinite ease-in-out;
+        }
+
+        /* Prevent browser interference during drag */
+        img,
+        a {
+            user-select: none;
+            -webkit-user-drag: none;
+            -khtml-user-drag: none;
+            -moz-user-drag: none;
+            -o-user-drag: none;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-paper text-primary font-body antialiased relative selection:bg-accent-red selection:text-white overflow-hidden">
+    <!-- Dynamic Background Layer -->
+    <div id="dynamic-bg" class="fixed inset-0 z-0 bg-primary transition-colors duration-300"></div>
+
+    <!-- Paper Texture Overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-1"></div>
+
+    <!-- Minimalist Header -->
+    <header class="absolute top-0 inset-x-0 z-50 p-6 flex justify-between items-center" id="main-header">
+        <img src="assets/logo.svg" class="h-10 sm:h-12 brightness-0 invert" id="header-logo" alt="Logo">
+        <div class="flex flex-col items-end">
+            <span class="font-expanded text-[8px] tracking-[0.4em] uppercase text-background-paper/60"
+                id="header-circuito">Circuito 2026</span>
+            <span class="font-slab text-lg uppercase tracking-tighter text-background-paper" id="header-city">Juiz de
+                Fora</span>
+        </div>
+    </header>
+
+    <!-- Main Dynamic Container -->
+    <div class="scroll-container relative z-10" id="cards-container">
+
+        <!-- Welcome Slide -->
+        <div class="arch-card-wrapper flex flex-col items-center justify-between text-center sm:text-left px-4 pt-32 pb-6"
+            id="welcome-slide">
+            <div class="flex-1 flex flex-col justify-center">
+                <h1 class="font-slab text-7xl sm:text-8xl md:text-9xl uppercase tracking-tighter mb-4 text-background-paper"
+                    id="welcome-title" style="line-height: 0.75; letter-spacing: -0.02em;">
+                    O MAPA DAS <br>
+                    MELHORES PIZZARIAS <br>
+                    DE JF</h1>
+                <div class="flex flex-col items-center sm:items-start gap-4 swipe-hint">
+                    <span class="material-symbols-outlined text-4xl text-accent-red">keyboard_double_arrow_right</span>
+                </div>
+                <p class="font-body text-[9px] text-background-paper/30 uppercase tracking-[0.2em] mt-6"
+                    id="welcome-desc">
+                    Arraste para o lado e conheça as casas <br>que participam desta edição.
+                </p>
+            </div>
+
+            <!-- Mobile Realization (Placed inside slide to avoid viewport resize jumps) -->
+            <div class="lg:hidden w-full flex flex-col items-center text-center gap-2 mt-auto pb-12 pt-8"
+                id="mobile-realization">
+                <span class="text-[8px] uppercase tracking-[0.2em] font-body text-background-paper opacity-60">Uma
+                    realização</span>
+                <img src="assets/oqfjf_logo.svg" class="h-8 brightness-0 invert opacity-100" alt="O que fazer em JF">
+            </div>
+        </div>
+
+        <!-- Participant 1: Mr. Tugas -->
+        <a href="perfil-pizzaria.html" class="arch-card-wrapper group block">
+            <div class="arch-card">
+                <img src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?q=80&w=1974&auto=format&fit=crop"
+                    class="w-full h-full object-cover group-active:scale-105 transition-transform duration-700"
+                    alt="Mr. Tugas">
+                <div
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                </div>
+                <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+                    <h2 class="font-slab text-5xl sm:text-6xl uppercase leading-none mb-3 tracking-tighter">Premiata
+                    </h2>
+                    <div class="flex items-center gap-2 text-white/70 font-body uppercase tracking-[0.2em] text-[10px]">
+                        <span class="material-symbols-outlined text-xs text-accent-red">location_on</span>
+                        <span>Cascatinha</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-16 -right-4 z-20 stamp-effect">
+                <div class="bg-[#F4F1E8] px-5 py-2 drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] transform rotate-6">
+                    <span
+                        class="font-condensed font-bold text-primary uppercase tracking-widest text-xl">Calabria</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Participant 2: Moleque -->
+        <a href="#" class="arch-card-wrapper group block">
+            <div class="arch-card">
+                <img src="https://images.unsplash.com/photo-1579751626657-72bc17010498?q=80&w=1938&auto=format&fit=crop"
+                    class="w-full h-full object-cover" alt="Moleque">
+                <div
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                </div>
+                <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+                    <h2 class="font-slab text-5xl sm:text-6xl uppercase leading-none mb-3 tracking-tighter">Forneria
+                    </h2>
+                    <div class="flex items-center gap-2 text-white/70 font-body uppercase tracking-[0.2em] text-[10px]">
+                        <span class="material-symbols-outlined text-xs text-accent-red">location_on</span>
+                        <span>Centro</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-24 -right-6 z-20 stamp-effect">
+                <div class="bg-[#F4F1E8] px-5 py-2 drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] transform -rotate-3">
+                    <span class="font-condensed font-bold text-primary uppercase tracking-widest text-xl">Serrana</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Participant 3: Sapore -->
+        <a href="#" class="arch-card-wrapper group block">
+            <div class="arch-card">
+                <img src="https://images.unsplash.com/photo-1595854341625-f33ee10dbf94?q=80&w=1920&auto=format&fit=crop"
+                    class="w-full h-full object-cover" alt="Sapore">
+                <div
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                </div>
+                <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+                    <h2 class="font-slab text-5xl sm:text-6xl uppercase leading-none mb-3 tracking-tighter">Marconi
+                    </h2>
+                    <div class="flex items-center gap-2 text-white/70 font-body uppercase tracking-[0.2em] text-[10px]">
+                        <span class="material-symbols-outlined text-xs text-accent-red">location_on</span>
+                        <span>São Mateus</span>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute top-12 -right-4 z-20 stamp-effect">
+                <div class="bg-[#F4F1E8] px-5 py-2 drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] transform rotate-2">
+                    <span
+                        class="font-condensed font-bold text-primary uppercase tracking-widest text-xl">Margherita</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Participant 4: Vapiano -->
+        <a href="#" class="arch-card-wrapper group block">
+            <div class="arch-card">
+                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop"
+                    class="w-full h-full object-cover" alt="Vapiano">
+                <div
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                </div>
+
+                <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+                    <h2 class="font-slab text-5xl sm:text-6xl uppercase leading-none mb-3 tracking-tighter">Vapiano
+                    </h2>
+                    <div class="flex items-center gap-2 text-white/70 font-body uppercase tracking-[0.2em] text-[10px]">
+                        <span class="material-symbols-outlined text-xs text-accent-red">location_on</span>
+                        <span>Passos</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Floating Sticker -->
+            <div class="absolute top-20 -right-2 z-20 stamp-effect">
+                <div class="bg-[#F4F1E8] px-5 py-2 drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] transform -rotate-6">
+                    <span class="font-condensed font-bold text-primary uppercase tracking-widest text-xl">Pesto
+                        Special</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Participant 5: Japa Pizza -->
+        <a href="#" class="arch-card-wrapper group block">
+            <div class="arch-card">
+                <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?q=80&w=1981&auto=format&fit=crop"
+                    class="w-full h-full object-cover" alt="Japa Pizza">
+                <div
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                </div>
+
+                <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+                    <h2 class="font-slab text-5xl sm:text-6xl uppercase leading-none mb-3 tracking-tighter">Japa
+                        Pizza
+                    </h2>
+                    <div class="flex items-center gap-2 text-white/70 font-body uppercase tracking-[0.2em] text-[10px]">
+                        <span class="material-symbols-outlined text-xs text-accent-red">location_on</span>
+                        <span>Granbery</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Floating Sticker -->
+            <div class="absolute top-10 -right-6 z-20 stamp-effect">
+                <div class="bg-[#F4F1E8] px-5 py-2 drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] transform rotate-12">
+                    <span class="font-condensed font-bold text-primary uppercase tracking-widest text-xl">Hot
+                        Roll</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Participant 6: Artesanal -->
+        <a href="#" class="arch-card-wrapper group block">
+            <div class="arch-card">
+                <img src="https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?q=80&w=2070&auto=format&fit=crop"
+                    class="w-full h-full object-cover" alt="Artesanal">
+                <div
+                    class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-transparent to-transparent">
+                </div>
+
+                <div class="absolute inset-x-0 bottom-0 p-8 text-white">
+                    <h2 class="font-slab text-5xl sm:text-6xl uppercase leading-none mb-3 tracking-tighter">
+                        Artesanal
+                    </h2>
+                    <div class="flex items-center gap-2 text-white/70 font-body uppercase tracking-[0.2em] text-[10px]">
+                        <span class="material-symbols-outlined text-xs text-accent-red">location_on</span>
+                        <span>Santa Helena</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Floating Sticker -->
+            <div class="absolute top-28 -right-4 z-20 stamp-effect">
+                <div class="bg-[#F4F1E8] px-5 py-2 drop-shadow-[6px_6px_0px_rgba(0,0,0,1)] transform -rotate-1">
+                    <span class="font-condensed font-bold text-primary uppercase tracking-widest text-xl">Brava</span>
+                </div>
+            </div>
+        </a>
+
+        <!-- Placeholder for scroll space at the end -->
+        <div class="flex-shrink-0 w-[10vw]"></div>
+    </div>
+
+    <script>
+        const container = document.getElementById('cards-container');
+        const wrappers = document.querySelectorAll('.arch-card-wrapper');
+        const bgDynamic = document.getElementById('dynamic-bg');
+        const headerLogo = document.getElementById('header-logo');
+        const headerCity = document.getElementById('header-city');
+        const headerCircuito = document.getElementById('header-circuito');
+        const welcomeTitle = document.getElementById('welcome-title');
+        const welcomeDesc = document.getElementById('welcome-desc');
+
+        // Disable native image dragging to prevent interference
+        document.querySelectorAll('img').forEach(img => {
+            img.setAttribute('draggable', 'false');
+        });
+
+        // The Ultimate Fix: Completely disable native dragStart for everything
+        container.addEventListener('dragstart', (e) => e.preventDefault());
+        container.querySelectorAll('a, img').forEach(el => {
+            el.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+
+        container.addEventListener('scroll', () => {
+            const scrollLeft = container.scrollLeft;
+            const containerWidth = container.offsetWidth;
+            const scrollPercent = Math.min(scrollLeft / (containerWidth * 0.6), 1);
+            const isDesktop = window.innerWidth >= 1024;
+
+            if (!isDesktop) {
+                const r = Math.round(29 + (235 - 29) * scrollPercent);
+                const g = Math.round(55 + (231 - 55) * scrollPercent);
+                const b = Math.round(29 + (220 - 29) * scrollPercent);
+                bgDynamic.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+
+                if (scrollPercent > 0.5) {
+                    headerLogo.style.filter = "invert(15%) sepia(22%) saturate(952%) hue-rotate(65deg) brightness(98%) contrast(92%)";
+                    headerCity.classList.replace('text-background-paper', 'text-primary');
+                    headerCircuito.classList.replace('text-background-paper/60', 'text-accent-red');
+                    welcomeTitle.classList.replace('text-background-paper', 'text-primary');
+                    welcomeDesc.classList.replace('text-background-paper/30', 'text-primary/30');
+                } else {
+                    headerLogo.style.filter = "brightness(0) invert(1)";
+                    headerCity.classList.replace('text-primary', 'text-background-paper');
+                    headerCircuito.classList.replace('text-accent-red', 'text-background-paper/60');
+                    welcomeTitle.classList.replace('text-primary', 'text-background-paper');
+                    welcomeDesc.classList.replace('text-primary/30', 'text-background-paper/30');
+                }
+            } else {
+                // Ensure desktop stays Green
+                bgDynamic.style.backgroundColor = "rgb(29, 55, 29)";
+                headerLogo.style.filter = "brightness(0) invert(1)";
+                headerCity.classList.add('text-background-paper');
+                headerCircuito.classList.add('text-background-paper/60');
+                welcomeTitle.classList.add('text-background-paper');
+                welcomeDesc.classList.add('text-background-paper/30');
+            }
+
+            wrappers.forEach((wrapper, i) => {
+                const rect = wrapper.getBoundingClientRect();
+                const centerDist = Math.abs(rect.left + rect.width / 2 - containerWidth / 2);
+                const scale = Math.max(0.85, 1 - centerDist / (containerWidth * 1.5));
+                wrapper.style.transform = `scale(${scale})`;
+            });
+        });
+
+        // Simple & Robust Drag-to-Scroll
+        let isDown = false;
+        let startX;
+        let scrollStartX;
+        let dragged = false;
+
+        container.addEventListener('mousedown', (e) => {
+            isDown = true;
+            dragged = false;
+            startX = e.pageX - container.offsetLeft;
+            scrollStartX = container.scrollLeft;
+
+            // Prepare for drag
+            container.style.scrollSnapType = 'none';
+            container.style.scrollBehavior = 'auto';
+            container.classList.add('cursor-grabbing');
+        });
+
+        window.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX);
+
+            // Threshold to distinguish click from drag
+            if (Math.abs(walk) > 10) {
+                dragged = true;
+            }
+
+            if (dragged) {
+                e.preventDefault();
+                container.scrollLeft = scrollStartX - walk * 1.2;
+            }
+        });
+
+        window.addEventListener('mouseup', () => {
+            if (!isDown) return;
+            isDown = false;
+
+            container.classList.remove('cursor-grabbing');
+            container.style.scrollSnapType = 'x mandatory';
+            container.style.scrollBehavior = 'smooth';
+        });
+
+        // The "Magic" fix for links: Intercept the click 
+        // in the capture phase to block it if we dragged.
+        container.addEventListener('click', (e) => {
+            if (dragged) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+            }
+        }, true);
+
+        // Horizontal Scroll with Mouse Wheel
+        // Horizontal Scroll with Mouse Wheel (Global)
+        // Horizontal Scroll with Mouse Wheel (Global)
+        let wheelTimeout;
+        window.addEventListener('wheel', (e) => {
+            if (e.deltaY !== 0) {
+                // If we are on a desktop (large screen)
+                if (window.innerWidth >= 1024) {
+                    e.preventDefault();
+
+                    // Temporarily disable snap and smooth scroll for direct control
+                    container.style.scrollBehavior = 'auto';
+                    container.style.scrollSnapType = 'none';
+
+                    // Scroll faster
+                    container.scrollLeft += e.deltaY * 3;
+
+                    // Debounce restore
+                    clearTimeout(wheelTimeout);
+                    wheelTimeout = setTimeout(() => {
+                        container.style.scrollBehavior = 'smooth';
+                        container.style.scrollSnapType = 'x mandatory';
+                    }, 150);
+                }
+            }
+        }, { passive: false });
+
+        // Keyboard navigation
+        window.addEventListener('keydown', (e) => {
+            container.style.scrollBehavior = 'smooth';
+            if (e.key === 'ArrowRight') container.scrollBy({ left: 400 });
+            if (e.key === 'ArrowLeft') container.scrollBy({ left: -400 });
+        });
+
+        container.dispatchEvent(new Event('scroll'));
+    </script>
+
+    <!-- Discreet Footer -->
+    <!-- Discreet Footer (Desktop Only) -->
+    <footer
+        class="fixed bottom-0 inset-x-0 z-50 p-6 hidden lg:flex justify-between items-center pointer-events-none transition-colors duration-300"
+        id="index-footer">
+
+        <!-- Desktop Credits -->
+        <div class="flex gap-4 opacity-30 text-[8px] uppercase tracking-[0.3em] font-body text-background-paper transition-colors duration-300 pointer-events-auto"
+            id="footer-credits">
+            <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
+                    class="font-bold hover:opacity-100 transition-opacity">O que fazer em JF</a></p>
+            <div class="w-px h-2 bg-current opacity-20 self-center"></div>
+            <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank"
+                    class="font-bold hover:opacity-100 transition-opacity">Primitiva</a></p>
+        </div>
+        <a href="sobre.html"
+            class="hidden lg:block pointer-events-auto font-condensed font-bold uppercase text-[10px] tracking-[0.2em] text-background-paper hover:text-accent-red transition-colors duration-300"
+            id="footer-link">Sobre o concurso</a>
+    </footer>
+
+    <script>
+        // Update footer colors and visibility on scroll
+        const indexFooter = document.getElementById('index-footer');
+        const footerCredits = document.getElementById('footer-credits');
+        const footerLink = document.getElementById('footer-link');
+        const mobileRealization = document.getElementById('mobile-realization');
+        const mobileLogoImg = document.getElementById('mobile-logo-img');
+
+        container.addEventListener('scroll', () => {
+            const scrollLeft = container.scrollLeft;
+            const containerWidth = container.offsetWidth;
+            const scrollPercent = Math.min(scrollLeft / (containerWidth * 0.6), 1);
+            const isDesktop = window.innerWidth >= 1024;
+
+            if (isDesktop) {
+                // Desktop logic
+                if (footerCredits) footerCredits.classList.replace('text-primary', 'text-background-paper');
+                if (footerLink) footerLink.classList.replace('text-primary', 'text-background-paper');
+            } else {
+                // Mobile logic - Only visible on the first page (home)
+                if (scrollLeft < window.innerWidth / 2) {
+                    mobileRealization.classList.remove('opacity-0');
+                    mobileRealization.classList.add('opacity-100');
+                } else {
+                    mobileRealization.classList.remove('opacity-100');
+                    mobileRealization.classList.add('opacity-0');
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

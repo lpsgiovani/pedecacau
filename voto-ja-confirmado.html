@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Voto já Confirmado - Massa a Massa</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Staatliches&amp;family=Outfit:wght@300;400;600&amp;family=Stint+Ultra+Expanded&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1D371D",
+                        "primary-light": "#2a4f2a",
+                        "accent-red": "#B13118",
+                        "background-paper": "#EBE7DC",
+                    },
+                    fontFamily: {
+                        "slab": ["Staatliches", "sans-serif"],
+                        "condensed": ["Antonio", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9" + "IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EBE7DC;
+        }
+
+        .glass-card {
+            background: rgba(244, 241, 232, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(29, 55, 29, 0.1);
+            border-radius: 1.5rem;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-paper text-primary font-body antialiased selection:bg-accent-red selection:text-white relative min-h-screen flex flex-col">
+    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-0"></div>
+
+    <div class="relative z-10 flex-grow flex flex-col items-center justify-center px-6 py-12 text-center">
+        <div class="mb-6">
+            <img src="assets/fire.svg" class="w-12 h-12 opacity-100 mx-auto" alt="Icone">
+        </div>
+
+        <h1
+            class="text-5xl sm:text-7xl font-slab mb-4 tracking-tighter leading-[0.8] text-primary uppercase drop-shadow-sm">
+            Seu&nbsp;voto já<br>foi&nbsp;confirmado <br>para essa pizzaria!
+        </h1>
+        <div class="max-w-xs mb-12 space-y-6">
+
+            <div class="h-px w-12 bg-primary/10 mx-auto"></div>
+
+            <p class="text-2xl font-slab uppercase tracking-tighter leading-tight text-primary">
+                Que tal descobrir um<br>
+                <span class="text-accent-red">novo sabor</span> agora?
+            </p>
+
+            <p class="text-xs text-primary/60 font-light leading-relaxed">
+                Explore o circuito e deixe sua marca em<br>outra pizzaria participante!
+            </p>
+
+            <div class="pt-4">
+                <a href="index.html"
+                    class="inline-flex items-center bg-primary text-background-paper px-10 py-4 rounded-xl font-condensed font-bold uppercase tracking-widest hover:bg-primary-light transition-all active:scale-95 shadow-lg group">
+                    <span>Ver outras pizzarias</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>

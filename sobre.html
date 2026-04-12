@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>O Circuito | Massa a Massa</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Staatliches&amp;family=Outfit:wght@300;400;600&amp;family=Stint+Ultra+Expanded&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1D371D",
+                        "accent-red": "#B13118",
+                        "background-paper": "#EBE7DC",
+                    },
+                    fontFamily: {
+                        "slab": ["Staatliches", "sans-serif"],
+                        "condensed": ["Antonio", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                        "expanded": ["Stint Ultra Expanded", "serif"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9" + "IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        .nav-scrolled {
+            background: rgba(235, 231, 220, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(29, 55, 29, 0.05);
+            padding-top: 1rem !important;
+            padding-bottom: 1rem !important;
+        }
+
+        .checkerboard {
+            background-image: conic-gradient(#1D371D 90deg, transparent 90deg 180deg, #1D371D 180deg 270deg, transparent 270deg);
+            background-size: 24px 24px;
+        }
+    </style>
+</head>
+
+<body class="bg-background-paper text-primary font-body antialiased selection:bg-accent-red selection:text-white">
+    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-0"></div>
+
+    <!-- Navigation -->
+    <nav id="main-nav" class="absolute top-0 inset-x-0 z-[60] p-6 lg:px-12 lg:py-16 transition-all duration-300">
+        <div class="max-w-4xl lg:max-w-none mx-auto">
+            <a href="index.html" class="inline-block">
+                <img src="assets/logo.svg" class="h-8 lg:h-12"
+                    style="filter: invert(15%) sepia(22%) saturate(952%) hue-rotate(65deg) brightness(98%) contrast(92%);"
+                    alt="Logo">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-40 pb-20 px-6 text-left overflow-hidden">
+        <div class="max-w-4xl mx-auto relative z-10">
+            <h1 class="text-5xl lg:text-8xl font-slab tracking-tighter leading-[0.9] lg:leading-[0.75] uppercase mb-12">
+                Sua próxima <span class="lg:block">pizza favorita</span> está em algum
+                lugar de JF.
+                <span class="block text-accent-red mt-2 lg:mt-0">Descubra qual.</span>
+            </h1>
+            <p class="font-body text-xl lg:text-2xl text-primary/80 max-w-2xl leading-relaxed mb-12">
+                O Massa a Massa é um convite para explorar os fornos mais autênticos de Juiz
+                de Fora e celebrar a arte de fazer pizza.
+            </p>
+        </div>
+    </header>
+
+    <!-- Content Sections -->
+    <main class="relative z-10 px-6 pb-32">
+        <div class="max-w-4xl mx-auto space-y-32">
+
+            <!-- Story/Manifesto -->
+            <!-- Story/Manifesto -->
+            <section class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
+                <div class="relative group lg:sticky lg:top-32">
+                    <img src="assets/about_photo.png"
+                        class="w-full aspect-[4/5] object-cover rounded-[4rem] rounded-bl-none shadow-2xl transition-all duration-700"
+                        alt="Sobre o Massa a Massa">
+                    <div
+                        class="absolute -bottom-4 -right-2 lg:-bottom-6 lg:-right-6 bg-accent-red text-white p-6 lg:p-8 rounded-2xl rotate-3 shadow-xl z-20">
+                        <span
+                            class="font-condensed font-bold text-2xl lg:text-3xl uppercase leading-none">Conheça,<br>Experimente<br>e
+                            Avalie! <img src="assets/fire.svg" class="w-8 h-8 inline-block mb-1 ml-1"
+                                alt="Icone"></span>
+                    </div>
+                </div>
+                <div class="lg:pt-4 space-y-12">
+                    <div class="space-y-8 font-body text-lg lg:text-xl leading-relaxed text-primary/90 text-left">
+                        <p class="text-2xl lg:text-3xl font-slab uppercase tracking-tighter text-primary leading-tight">
+                            Nossa cidade é feita de encontros, e o <strong>Massa a Massa</strong> nasceu para dar um
+                            novo
+                            ritmo a esses momentos.
+                        </p>
+                        <p>
+                            Durante 30 dias, selecionamos
+                            as
+                            pizzarias mais autênticas da cidade para apresentarem suas criações autorais.
+                        </p>
+                        <p class="opacity-70">
+                            Mais do que um concurso, somos uma curadoria para quem quer descobrir que a melhor
+                            experiência gastronômica de Juiz de Fora pode estar em um uma
+                            casa que você ainda não conhece.
+                        </p>
+                    </div>
+
+                    <div class="pt-12 text-left flex flex-col items-start">
+                        <div class="h-px w-20 bg-accent-red mb-8"></div>
+                        <p class="font-slab text-5xl lg:text-7xl leading-[0.8] uppercase tracking-tighter text-primary">
+                            Prepare o seu paladar.<br>
+                            <span class="text-primary/30">O circuito começou.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+
+
+        </div>
+    </main>
+
+    <!-- Checkerboard Pattern -->
+    <div class="h-10 w-full checkerboard opacity-100 relative z-10"></div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-primary text-background-paper py-16 px-6 mt-auto">
+        <div class="max-w-xl mx-auto flex flex-col items-center text-center">
+            <img src="assets/logo.svg" class="h-16 brightness-0 invert opacity-60 mb-12" alt="Massa a Massa Logo">
+
+
+
+            <div class="flex flex-col items-center gap-2 opacity-30 text-[8px] uppercase tracking-[0.3em] font-body">
+                <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
+                        class="font-bold hover:opacity-100 transition-opacity">O que fazer em JF</a></p>
+                <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank"
+                        class="font-bold hover:opacity-100 transition-opacity">Primitiva</a></p>
+                <p class="mt-10">© 2026 Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>

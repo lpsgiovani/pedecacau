@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dashboard - Massa a Massa</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link rel="manifest" href="assets/favicon/site.webmanifest">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Staatliches&amp;family=Outfit:wght@300;400;600&amp;family=Stint+Ultra+Expanded&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1D371D",
+                        "primary-light": "#2a4f2a",
+                        "accent-red": "#B13118",
+                        "background-paper": "#EBE7DC",
+                    },
+                    fontFamily: {
+                        "slab": ["Staatliches", "sans-serif"],
+                        "condensed": ["Antonio", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9" + "IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EBE7DC;
+        }
+
+        .glass-card {
+            background: rgba(244, 241, 232, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(29, 55, 29, 0.1);
+            border-radius: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            background: rgba(244, 241, 232, 0.9);
+            box-shadow: 0 10px 30px -10px rgba(29, 55, 29, 0.1);
+        }
+
+        .score-bar {
+            height: 8px;
+            background: rgba(29, 55, 29, 0.05);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-progress {
+            height: 100%;
+            background: #1D371D;
+            border-radius: 4px;
+            transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .ranking-item.active .ranking-header {
+            background: #1D371D;
+            color: white !important;
+            border-radius: 1.25rem;
+        }
+
+        .ranking-item.active .ranking-header .opacity-10,
+        .ranking-item.active .ranking-header .opacity-20,
+        .ranking-item.active .ranking-header .opacity-40,
+        .ranking-item.active .ranking-header .opacity-60,
+        .ranking-item.active .ranking-header h4,
+        .ranking-item.active .ranking-header span {
+            color: white !important;
+        }
+
+        .ranking-item.active .ranking-header .opacity-10,
+        .ranking-item.active .ranking-header .opacity-20 {
+            opacity: 0.4;
+        }
+
+        .ranking-item.active .ranking-header .opacity-40,
+        .ranking-item.active .ranking-header .opacity-60 {
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-paper text-primary font-body antialiased selection:bg-accent-red selection:text-white relative min-h-screen">
+    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-0"></div>
+
+    <nav class="relative z-20 border-b border-primary/10 bg-background-paper/80 backdrop-blur-md sticky top-0">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <img src="assets/logo.svg" class="w-10 h-auto grayscale brightness-0" alt="Logo">
+                <h1 class="text-3xl font-slab uppercase tracking-tighter">Apuração</h1>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-[10px] font-condensed font-bold uppercase tracking-widest opacity-40">Ao Vivo</span>
+                <span class="w-2 h-2 bg-red-600 rounded-full animate-pulse"></span>
+            </div>
+        </div>
+    </nav>
+
+    <main class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-16">
+        <!-- Dashboard Header - Global Stats -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
+            <!-- Destaque da Semana (Agora em primeiro) -->
+            <div
+                class="glass-card p-4 sm:p-6 flex flex-col justify-between min-h-[120px] sm:min-h-[140px] border-accent-red/20 border-2">
+                <span
+                    class="text-[9px] sm:text-[10px] font-condensed font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-accent-red leading-tight">Destaque
+                    da Semana</span>
+                <p class="text-xl sm:text-2xl font-slab leading-tight mt-2 uppercase tracking-tighter">Premiata Forneria
+                </p>
+                <p class="text-[9px] opacity-60 italic mt-auto leading-tight">Mais Engajamento</p>
+            </div>
+
+            <div class="glass-card p-4 sm:p-6 flex flex-col justify-between min-h-[120px] sm:min-h-[140px]">
+                <span
+                    class="text-[9px] sm:text-[10px] font-condensed font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] opacity-40 leading-tight">Votos
+                    desta Pizzaria</span>
+                <p class="text-4xl sm:text-5xl font-slab leading-none mt-2">842</p>
+                <p class="text-[9px] opacity-60 mt-3 sm:mt-4 uppercase font-bold text-primary/60">Total Recebido</p>
+            </div>
+            <div class="glass-card p-4 sm:p-6 flex flex-col justify-between min-h-[120px] sm:min-h-[140px]">
+                <span
+                    class="text-[9px] sm:text-[10px] font-condensed font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] opacity-40 leading-tight">Votos
+                    Totais no Concurso</span>
+                <p class="text-4xl sm:text-5xl font-slab leading-none mt-2">4,821</p>
+                <div class="mt-3 sm:mt-4 flex items-center gap-1 text-[9px] text-green-700 font-bold uppercase">
+                    <span class="material-symbols-outlined text-[10px] sm:text-xs">trending_up</span>
+                    <span>+15% / semana</span>
+                </div>
+            </div>
+            <div class="glass-card p-4 sm:p-6 flex flex-col justify-between min-h-[120px] sm:min-h-[140px]">
+                <span
+                    class="text-[9px] sm:text-[10px] font-condensed font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] opacity-40 leading-tight">Média
+                    Geral de Qualidade</span>
+                <div class="flex items-baseline gap-1 mt-2">
+                    <p class="text-4xl sm:text-5xl font-slab leading-none">9.2</p>
+                    <span class="text-xl sm:text-2xl text-primary/20">/10</span>
+                </div>
+                <p class="text-[9px] opacity-60 mt-3 sm:mt-4 uppercase font-bold leading-tight text-primary/60">Nota do
+                    Público</p>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Global Ranking -->
+            <div class="lg:col-span-2 space-y-6">
+                <div
+                    class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 border-b-2 border-primary pb-2 gap-2">
+                    <h2 class="text-3xl sm:text-4xl font-slab uppercase tracking-tighter leading-none">Ranking de
+                        Apuração</h2>
+                    <span class="text-[10px] font-bold opacity-40 uppercase tracking-widest pb-1">Atualizado há
+                        5min</span>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- Pizzaria 1 -->
+                    <div id="pizzaria-1" onclick="updateStats('pizzaria-1')"
+                        class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300 active">
+                        <div
+                            class="ranking-header p-3.5 sm:p-4 flex flex-col sm:items-center sm:flex-row justify-between gap-4">
+                            <div class="flex items-center gap-4 sm:gap-5">
+                                <span
+                                    class="text-3xl sm:text-4xl font-slab opacity-20 italic w-8 text-center shrink-0">01</span>
+                                <div>
+                                    <h4
+                                        class="text-lg sm:text-xl font-slab uppercase tracking-tighter leading-tight name">
+                                        Premiata Forneria Marconi</h4>
+                                    <div
+                                        class="flex gap-3 text-[9px] sm:text-[10px] uppercase tracking-wider opacity-60 mt-1 info">
+                                        <span>842 Avaliações</span>
+                                        <span>•</span>
+                                        <span>Média 9.8</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Details Container -->
+                        <div class="mobile-details w-full lg:hidden block px-1 pb-1"></div>
+                    </div>
+
+                    <!-- Pizzaria 2 -->
+                    <div id="pizzaria-2" onclick="updateStats('pizzaria-2')"
+                        class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300">
+                        <div
+                            class="ranking-header p-3.5 sm:p-4 flex flex-col sm:items-center sm:flex-row justify-between gap-4">
+                            <div class="flex items-center gap-4 sm:gap-5">
+                                <span
+                                    class="text-3xl sm:text-4xl font-slab opacity-10 italic w-8 text-center shrink-0">02</span>
+                                <div>
+                                    <h4
+                                        class="text-lg sm:text-xl font-slab uppercase tracking-tighter text-primary/80 leading-tight name">
+                                        Forno di Capri</h4>
+                                    <div
+                                        class="flex gap-3 text-[9px] sm:text-[10px] uppercase tracking-wider opacity-40 mt-1 info">
+                                        <span>715 Avaliações</span>
+                                        <span>•</span>
+                                        <span>Média 9.6</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Details Container -->
+                        <div class="mobile-details w-full lg:hidden hidden px-1 pb-1"></div>
+                    </div>
+
+                    <!-- Pizzaria 3 -->
+                    <div id="pizzaria-3" onclick="updateStats('pizzaria-3')"
+                        class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300">
+                        <div
+                            class="ranking-header p-3.5 sm:p-4 flex flex-col sm:items-center sm:flex-row justify-between gap-4">
+                            <div class="flex items-center gap-4 sm:gap-5">
+                                <span
+                                    class="text-3xl sm:text-4xl font-slab opacity-10 italic w-8 text-center shrink-0">03</span>
+                                <div>
+                                    <h4
+                                        class="text-lg sm:text-xl font-slab uppercase tracking-tighter text-primary/80 leading-tight name">
+                                        Sabores da Aldeia</h4>
+                                    <div
+                                        class="flex gap-3 text-[9px] sm:text-[10px] uppercase tracking-wider opacity-40 mt-1 info">
+                                        <span>628 Avaliações</span>
+                                        <span>•</span>
+                                        <span>Média 9.4</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Mobile Details Container -->
+                        <div class="mobile-details w-full lg:hidden hidden px-1 pb-1"></div>
+                    </div>
+
+                    <!-- Outras (Simplificadas agora Interativas) -->
+                    <div class="pt-6 space-y-2">
+                        <div
+                            class="flex justify-between items-center px-4 sm:px-8 text-[10px] sm:text-[11px] font-bold uppercase opacity-30 text-primary">
+                            <span># Pizzaria</span>
+                            <span>Avaliações / Média</span>
+                        </div>
+
+                        <!-- Pizzaria 4 -->
+                        <div id="pizzaria-4" onclick="updateStats('pizzaria-4')"
+                            class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100">
+                            <div
+                                class="ranking-header p-2.5 sm:p-3 px-4 sm:px-8 flex justify-between items-center w-full">
+                                <span class="font-slab text-xs sm:text-sm uppercase truncate pr-4">04. Pizzaria Bella
+                                    Massa</span>
+                                <span class="font-condensed font-bold shrink-0">412 | 9.0</span>
+                            </div>
+                            <!-- Mobile Details Container -->
+                            <div class="mobile-details w-full lg:hidden hidden px-1 pb-1"></div>
+                        </div>
+
+                        <!-- Pizzaria 5 -->
+                        <div id="pizzaria-5" onclick="updateStats('pizzaria-5')"
+                            class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100">
+                            <div
+                                class="ranking-header p-2.5 sm:p-3 px-4 sm:px-8 flex justify-between items-center w-full">
+                                <span class="font-slab text-xs sm:text-sm uppercase truncate pr-4">05. Cantina della
+                                    Nonna</span>
+                                <span class="font-condensed font-bold shrink-0">389 | 8.6</span>
+                            </div>
+                            <!-- Mobile Details Container -->
+                            <div class="mobile-details w-full lg:hidden hidden px-1 pb-1"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Global Category Performance -->
+            <div class="space-y-6 hidden lg:block sticky top-28 h-fit">
+                <h2 id="category-title" class="text-2xl font-slab uppercase tracking-tighter mb-8 opacity-40">
+                    Desempenho: Premiata Forneria</h2>
+                <div class="glass-card p-8 space-y-8">
+                    <div>
+                        <div class="flex justify-between items-end mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Ingredientes
+                                (Média)</span>
+                            <span id="score-degustacao" class="font-slab text-xl uppercase leading-none">9.6</span>
+                        </div>
+                        <div class="score-bar">
+                            <div id="bar-degustacao" class="score-progress" style="width: 96%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-end mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Massa e Textura
+                                (Média)</span>
+                            <span id="score-massas" class="font-slab text-xl uppercase leading-none">9.8</span>
+                        </div>
+                        <div class="score-bar">
+                            <div id="bar-massas" class="score-progress" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-end mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Sabor
+                                (Média)</span>
+                            <span id="score-sabor"
+                                class="font-slab text-xl uppercase leading-none text-accent-red">9.8</span>
+                        </div>
+                        <div class="score-bar">
+                            <div id="bar-sabor" class="score-progress bg-accent-red" style="width: 98%"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between items-end mb-3">
+                            <span class="text-[10px] font-bold uppercase tracking-widest opacity-60">Experiência
+                                (Média)</span>
+                            <span id="score-ambiente" class="font-slab text-xl uppercase leading-none">9.8</span>
+                        </div>
+                        <div class="score-bar">
+                            <div id="bar-ambiente" class="score-progress" style="width: 98%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="pt-4 pb-12 px-6 text-center relative z-10 w-full">
+        <div class="max-w-md mx-auto flex flex-col items-center gap-2 opacity-40">
+            <img src="assets/logo.svg" class="w-32 h-auto grayscale brightness-0 opacity-80" alt="Logo">
+            <div class="font-body text-primary/60 text-[8px] space-y-1">
+                <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
+                        class="font-bold hover:text-primary">O que fazer em JF</a></p>
+                <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank"
+                        class="font-bold hover:text-primary">Primitiva</a></p>
+                <p class="font-slab pt-2 opacity-30 uppercase tracking-[0.1em] text-[7px]">© 2026 Todos os direitos
+                    reservados</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const pizzeriasData = {
+            'pizzaria-1': {
+                name: 'Premiata Forneria Marconi',
+                degustacao: 9.6,
+                massas: 9.8,
+                sabor: 9.8,
+                ambiente: 9.8
+            },
+            'pizzaria-2': {
+                name: 'Forno di Capri',
+                degustacao: 9.4,
+                massas: 9.6,
+                sabor: 9.6,
+                ambiente: 9.4
+            },
+            'pizzaria-3': {
+                name: 'Sabores da Aldeia',
+                degustacao: 9.2,
+                massas: 9.4,
+                sabor: 9.4,
+                ambiente: 9.6
+            },
+            'pizzaria-4': {
+                name: 'Pizzaria Bella Massa',
+                degustacao: 8.8,
+                massas: 9.0,
+                sabor: 9.0,
+                ambiente: 9.2
+            },
+            'pizzaria-5': {
+                name: 'Cantina della Nonna',
+                degustacao: 8.4,
+                massas: 8.6,
+                sabor: 8.6,
+                ambiente: 8.8
+            }
+        };
+
+        function updateStats(id) {
+            const data = pizzeriasData[id];
+            if (!data) return;
+
+            // Update Desktop UI (Sidebar)
+            document.getElementById('category-title').innerText = `Desempenho: ${data.name}`;
+            document.getElementById('score-sabor').innerText = data.sabor;
+            document.getElementById('score-degustacao').innerText = data.degustacao;
+            document.getElementById('score-massas').innerText = data.massas;
+            document.getElementById('score-ambiente').innerText = data.ambiente;
+
+            document.getElementById('bar-sabor').style.width = `${(data.sabor / 10) * 100}%`;
+            document.getElementById('bar-degustacao').style.width = `${(data.degustacao / 10) * 100}%`;
+            document.getElementById('bar-massas').style.width = `${(data.massas / 10) * 100}%`;
+            document.getElementById('bar-ambiente').style.width = `${(data.ambiente / 10) * 100}%`;
+
+            // Update Active State and Mobile Inline Details
+            document.querySelectorAll('.ranking-item').forEach(item => {
+                item.classList.remove('active');
+                const mobDetails = item.querySelector('.mobile-details');
+                if (mobDetails) {
+                    mobDetails.classList.add('hidden');
+                    mobDetails.innerHTML = '';
+                }
+            });
+
+            const activeItem = document.getElementById(id);
+            activeItem.classList.add('active');
+
+            const mobileContainer = activeItem.querySelector('.mobile-details');
+            if (mobileContainer) {
+                mobileContainer.classList.remove('hidden');
+                mobileContainer.innerHTML = `
+                    <div class="px-5 py-6 space-y-4 animate-in fade-in slide-in-from-top-2 duration-500">
+                        ${renderMobileBar('Ingredientes', data.degustacao)}
+                        ${renderMobileBar('Massa e Textura', data.massas)}
+                        ${renderMobileBar('Sabor', data.sabor, true)}
+                        ${renderMobileBar('Experiência', data.ambiente)}
+                    </div>
+                `;
+            }
+        }
+
+        function renderMobileBar(label, value, isRed = false) {
+            const percentage = (value / 10) * 100;
+            const barClass = isRed ? 'bg-accent-red' : 'bg-primary';
+            const textClass = isRed ? 'text-accent-red' : 'text-primary';
+            return `
+                <div>
+                    <div class="flex justify-between items-end mb-1">
+                        <span class="text-[8px] font-bold uppercase tracking-widest opacity-40 text-primary">${label}</span>
+                        <span class="font-slab text-sm uppercase leading-none ${textClass}">${value}</span>
+                    </div>
+                    <div class="h-1 bg-primary/5 rounded-full overflow-hidden">
+                        <div class="h-full ${barClass} transition-all duration-1000" style="width: ${percentage}%"></div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Initialize top one
+        window.onload = () => updateStats('pizzaria-1');
+    </script>
+</body>
+
+</html>

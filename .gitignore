@@ -1,0 +1,4 @@
+*.log
+ngrok_output.log
+.gemini/
+.antigravity/

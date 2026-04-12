@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Massa a Massa - Descubra</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&family=Staatliches&family=Outfit:wght@300;400;600;800&family=Stint+Ultra+Expanded&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#1D371D",
+                        "accent-red": "#B13118",
+                        "background-paper": "#EBE7DC",
+                    },
+                    fontFamily: {
+                        "slab": ["Staatliches", "sans-serif"],
+                        "condensed": ["Antonio", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                        "expanded": ["Stint Ultra Expanded", "serif"],
+                    },
+                    backgroundImage: {
+                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
+                    }
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #EBE7DC;
+            overflow-x: hidden;
+            margin: 0;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: customReveal 0.9s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+        }
+
+        @keyframes customReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .d-100 {
+            animation-delay: 100ms;
+        }
+
+        .d-200 {
+            animation-delay: 200ms;
+        }
+
+        .d-300 {
+            animation-delay: 300ms;
+        }
+
+        .d-400 {
+            animation-delay: 400ms;
+        }
+
+        .d-500 {
+            animation-delay: 500ms;
+        }
+
+        /* Prevent highlight on tap */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Pizzaria dots grid */
+        .dot-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 6px;
+        }
+
+        .dot-grid span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-paper text-primary font-body antialiased relative selection:bg-accent-red selection:text-white">
+    <!-- Paper Texture Overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-0"></div>
+
+    <!-- Header -->
+    <header class="relative z-10 p-6 pt-8 flex justify-between items-center reveal-up">
+        <span class="font-expanded text-[7px] tracking-[0.4em] uppercase text-primary/40 lg:hidden">Concurso</span>
+        <img src="assets/logo.svg" class="h-8 sm:h-10 lg:h-12 opacity-90 mx-auto lg:mx-0" alt="Logo Massa a Massa">
+        <span class="font-expanded text-[7px] tracking-[0.4em] uppercase text-primary/40 lg:hidden text-right">JF ·
+            2026</span>
+        <span class="hidden lg:block font-expanded text-[8px] tracking-[0.4em] uppercase text-primary/60">Edição
+            2026</span>
+    </header>
+
+    <main class="relative z-10 px-6 pb-20 max-w-lg lg:max-w-3xl mx-auto w-full pt-4">
+
+        <!-- Editorial tag above hero (hidden on mobile, moved to header) -->
+        <div class="hidden lg:flex reveal-up d-100 items-center gap-3 mb-6">
+            <span class="font-expanded text-[7px] tracking-[0.45em] uppercase text-primary/40">Concurso</span>
+            <span class="flex-1 h-px bg-primary/20"></span>
+            <span class="font-expanded text-[7px] tracking-[0.45em] uppercase text-primary/40">JF · 2026</span>
+        </div>
+
+        <!-- Hero Title -->
+        <section class="mb-14 text-center reveal-up d-100 flex flex-col items-center">
+            <h1 class="font-slab uppercase tracking-tighter text-primary flex flex-col items-center">
+                <span class="text-[4.5rem] sm:text-[6rem] lg:text-[10rem] leading-[0.85]">Onze</span>
+                <span
+                    class="text-[4.5rem] sm:text-[6rem] lg:text-[10rem] text-accent-red leading-[0.85] -mt-2">Pizzarias</span>
+                <span class="text-[2.8rem] sm:text-[4rem] lg:text-[6rem] leading-[0.9] mt-1 -ml-2">De Juiz De
+                    Fora</span>
+            </h1>
+
+            <!-- 11 dots — one per pizzaria -->
+            <div class="mt-8 flex items-center justify-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-red block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-red block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-red block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-red block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-accent-red block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary block"></span>
+            </div>
+
+            <div class="mt-6 border-y-4 border-primary py-3 lg:py-5 px-2 w-full max-w-[320px] lg:max-w-[540px]">
+                <p
+                    class="font-condensed font-bold text-xl lg:text-3xl uppercase tracking-widest text-primary leading-tight">
+                    Participam do primeiro<br>concurso exclusivo de<br>pizzas da cidade!
+                </p>
+            </div>
+        </section>
+
+        <!-- Brutalist Price Tape -->
+        <section
+            class="w-screen relative left-1/2 right-1/2 -mx-[50vw] bg-primary text-background-paper py-10 lg:py-20 transform -rotate-3 mb-24 shadow-[0_15px_30px_rgba(29,55,29,0.25)] reveal-up d-200">
+            <div class="relative z-10 flex flex-col items-center justify-center text-center px-4">
+                <span
+                    class="font-expanded text-[9px] lg:text-[12px] tracking-[0.4em] font-bold uppercase mb-2 opacity-70">Por
+                    apenas</span>
+                <div class="flex items-start justify-center gap-2 drop-shadow-lg">
+                    <span class="font-condensed text-4xl lg:text-7xl mt-3 lg:mt-5 font-bold text-accent-red">R$</span>
+                    <span
+                        class="font-slab text-[7.5rem] sm:text-[9rem] lg:text-[16rem] leading-[0.7] text-background-paper"
+                        style="text-shadow: 5px 5px 0 #B13118;">40</span>
+                </div>
+                <p
+                    class="font-body text-[10px] lg:text-xs mt-5 lg:mt-8 uppercase tracking-[0.25em] font-extrabold max-w-[280px] lg:max-w-[420px] text-primary bg-background-paper/90 px-4 py-1.5 shadow-sm">
+                    Nas melhores pizzarias de JF
+                </p>
+            </div>
+        </section>
+
+        <!-- Editorial Info Blocks -->
+        <section class="mt-4">
+            <!-- Block 1 -->
+            <div class="relative reveal-up d-300 pb-12 border-b-2 border-primary/10">
+                <span
+                    class="absolute -top-10 -left-6 font-slab text-[10rem] opacity-[0.035] text-primary leading-none pointer-events-none select-none">01</span>
+                <div class="relative z-10">
+                    <h2
+                        class="font-condensed text-[2.5rem] sm:text-6xl lg:text-8xl uppercase tracking-wide text-primary leading-none text-left font-bold">
+                        Ama pizza<br><span class="text-accent-red">& novidade?</span>
+                    </h2>
+                    <div class="mt-5 border-l-4 border-accent-red pl-4 max-w-xs lg:max-w-sm">
+                        <p
+                            class="font-body text-xs lg:text-sm text-primary uppercase tracking-[0.2em] font-extrabold leading-relaxed">
+                            No concurso Massa a Massa<br>você encontra os dois.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Block 2 -->
+            <div
+                class="relative flex flex-col items-end text-right reveal-up d-400 pt-12 pb-12 border-b-2 border-primary/10">
+                <span
+                    class="absolute -top-2 -right-6 font-slab text-[10rem] opacity-[0.035] text-primary leading-none pointer-events-none select-none">02</span>
+                <div class="relative z-10 w-full flex flex-col items-end">
+                    <h2
+                        class="font-condensed font-bold text-[2.5rem] sm:text-6xl lg:text-8xl uppercase tracking-wide text-primary leading-none">
+                        Não sabe o que<br>fazer <span class="text-accent-red">em JF?</span>
+                    </h2>
+                    <div class="mt-5 border-r-4 border-accent-red pr-4 max-w-xs lg:max-w-sm">
+                        <p
+                            class="font-body text-xs lg:text-sm text-primary uppercase tracking-[0.2em] font-extrabold leading-relaxed">
+                            Um compromisso imperdível<br>
+                            do dia <span class="text-accent-red bg-accent-red/10 px-1">20 de abril</span><br>
+                            ao dia <span class="text-accent-red bg-accent-red/10 px-1">20 de maio</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="mt-16 mb-10 flex flex-col items-center justify-center relative reveal-up d-500">
+            <h2
+                class="font-slab text-5xl sm:text-6xl lg:text-7xl uppercase tracking-tighter text-primary leading-[0.85] text-center mb-14 relative z-10">
+                Se você não for,<br>
+                <span
+                    class="bg-primary text-background-paper px-3 transform inline-block rotate-2 pt-4 pb-1 -ml-2 drop-shadow-lg">
+                    só você não vai!
+                </span>
+            </h2>
+
+            <a href="https://instagram.com/concursomassamassa" target="_blank"
+                class="relative group block w-full max-w-[320px] lg:max-w-[440px] z-10">
+                <!-- Shadow Layer -->
+                <div
+                    class="absolute inset-0 bg-primary translate-y-3 translate-x-3 transition-transform duration-150 group-hover:translate-y-2 group-hover:translate-x-2">
+                </div>
+                <!-- Button Layer -->
+                <div
+                    class="relative bg-accent-red text-background-paper py-5 lg:py-7 px-6 lg:px-8 border-4 border-primary flex justify-between items-center transition-transform duration-150 group-active:translate-y-3 group-active:translate-x-3">
+                    <span class="font-condensed font-bold text-2xl lg:text-3xl uppercase tracking-[0.1em]">Saiba
+                        Mais</span>
+                    <span class="material-symbols-outlined text-4xl lg:text-5xl">arrow_outward</span>
+                </div>
+            </a>
+
+            <div class="mt-16 flex flex-col items-center gap-2 opacity-50 relative z-10">
+                <span class="font-body text-[8px] uppercase tracking-[0.3em] font-bold">Uma realização</span>
+                <img src="assets/oqfjf_logo.svg"
+                    class="h-6 filter grayscale sepia brightness-0 opacity-80 mix-blend-multiply"
+                    alt="O que fazer em JF">
+            </div>
+        </section>
+
+    </main>
+
+</body>
+
+</html>
