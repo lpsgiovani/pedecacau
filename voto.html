@@ -1,55 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Massa a Massa</title>
+    <title>Votação | Pé de Cacau</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Staatliches&amp;family=Outfit:wght@300;400;600&amp;family=Stint+Ultra+Expanded&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @font-face {
+            font-family: 'Bringbold';
+            src: url('assets/Tipografia/Bringbold Nineties/Bringboldninetiesdemo-aY5Wa.otf') format('opentype'),
+                url('assets/Tipografia/Bringbold Nineties/BringboldNinetiesDemo-E4O9r.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Valencia';
+            src: url('assets/Tipografia/Valencia/Valencia.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1D371D", // Deep Forest Green
-                        "primary-light": "#2a4f2a",
-                        "accent-red": "#B13118", // Rustic Red
-                        "background-paper": "#EBE7DC", // Warm cream
-                        "border-green": "#1D371D",
+                        "azul": "#0551a7",
+                        "rosa": "#f1c8df",
+                        "creme": "#efefef",
+                        "marrom": "#2d1a12",
                     },
                     fontFamily: {
+                        "headline": ["Bringbold", "sans-serif"],
+                        "accent": ["Valencia", "cursive"],
                         "slab": ["Staatliches", "sans-serif"],
-                        "condensed": ["Antonio", "sans-serif"],
                         "body": ["Outfit", "sans-serif"],
                     },
-                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1rem", "2xl": "1.5rem", "arch": "10rem 10rem 1rem 1rem" },
-                    boxShadow: {
-                        'paper': '2px 4px 15px -5px rgba(29, 55, 29, 0.15)',
-                        'stamp': 'inset 0 0 0 2px #1D371D',
-                    },
-                    backgroundImage: {
-                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9" + "IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
-                    }
                 },
             },
         }
     </script>
     <style>
         body {
-            background-color: #EBE7DC;
+            background-color: #efefef;
         }
 
         .header-visual {
@@ -57,6 +64,7 @@
             width: 100%;
             height: 48vh;
             overflow: hidden;
+            box-shadow: 0 15px 40px -10px rgba(5, 81, 167, 0.3);
         }
 
         @media (min-width: 1024px) {
@@ -66,73 +74,33 @@
                 width: 45vw;
                 top: 0;
                 left: 0;
-                border-right: 1px solid rgba(29, 55, 29, 0.1);
+                border-right: 1px solid rgba(5, 81, 167, 0.1);
             }
         }
 
-        .arch-mask {
-            border-radius: 12rem 12rem 1rem 1rem;
-        }
-
-        .vintage-border {
-            border: 2px solid #1D371D;
-            padding: 2px;
-            border-radius: 1.25rem;
-            position: relative;
-        }
-
-        .checkerboard {
-            background-image: conic-gradient(#1D371D 90deg, transparent 90deg 180deg, #1D371D 180deg 270deg, transparent 270deg);
-            background-size: 24px 24px;
-        }
-
-        .vintage-border::after {
-            content: '';
-            position: absolute;
-            top: 2px;
-            left: 2px;
-            right: 2px;
-            bottom: 2px;
-            border: 1px solid #1D371D;
-            pointer-events: none;
-        }
-
-        .notebook-lines {
-            background-image: linear-gradient(#EBE7DC 1px, transparent 1px);
-            background-size: 100% 2rem;
-            line-height: 2rem;
-            background-color: transparent;
-        }
-
-        .flame-icon {
-            width: 32px;
-            height: 32px;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-
-        .flame-icon-empty {
-            filter: grayscale(1) opacity(0.15);
-        }
-
-        .category-box button:hover .flame-icon {
-            transform: scale(1.2) rotate(5deg);
-        }
-
-        .category-box button:hover .flame-icon-empty {
-            filter: grayscale(0.2) opacity(0.6);
+        /* Diamond checkerboard pattern */
+        .diamond-pattern {
+            background-color: #0551a7;
+            background-image:
+                linear-gradient(45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(-45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ffffff 75%),
+                linear-gradient(-45deg, transparent 75%, #ffffff 75%);
+            background-size: 30px 30px;
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
         }
 
         .category-box {
-            background: rgba(244, 241, 232, 0.6);
+            background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(8px);
-            border: 1px solid rgba(29, 55, 29, 0.1);
+            border: 1px solid rgba(5, 81, 167, 0.1);
             border-radius: 1.5rem;
             transition: all 0.3s ease;
         }
 
         .category-box:hover {
-            background: rgba(244, 241, 232, 0.9);
-            box-shadow: 0 10px 30px -10px rgba(29, 55, 29, 0.1);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 10px 30px -10px rgba(5, 81, 167, 0.15);
             transform: translateY(-2px);
         }
 
@@ -142,16 +110,15 @@
             width: 100%;
             height: 12px;
             background: linear-gradient(to right,
-                    rgba(29, 55, 29, 0.05) 0%,
-                    rgba(29, 55, 29, 0.05) 100%);
+                    rgba(5, 81, 167, 0.05) 0%,
+                    rgba(5, 81, 167, 0.05) 100%);
             border-radius: 20px;
             outline: none;
             cursor: pointer;
             position: relative;
-            /* Rule markings */
             background-image: repeating-linear-gradient(90deg,
-                    rgba(29, 55, 29, 0.1) 0px,
-                    rgba(29, 55, 29, 0.1) 1px,
+                    rgba(5, 81, 167, 0.1) 0px,
+                    rgba(5, 81, 167, 0.1) 1px,
                     transparent 1px,
                     transparent 10%);
         }
@@ -159,8 +126,8 @@
         .range-slider::-webkit-slider-runnable-track {
             height: 12px;
             border-radius: 20px;
-            background: rgba(29, 55, 29, 0.08);
-            border: 1px solid rgba(29, 55, 29, 0.1);
+            background: rgba(5, 81, 167, 0.08);
+            border: 1px solid rgba(5, 81, 167, 0.1);
         }
 
         .range-slider::-webkit-slider-thumb {
@@ -168,8 +135,8 @@
             appearance: none;
             width: 42px;
             height: 42px;
-            background: #EBE7DC;
-            border: 8px solid #1D371D;
+            background: #efefef;
+            border: 8px solid #0551a7;
             border-radius: 50%;
             cursor: pointer;
             box-shadow:
@@ -177,100 +144,31 @@
                 inset 0 0 0 2px rgba(255, 255, 255, 0.5);
             transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
             margin-top: -16px;
-            /* Center thumb on track */
             position: relative;
             z-index: 2;
         }
 
         .range-slider:active::-webkit-slider-thumb {
             transform: scale(1.1);
-            border-color: #B13118;
-            box-shadow: 0 8px 20px rgba(177, 49, 24, 0.3);
+            border-color: #f1c8df;
+            box-shadow: 0 8px 20px rgba(241, 200, 223, 0.5);
         }
 
-        /* Firefox Support */
         .range-slider::-moz-range-track {
             height: 12px;
             border-radius: 20px;
-            background: rgba(29, 55, 29, 0.08);
-            border: 1px solid rgba(29, 55, 29, 0.1);
+            background: rgba(5, 81, 167, 0.08);
+            border: 1px solid rgba(5, 81, 167, 0.1);
         }
 
         .range-slider::-moz-range-thumb {
             width: 26px;
-            /* Border is part of width in FF */
             height: 26px;
-            background: #EBE7DC;
-            border: 8px solid #1D371D;
+            background: #efefef;
+            border: 8px solid #0551a7;
             border-radius: 50%;
             cursor: pointer;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        @keyframes firePop {
-            0% {
-                transform: translate(-50%, 0) scale(0) rotate(-20deg);
-                opacity: 0;
-            }
-
-            50% {
-                transform: translate(-50%, -40px) scale(1.5) rotate(10deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translate(-50%, -30px) scale(1.2) rotate(0deg);
-                opacity: 1;
-            }
-        }
-
-        .fire-sticker {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            width: 48px;
-            height: 48px;
-            pointer-events: none;
-            opacity: 0;
-            z-index: 20;
-            filter: drop-shadow(0 4px 8px rgba(177, 49, 24, 0.4));
-        }
-
-        .fire-active {
-            animation: firePop 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-        }
-
-        @keyframes tomatoPop {
-            0% {
-                transform: scale(0) rotate(20deg);
-                opacity: 0;
-            }
-
-            50% {
-                transform: scale(1.2) rotate(-10deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: scale(1) rotate(0deg);
-                opacity: 1;
-            }
-        }
-
-        .tomato-sticker {
-            position: absolute;
-            right: -8px;
-            top: -12px;
-            width: 40px;
-            height: 40px;
-            pointer-events: none;
-            opacity: 0;
-            z-index: 20;
-            filter: drop-shadow(0 4px 8px rgba(177, 49, 24, 0.2));
-        }
-
-        .tomato-active {
-            animation: tomatoPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
 
         .reveal-step {
@@ -289,28 +187,22 @@
             }
         }
     </style>
-    <style>
-        body {
-            min-height: max(884px, 100dvh);
-        }
-    </style>
 </head>
 
 <body
-    class="bg-background-paper text-primary font-body antialiased selection:bg-accent-red selection:text-white relative lg:h-screen lg:overflow-hidden">
-    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-0"></div>
+    class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul relative lg:h-screen lg:overflow-hidden">
 
-    <!-- Navigation (same as perfil-pizzaria) -->
+    <!-- Navigation -->
     <nav class="absolute top-0 inset-x-0 z-[60] flex justify-between items-center p-6 lg:px-12 lg:py-10 text-white">
-        <!-- Mobile: spacer (back arrow removed) -->
+        <!-- Mobile: back arrow hidden intentionally for vote flow -->
         <div class="lg:hidden"></div>
         <!-- Desktop: Logo -->
         <a href="index.html" class="hidden lg:block">
-            <img src="assets/logo.svg" class="h-10 brightness-0 invert opacity-90 hover:opacity-70 transition-opacity"
-                alt="Logo">
+            <img src="assets/logo.svg" class="h-10 opacity-90 hover:opacity-70 transition-opacity" alt="Logo"
+                style="filter: invert(100%);">
         </a>
         <!-- Mobile: Logo on Right -->
-        <img src="assets/logo.svg" class="h-8 brightness-0 invert opacity-90 hidden" alt="Logo">
+        <img src="assets/logo.svg" class="h-8 opacity-90 hidden" alt="Logo" style="filter: invert(100%);">
     </nav>
 
     <!-- Desktop Split Container -->
@@ -318,13 +210,13 @@
 
         <!-- Left Side: Visual Panel (Desktop Only) -->
         <div class="header-visual lg:block hidden">
-            <img alt="Pizzeria atmosphere" class="w-full h-full object-cover contrast-110"
-                src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?q=80&w=1974&auto=format&fit=crop" />
+            <img alt="Cafeteria atmosphere" class="w-full h-full object-cover contrast-110"
+                src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1925&auto=format&fit=crop" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
             <div class="absolute inset-x-0 bottom-10 lg:bottom-16 px-6 lg:px-12 flex flex-col items-start text-left">
                 <h1
-                    class="text-[9vw] font-slab tracking-tighter leading-[0.8] drop-shadow-[5px_10px_20px_rgba(0,0,0,0.6)] uppercase text-white mb-4">
-                    Premiata Forneria</h1>
+                    class="text-[9vw] font-headline tracking-tighter leading-[0.8] drop-shadow-[5px_10px_20px_rgba(0,0,0,0.6)] uppercase text-white mb-4">
+                    Café Bloom</h1>
             </div>
         </div>
 
@@ -334,288 +226,198 @@
 
             <!-- Mobile: Photo (hidden on desktop) -->
             <div class="lg:hidden relative w-full aspect-[4/3] sm:aspect-[16/9] overflow-hidden">
-                <img alt="Pizzeria atmosphere" class="w-full h-full object-cover contrast-110"
-                    src="https://images.unsplash.com/photo-1541745537411-b8046dc6d66c?q=80&w=1974&auto=format&fit=crop" />
+                <img alt="Cafeteria atmosphere" class="w-full h-full object-cover contrast-110"
+                    src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1925&auto=format&fit=crop" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
 
-                <!-- Name + Sticker (identical to perfil-pizzaria.html) -->
+                <!-- Name + Sticker -->
                 <div class="absolute inset-x-0 bottom-4 px-6 flex flex-col items-center text-center">
                     <div class="relative inline-block mb-6">
                         <h2
-                            class="text-8xl sm:text-9xl font-slab tracking-tighter leading-[0.8] drop-shadow-[5px_10px_20px_rgba(0,0,0,0.6)] uppercase text-white px-2">
-                            Premiata Forneria
+                            class="text-6xl sm:text-7xl font-headline tracking-tighter leading-[0.8] drop-shadow-[5px_10px_20px_rgba(0,0,0,0.6)] uppercase text-white px-2">
+                            Café Bloom
                         </h2>
-                        <!-- Pizza Sticker (top-right corner of name) -->
-                        <div
-                            class="absolute -top-6 -right-4 z-20 transform rotate-12 bg-[#F4F1E8] px-4 py-2 drop-shadow-[8px_8px_0px_rgba(0,0,0,1)] min-w-max">
-                            <span
-                                class="block text-[8px] font-bold text-primary/40 uppercase tracking-[0.1em] mb-1 leading-none">A
-                                Escolhida</span>
-                            <span
-                                class="font-condensed font-bold text-primary uppercase tracking-widest text-lg leading-none">Marconi</span>
-                        </div>
                     </div>
                 </div>
             </div>
 
             <!-- Voting Form -->
             <div
-                class="flex-1 flex flex-col px-6 pt-12 lg:pt-6 pb-16 lg:pb-6 lg:px-8 max-w-xl lg:max-w-none lg:w-full mx-auto w-full lg:h-full lg:justify-center lg:overflow-hidden">
+                class="flex-grow flex flex-col px-6 pt-12 lg:pt-8 pb-12 lg:pb-8 lg:px-12 max-w-xl lg:max-w-4xl mx-auto w-full justify-center">
 
                 <!-- Header -->
                 <div class="text-center lg:text-left mb-6 lg:mb-4">
                     <div class="flex flex-col items-center lg:items-start">
                         <span
-                            class="text-2xl lg:text-2xl font-slab text-primary uppercase tracking-wide leading-none">Como
+                            class="text-3xl lg:text-4xl font-headline text-azul uppercase tracking-wide leading-none">Como
                             foi a sua experiência</span>
                         <span
-                            class="text-xs font-condensed font-bold text-primary/40 uppercase tracking-[0.3em] mt-1">Nessa
-                            Pizzaria</span>
+                            class="text-xs font-body font-bold text-marrom/60 uppercase tracking-[0.3em] mt-2 font-semibold">No
+                            Café Bloom</span>
                     </div>
                 </div>
 
+                <!-- Desktop: 2-column layout. Mobile: vertical stack -->
+                <div class="lg:flex lg:flex-row lg:gap-6 lg:w-full space-y-6 lg:space-y-0 items-start">
 
+                    <!-- Voting cards: mobile stack, desktop vertical flex -->
+                    <div class="lg:flex lg:flex-col lg:gap-4 lg:flex-1 space-y-4 lg:space-y-0 w-full">
 
-                <!-- Desktop: 3-column layout. Mobile: vertical stack -->
-                <div class="lg:flex lg:flex-row lg:gap-5 lg:w-full space-y-6 lg:space-y-0">
-
-                    <!-- Voting cards: mobile stack, desktop 2x2 grid -->
-                    <div class="lg:grid lg:grid-cols-2 lg:gap-4 lg:flex-1 lg:content-start space-y-6 lg:space-y-0">
-
-                        <!-- Step 1 -->
-                        <div id="step-1" class="category-box p-6 lg:p-4 relative group">
-                            <div class="flex flex-col items-center gap-3 lg:gap-2">
-                                <div
-                                    class="flex items-center gap-2 border-b border-primary/10 pb-3 lg:pb-2 w-full justify-between">
-                                    <h4
-                                        class="text-xl lg:text-base font-condensed font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+                        <!-- Step 1: Sabor -->
+                        <div id="step-1" class="category-box p-5 lg:py-3 lg:px-4 relative group">
+                            <div class="flex flex-col gap-2">
+                                <div class="flex items-center gap-2 border-b border-azul/10 pb-2 w-full justify-center lg:justify-between">
+                                    <h4 class="text-sm lg:text-sm font-body font-bold tracking-wider text-azul flex items-center justify-center lg:justify-start gap-2 text-center">
                                         <span
-                                            class="w-6 h-6 rounded-full bg-primary text-background-paper text-[10px] font-bold flex items-center justify-center">1</span>
-                                        Ingredientes
+                                            class="w-5 h-5 rounded-full bg-azul text-creme text-[10px] font-bold flex items-center justify-center flex-shrink-0">1</span>
+                                        <span class="leading-tight">Sabor da sobremesa</span>
                                     </h4>
-                                    <span
-                                        class="text-[9px] font-condensed font-bold uppercase tracking-widest text-primary/30">0
-                                        – 10</span>
                                 </div>
-                                <div class="w-full pt-1 px-2 flex flex-col items-center">
-                                    <div class="flex flex-col items-center mb-4 lg:mb-3">
-                                        <div class="relative inline-block">
-                                            <img src="assets/fire.svg" id="fire-1" class="fire-sticker"
-                                                alt="Fire Effect">
-                                            <img src="assets/tomate.svg" id="tomato-1" class="tomato-sticker"
-                                                alt="Tomato Effect">
-                                            <div id="val-1"
-                                                class="text-7xl lg:text-5xl font-slab text-primary leading-none mb-1 transition-transform duration-150">
-                                                5</div>
-                                        </div>
+                                <div class="w-full flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-1">
+                                    <div
+                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start">
+                                        <div id="val-1"
+                                            class="text-7xl lg:text-5xl font-slab text-azul leading-none transition-transform duration-150">
+                                            5</div>
                                         <span id="label-1"
-                                            class="text-[10px] uppercase font-bold text-accent-red tracking-[0.2em]">Ok</span>
+                                            class="text-[10px] lg:text-[9px] uppercase font-bold text-marrom tracking-[0.2em] lg:tracking-wider bg-rosa px-2.5 py-0.5 rounded-full text-center whitespace-nowrap mt-1 lg:mt-0">Gostoso</span>
                                     </div>
-                                    <div class="relative w-full h-10 flex items-center px-2">
+                                    <div class="relative flex-1 w-full h-8 flex items-center px-1">
                                         <input type="range" min="0" max="10" step="1" value="5" id="slider-1"
                                             oninput="updateVal(1, this.value)"
                                             onpointerup="handleInitialVote(1, this.value)"
                                             ontouchend="handleInitialVote(1, this.value)" class="range-slider"
-                                            autocomplete="off" style="--val:5">
+                                            autocomplete="off">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 2 -->
+                        <!-- Step 2: Marcou -->
                         <div id="step-2"
-                            class="category-box p-6 lg:p-4 relative group lg:block hidden opacity-0 lg:opacity-100">
-                            <div class="flex flex-col items-center gap-3 lg:gap-2">
-                                <div
-                                    class="flex items-center gap-2 border-b border-primary/10 pb-3 lg:pb-2 w-full justify-between">
-                                    <h4
-                                        class="text-xl lg:text-base font-condensed font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+                            class="category-box p-5 lg:py-3 lg:px-4 relative group lg:block hidden opacity-0 lg:opacity-100">
+                            <div class="flex flex-col gap-2">
+                                <div class="flex items-center gap-2 border-b border-azul/10 pb-2 w-full justify-center lg:justify-between">
+                                    <h4 class="text-sm lg:text-sm font-body font-bold tracking-wider text-azul flex items-center justify-center lg:justify-start gap-2 text-center">
                                         <span
-                                            class="w-6 h-6 rounded-full bg-primary text-background-paper text-[10px] font-bold flex items-center justify-center">2</span>
-                                        Massa e Textura
+                                            class="w-5 h-5 rounded-full bg-azul text-creme text-[10px] font-bold flex items-center justify-center flex-shrink-0">2</span>
+                                        <span class="leading-tight">O quanto a sobremesa marcou você</span>
                                     </h4>
-                                    <span
-                                        class="text-[9px] font-condensed font-bold uppercase tracking-widest text-primary/30">0
-                                        – 10</span>
                                 </div>
-                                <div class="w-full pt-1 px-2 flex flex-col items-center">
-                                    <div class="flex flex-col items-center mb-4 lg:mb-3">
-                                        <div class="relative inline-block">
-                                            <img src="assets/fire.svg" id="fire-2" class="fire-sticker"
-                                                alt="Fire Effect">
-                                            <img src="assets/tomate.svg" id="tomato-2" class="tomato-sticker"
-                                                alt="Tomato Effect">
-                                            <div id="val-2"
-                                                class="text-7xl lg:text-5xl font-slab text-primary leading-none mb-1 transition-transform duration-150">
-                                                5</div>
-                                        </div>
+                                <div class="w-full flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-1">
+                                    <div
+                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start">
+                                        <div id="val-2"
+                                            class="text-7xl lg:text-5xl font-slab text-azul leading-none transition-transform duration-150">
+                                            5</div>
                                         <span id="label-2"
-                                            class="text-[10px] uppercase font-bold text-accent-red tracking-[0.2em]">No
-                                            ponto</span>
+                                            class="text-[10px] lg:text-[9px] uppercase font-bold text-marrom tracking-[0.2em] lg:tracking-wider bg-rosa px-2.5 py-0.5 rounded-full text-center whitespace-nowrap font-semibold mt-1 lg:mt-0">Mais
+                                            ou menos</span>
                                     </div>
-                                    <div class="relative w-full h-10 flex items-center px-2">
+                                    <div class="relative flex-1 w-full h-8 flex items-center px-1">
                                         <input type="range" min="0" max="10" step="1" value="5" id="slider-2"
                                             oninput="updateVal(2, this.value)"
                                             onpointerup="handleInitialVote(2, this.value)"
                                             ontouchend="handleInitialVote(2, this.value)" class="range-slider"
-                                            autocomplete="off" style="--val:5">
+                                            autocomplete="off">
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Step 3 -->
+                        <!-- Step 3: Apresentação -->
                         <div id="step-3"
-                            class="category-box p-6 lg:p-4 relative group lg:block hidden opacity-0 lg:opacity-100">
-                            <div class="flex flex-col items-center gap-3 lg:gap-2">
-                                <div
-                                    class="flex items-center gap-2 border-b border-primary/10 pb-3 lg:pb-2 w-full justify-between">
-                                    <h4
-                                        class="text-xl lg:text-base font-condensed font-bold uppercase tracking-wider text-primary flex items-center gap-2">
+                            class="category-box p-5 lg:py-3 lg:px-4 relative group lg:block hidden opacity-0 lg:opacity-100">
+                            <div class="flex flex-col gap-2">
+                                <div class="flex items-center gap-2 border-b border-azul/10 pb-2 w-full justify-center lg:justify-between">
+                                    <h4 class="text-sm lg:text-sm font-body font-bold tracking-wider text-azul flex items-center justify-center lg:justify-start gap-2 text-center">
                                         <span
-                                            class="w-6 h-6 rounded-full bg-primary text-background-paper text-[10px] font-bold flex items-center justify-center">3</span>
-                                        Sabor
+                                            class="w-5 h-5 rounded-full bg-azul text-creme text-[10px] font-bold flex items-center justify-center flex-shrink-0">3</span>
+                                        <span class="leading-tight">Apresentação da sobremesa</span>
                                     </h4>
-                                    <span
-                                        class="text-[9px] font-condensed font-bold uppercase tracking-widest text-primary/30">0
-                                        – 10</span>
                                 </div>
-                                <div class="w-full pt-1 px-2 flex flex-col items-center">
-                                    <div class="flex flex-col items-center mb-4 lg:mb-3">
-                                        <div class="relative inline-block">
-                                            <img src="assets/fire.svg" id="fire-3" class="fire-sticker"
-                                                alt="Fire Effect">
-                                            <img src="assets/tomate.svg" id="tomato-3" class="tomato-sticker"
-                                                alt="Tomato Effect">
-                                            <div id="val-3"
-                                                class="text-7xl lg:text-5xl font-slab text-primary leading-none mb-1 transition-transform duration-150">
-                                                5</div>
-                                        </div>
+                                <div class="w-full flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-1">
+                                    <div
+                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start">
+                                        <div id="val-3"
+                                            class="text-7xl lg:text-5xl font-slab text-azul leading-none transition-transform duration-150">
+                                            5</div>
                                         <span id="label-3"
-                                            class="text-[10px] uppercase font-bold text-accent-red tracking-[0.2em]">Bom</span>
+                                            class="text-[10px] lg:text-[9px] uppercase font-bold text-marrom tracking-[0.2em] lg:tracking-wider bg-rosa px-2.5 py-0.5 rounded-full text-center whitespace-nowrap font-semibold mt-1 lg:mt-0">Normal</span>
                                     </div>
-                                    <div class="relative w-full h-10 flex items-center px-2">
+                                    <div class="relative flex-1 w-full h-8 flex items-center px-1">
                                         <input type="range" min="0" max="10" step="1" value="5" id="slider-3"
                                             oninput="updateVal(3, this.value)"
                                             onpointerup="handleInitialVote(3, this.value)"
                                             ontouchend="handleInitialVote(3, this.value)" class="range-slider"
-                                            autocomplete="off" style="--val:5">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Step 4 -->
-                        <div id="step-4"
-                            class="category-box p-6 lg:p-4 relative group lg:block hidden opacity-0 lg:opacity-100">
-                            <div class="flex flex-col items-center gap-3 lg:gap-2">
-                                <div
-                                    class="flex items-center gap-2 border-b border-primary/10 pb-3 lg:pb-2 w-full justify-between">
-                                    <h4
-                                        class="text-xl lg:text-base font-condensed font-bold uppercase tracking-wider text-primary flex items-center gap-2">
-                                        <span
-                                            class="w-6 h-6 rounded-full bg-primary text-background-paper text-[10px] font-bold flex items-center justify-center">4</span>
-                                        Experiência Geral
-                                    </h4>
-                                    <span
-                                        class="text-[9px] font-condensed font-bold uppercase tracking-widest text-primary/30">0
-                                        – 10</span>
-                                </div>
-                                <div class="w-full pt-1 px-2 flex flex-col items-center">
-                                    <div class="flex flex-col items-center mb-4 lg:mb-3">
-                                        <div class="relative inline-block">
-                                            <img src="assets/fire.svg" id="fire-4" class="fire-sticker"
-                                                alt="Fire Effect">
-                                            <img src="assets/tomate.svg" id="tomato-4" class="tomato-sticker"
-                                                alt="Tomato Effect">
-                                            <div id="val-4"
-                                                class="text-7xl lg:text-5xl font-slab text-primary leading-none mb-1 transition-transform duration-150">
-                                                5</div>
-                                        </div>
-                                        <span id="label-4"
-                                            class="text-[10px] uppercase font-bold text-accent-red tracking-[0.2em]">Talvez
-                                            volte</span>
-                                    </div>
-                                    <div class="relative w-full h-10 flex items-center px-2">
-                                        <input type="range" min="0" max="10" step="1" value="5" id="slider-4"
-                                            oninput="updateVal(4, this.value)"
-                                            onpointerup="handleInitialVote(4, this.value)"
-                                            ontouchend="handleInitialVote(4, this.value)" class="range-slider"
-                                            autocomplete="off" style="--val:5">
+                                            autocomplete="off">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Summary + Submit: always visible on desktop, hidden on mobile until all voted -->
+                    <!-- Summary + Submit -->
                     <div id="submit-container"
-                        class="lg:flex lg:flex-col lg:w-64 xl:w-72 lg:flex-shrink-0 hidden opacity-0 lg:opacity-100 lg:!block">
-                        <div class="category-box p-5 mb-4 flex-1">
+                        class="lg:flex lg:flex-col lg:w-64 xl:w-72 lg:flex-shrink-0 hidden opacity-0 lg:opacity-100 lg:!block w-full">
+                        <div class="category-box p-4 mb-3 flex-grow-0">
                             <h5
-                                class="font-condensed font-bold uppercase tracking-widest text-sm text-primary/40 mb-4 text-center">
+                                class="font-body font-bold uppercase tracking-widest text-xs text-azul mb-3 text-center">
                                 Sua avaliação</h5>
-                            <div class="space-y-2">
-                                <div class="flex items-center justify-between gap-2 bg-primary/5 rounded-xl px-3 py-2">
+                            <div class="space-y-1.5">
+                                <div class="flex items-center justify-between gap-2 bg-azul/5 rounded-xl px-3 py-1.5">
                                     <span
-                                        class="text-[10px] font-condensed font-bold uppercase tracking-wider text-primary/50">Ingredientes</span>
-                                    <span id="summary-1" class="text-xl font-slab text-primary font-bold">5</span>
+                                        class="text-[10px] font-body font-bold uppercase tracking-wider text-marrom/60 font-semibold">Sabor</span>
+                                    <span id="summary-1" class="text-lg font-slab text-azul font-bold">5</span>
                                 </div>
-                                <div class="flex items-center justify-between gap-2 bg-primary/5 rounded-xl px-3 py-2">
+                                <div class="flex items-center justify-between gap-2 bg-azul/5 rounded-xl px-3 py-1.5">
                                     <span
-                                        class="text-[10px] font-condensed font-bold uppercase tracking-wider text-primary/50">Massa</span>
-                                    <span id="summary-2" class="text-xl font-slab text-primary font-bold">5</span>
+                                        class="text-[10px] font-body font-bold uppercase tracking-wider text-marrom/60 font-semibold">Marcou</span>
+                                    <span id="summary-2" class="text-lg font-slab text-azul font-bold">5</span>
                                 </div>
-                                <div class="flex items-center justify-between gap-2 bg-primary/5 rounded-xl px-3 py-2">
+                                <div class="flex items-center justify-between gap-2 bg-azul/5 rounded-xl px-3 py-1.5">
                                     <span
-                                        class="text-[10px] font-condensed font-bold uppercase tracking-wider text-primary/50">Sabor</span>
-                                    <span id="summary-3" class="text-xl font-slab text-primary font-bold">5</span>
-                                </div>
-                                <div class="flex items-center justify-between gap-2 bg-primary/5 rounded-xl px-3 py-2">
-                                    <span
-                                        class="text-[10px] font-condensed font-bold uppercase tracking-wider text-primary/50">Experiência</span>
-                                    <span id="summary-4" class="text-xl font-slab text-primary font-bold">5</span>
+                                        class="text-[10px] font-body font-bold uppercase tracking-wider text-marrom/60 font-semibold">Apresentação</span>
+                                    <span id="summary-3" class="text-lg font-slab text-azul font-bold">5</span>
                                 </div>
                             </div>
                             <!-- Average -->
-                            <div class="mt-4 pt-4 border-t border-primary/10 flex items-center justify-between">
+                            <div class="mt-3 pt-3 border-t border-azul/10 flex items-center justify-between">
                                 <span
-                                    class="text-xs font-condensed font-bold uppercase tracking-widest text-primary/40">Média
-                                    geral</span>
+                                    class="text-xs font-body font-bold uppercase tracking-widest text-marrom/60 font-semibold">Média
+                                    Geral</span>
                                 <div class="flex items-baseline gap-1">
-                                    <span id="summary-avg" class="text-3xl font-slab text-primary">5.0</span>
-                                    <span class="text-xs text-primary/30 font-condensed font-bold">/ 10</span>
+                                    <span id="summary-avg" class="text-2xl font-slab text-azul font-bold">5.0</span>
+                                    <span class="text-xs text-azul/40 font-slab font-bold">/ 10</span>
                                 </div>
                             </div>
                         </div>
 
                         <a href="confirmacao.html"
-                            class="w-full bg-primary hover:bg-[#152915] active:scale-[0.99] transition-all duration-200 text-[#EBE7DC] font-condensed uppercase tracking-widest font-bold text-lg lg:text-base py-5 lg:py-4 rounded-xl shadow-xl flex items-center justify-center gap-3 text-center leading-none">
+                            class="w-full bg-azul hover:bg-[#044085] active:scale-[0.99] transition-all duration-200 text-creme font-slab uppercase tracking-widest font-bold text-xl lg:text-lg py-5 lg:py-4 rounded-xl shadow-xl flex items-center justify-center gap-3 text-center leading-none">
                             <span>Enviar Avaliação</span>
                             <span class="material-symbols-outlined">arrow_forward</span>
                         </a>
                     </div>
                 </div>
 
-
-
             </div>
 
             <!-- Footer (Mobile Only) -->
-            <div class="h-10 w-full checkerboard opacity-100 relative z-10 lg:hidden"></div>
-            <footer class="w-full bg-primary text-background-paper pt-16 pb-20 px-6 mt-auto relative z-10 lg:hidden">
+            <div class="h-10 w-full diamond-pattern opacity-100 relative z-10 lg:hidden"></div>
+            <footer class="w-full bg-azul text-creme pt-16 pb-20 px-6 mt-auto relative z-10 lg:hidden">
                 <div class="max-w-xl mx-auto flex flex-col items-center text-center">
-                    <img src="assets/logo.svg" class="h-16 brightness-0 invert opacity-60 mb-12"
-                        alt="Massa a Massa Logo">
+                    <img src="assets/logo.svg" class="h-16 mb-12" alt="Pé de Cacau Logo"
+                        style="filter: invert(100%); opacity: 0.6;">
                     <div class="flex justify-center gap-6 mb-12 text-[10px]">
                         <a href="index.html"
-                            class="font-condensed font-bold uppercase tracking-widest hover:text-accent-red transition-colors opacity-60 hover:opacity-100">Início</a>
-                        <span class="text-accent-red font-bold">/</span>
+                            class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Início</a>
+                        <span class="text-rosa font-bold">/</span>
                         <a href="sobre.html"
-                            class="font-condensed font-bold uppercase tracking-widest hover:text-accent-red transition-colors opacity-60 hover:opacity-100">Sobre</a>
+                            class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Sobre</a>
                     </div>
                     <div
-                        class="flex flex-col items-center gap-2 opacity-30 text-[8px] uppercase tracking-[0.3em] font-body">
+                        class="flex flex-col items-center gap-2 opacity-40 text-[8px] uppercase tracking-[0.3em] font-body">
                         <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
                                 class="font-bold hover:opacity-100 transition-opacity">O que fazer em JF</a></p>
                         <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank"
@@ -627,30 +429,28 @@
         </main>
     </div>
 
-
     <script>
         const votedSteps = new Set();
-        const scores = { 1: 5, 2: 5, 3: 5, 4: 5 };
+        // Updated to 3 steps
+        const scores = { 1: 5, 2: 5, 3: 5 };
         const isDesktop = () => window.innerWidth >= 1024;
 
+        // Custom labels for the 3 new questions
         const VOTING_LABELS = {
-            1: ["Zero harmonia", "Ingredientes brigam", "Faltou tempero", "Sem graça", "Ok", "Boas combinações", "Harmônico", "Muito equilibrado", "Combinação perfeita", "Surpreendente", "Obra prima!"],
-            2: ["Péssima textura", "Muito mole/dura", "Faltou ponto", "Regular", "Pode melhorar", "No ponto", "Massa boa", "Excelente textura", "Crocância ideal", "Ponto perfeito", "Incomparável!"],
-            3: ["Horrível", "Muito ruim", "Decepcionou", "Poderia ser melhor", "Ok", "Bom", "Gostoso", "Muito saboroso", "Excelente", "Incrível", "Épico!"],
-            4: ["Nunca voltaria", "Não recomendo", "Fraco", "Regular", "Pode melhorar", "Talvez volte", "Gostei", "Muito bom", "Recomendo muchissimo", "Incrível!", "Virei fã número 1!"]
+            1: ["Péssimo", "Muito ruim", "Ruim", "Não gostei", "Poderia melhorar", "Gostoso", "Muito bom", "Delicioso", "Incrível", "Perfeito", "O melhor que já comi!"],
+            2: ["Nada", "Quase nada", "Muito pouco", "Um pouco", "Mais ou menos", "Na média", "Marcou", "Bastante", "Muito", "Inesquecível", "Vou sonhar com ela!"],
+            3: ["Feia", "Desarrumada", "Sem graça", "Poderia melhorar", "Normal", "Bonita", "Muito bonita", "Bem empratada", "Belíssima", "Obra de arte", "Dá pena de comer!"]
         };
 
         function updateSliderFill(slider) {
             const val = parseInt(slider.value);
             const pct = (val / 10) * 100;
-            slider.style.background = `linear-gradient(to right, #1D371D ${pct}%, rgba(29,55,29,0.1) ${pct}%)`;
+            slider.style.background = `linear-gradient(to right, #0551a7 ${pct}%, rgba(5,81,167,0.1) ${pct}%)`;
         }
 
         function updateVal(step, val) {
             const display = document.getElementById(`val-${step}`);
             const label = document.getElementById(`label-${step}`);
-            const fire = document.getElementById(`fire-${step}`);
-            const tomato = document.getElementById(`tomato-${step}`);
             const slider = document.getElementById(`slider-${step}`);
             const numVal = parseInt(val);
             scores[step] = numVal;
@@ -665,33 +465,23 @@
             if (label) label.innerText = VOTING_LABELS[step][val];
             if (slider) updateSliderFill(slider);
 
-            if (fire) {
-                if (numVal === 10) fire.classList.add('fire-active');
-                else fire.classList.remove('fire-active');
-            }
-            if (tomato) {
-                if (numVal === 0) tomato.classList.add('tomato-active');
-                else tomato.classList.remove('tomato-active');
-            }
-
-            // If desktop, check if all 4 have been interacted with
             if (isDesktop()) checkDesktopComplete();
-
             updateSummary();
         }
 
         function updateSummary() {
-            [1, 2, 3, 4].forEach(s => {
+            [1, 2, 3].forEach(s => {
                 const el = document.getElementById(`summary-${s}`);
                 if (el) el.textContent = scores[s];
             });
-            const avg = ((scores[1] + scores[2] + scores[3] + scores[4]) / 4).toFixed(1);
+            const avg = ((scores[1] + scores[2] + scores[3]) / 3).toFixed(1);
             const avgEl = document.getElementById('summary-avg');
             if (avgEl) avgEl.textContent = avg;
         }
 
         function checkDesktopComplete() {
-            if (votedSteps.size >= 4) {
+            // Check for 3 steps now
+            if (votedSteps.size >= 3) {
                 const submitContainer = document.getElementById('submit-container');
                 if (submitContainer && submitContainer.classList.contains('hidden')) {
                     submitContainer.classList.remove('hidden');
@@ -702,23 +492,7 @@
         }
 
         function activateProgressStep(step) {
-            // Activate dot
-            const dot = document.querySelector(`.progress-step[data-step="${step}"] .step-dot`);
-            if (dot) {
-                dot.classList.remove('border-primary/20', 'text-primary/30');
-                dot.classList.add('step-active', 'border-primary', 'text-primary');
-            }
-            // Activate label
-            const lbl = document.querySelector(`.progress-step[data-step="${step}"] .step-label`);
-            if (lbl) {
-                lbl.classList.remove('text-primary/30');
-                lbl.classList.add('text-primary/60');
-            }
-            // Fill connecting line before this step
-            if (step > 1) {
-                const line = document.querySelector(`.step-line-${step - 1}`);
-                if (line) line.style.background = '#1D371D';
-            }
+            // Simplified, left empty if we don't have explicit progress dots in this design
         }
 
         function handleInitialVote(step, val) {
@@ -727,7 +501,6 @@
                 activateProgressStep(step);
 
                 if (!isDesktop()) {
-                    // Mobile: reveal next step sequentially
                     revealNextStep(step);
                 } else {
                     checkDesktopComplete();
@@ -736,19 +509,18 @@
         }
 
         function revealNextStep(step) {
-            const nextStepId = step === 4 ? 'submit-container' : `step-${step + 1}`;
+            // Next step logic adapted for 3 steps
+            const nextStepId = step === 3 ? 'submit-container' : `step-${step + 1}`;
             const nextStep = document.getElementById(nextStepId);
 
             if (nextStep && nextStep.classList.contains('hidden')) {
                 nextStep.classList.remove('hidden');
-                if (step < 4) {
+                if (step < 3) {
                     const nextSlider = document.getElementById(`slider-${step + 1}`);
                     if (nextSlider) {
                         nextSlider.value = 5;
                         updateVal(step + 1, 5);
                     }
-                    // Activate next progress step
-                    activateProgressStep(step + 1);
                 }
                 nextStep.offsetHeight;
                 nextStep.classList.add('reveal-step');
@@ -761,9 +533,8 @@
             }
         }
 
-        // Initialize all sliders on load
         window.addEventListener('load', () => {
-            [1, 2, 3, 4].forEach(step => {
+            [1, 2, 3].forEach(step => {
                 const slider = document.getElementById(`slider-${step}`);
                 if (slider) {
                     slider.value = 5;
@@ -771,9 +542,8 @@
                 }
             });
 
-            // On desktop, show all 4 steps immediately
             if (isDesktop()) {
-                [2, 3, 4].forEach(step => {
+                [2, 3].forEach(step => {
                     const el = document.getElementById(`step-${step}`);
                     if (el) {
                         el.classList.remove('hidden');
@@ -781,7 +551,6 @@
                     }
                 });
 
-                // Ensure summary is visible on desktop without animation glitch
                 const submitEl = document.getElementById('submit-container');
                 if (submitEl) {
                     submitEl.classList.remove('hidden');

@@ -4,93 +4,301 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Voto já Confirmado - Massa a Massa</title>
+    <title>Voto Confirmado | Pé de Cacau</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
     <link rel="manifest" href="assets/favicon/site.webmanifest">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Antonio:wght@700&amp;family=Staatliches&amp;family=Outfit:wght@300;400;600&amp;family=Stint+Ultra+Expanded&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @font-face {
+            font-family: 'Bringbold';
+            src: url('assets/Tipografia/Bringbold Nineties/Bringboldninetiesdemo-aY5Wa.otf') format('opentype'),
+                url('assets/Tipografia/Bringbold Nineties/BringboldNinetiesDemo-E4O9r.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Valencia';
+            src: url('assets/Tipografia/Valencia/Valencia.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .diamond-pattern {
+            background-color: #0551a7;
+            background-image:
+                linear-gradient(45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(-45deg, #ffffff 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #ffffff 75%),
+                linear-gradient(-45deg, transparent 75%, #ffffff 75%);
+            background-size: 30px 30px;
+            background-position: 0 0, 0 15px, 15px -15px, -15px 0px;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            opacity: 0;
+            animation: confettiFall linear infinite;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-20px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .anim-slide {
+            animation: slideUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .anim-fade {
+            animation: fadeIn 0.8s ease forwards;
+            opacity: 0;
+        }
+
+        .d1 {
+            animation-delay: 0.1s;
+        }
+
+        .d2 {
+            animation-delay: 0.25s;
+        }
+
+        .d3 {
+            animation-delay: 0.4s;
+        }
+
+        .d5 {
+            animation-delay: 0.65s;
+        }
+
+        .d7 {
+            animation-delay: 0.9s;
+        }
+
+        .d9 {
+            animation-delay: 1.1s;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-btn:hover {
+            background: #1ebe5d;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 32px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:active {
+            transform: scale(0.98);
+        }
+
+        .rosa-divider {
+            height: 2px;
+            background: linear-gradient(to right, transparent, #f1c8df, transparent);
+        }
+    </style>
     <script>
         tailwind.config = {
-            darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#1D371D",
-                        "primary-light": "#2a4f2a",
-                        "accent-red": "#B13118",
-                        "background-paper": "#EBE7DC",
+                        "azul": "#0551a7",
+                        "rosa": "#f1c8df",
+                        "creme": "#efefef",
+                        "marrom": "#2d1a12",
                     },
                     fontFamily: {
+                        "headline": ["Bringbold", "sans-serif"],
+                        "accent": ["Valencia", "cursive"],
                         "slab": ["Staatliches", "sans-serif"],
-                        "condensed": ["Antonio", "sans-serif"],
                         "body": ["Outfit", "sans-serif"],
                     },
-                    backgroundImage: {
-                        'paper-texture': "url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSB0eXBlPSJmcmFjdGFsTm9pc2UiIGJhc2VGcmVxdWVuY3k9IjAuNiIgbnVtT2N0YXZlcz0iMyIgc3RpdGNoVGlsZXM9InN0aXRjaCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9" + "IjEwMCUiIGZpbHRlcj0idXJsKCNub2lzZSkiIG9wYWNpdHk9IjAuMDUiLz48L3N2Zz4=')",
-                    }
                 },
             },
         }
     </script>
-    <style>
-        body {
-            background-color: #EBE7DC;
-        }
-
-        .glass-card {
-            background: rgba(244, 241, 232, 0.6);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(29, 55, 29, 0.1);
-            border-radius: 1.5rem;
-        }
-    </style>
 </head>
 
-<body
-    class="bg-background-paper text-primary font-body antialiased selection:bg-accent-red selection:text-white relative h-[100dvh] overflow-hidden flex flex-col">
-    <div class="fixed inset-0 pointer-events-none opacity-20 bg-paper-texture z-0"></div>
+<body class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul overflow-x-hidden">
 
-    <div class="relative z-10 flex-1 flex flex-col items-center justify-between px-6 py-8 text-center">
-        <div class="flex-1 flex flex-col items-center justify-center w-full max-w-sm">
-            <div class="mb-6">
-                <img src="assets/forno.svg" class="w-20 h-auto mx-auto" alt="Sucesso">
-            </div>
+    <!-- ============================================ -->
+    <!-- SEÇÃO 1: AGRADECIMENTO                      -->
+    <!-- ============================================ -->
+    <section class="relative bg-azul flex flex-col items-center justify-center px-6 py-10 text-center overflow-hidden">
 
+        <!-- Confetti -->
+        <div id="confetti-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+        <!-- Subtle diamond texture -->
+        <div class="absolute inset-0 opacity-[0.045]"
+            style="background-image: linear-gradient(45deg,#fff 25%,transparent 25%),linear-gradient(-45deg,#fff 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#fff 75%),linear-gradient(-45deg,transparent 75%,#fff 75%);background-size:20px 20px;background-position:0 0,0 10px,10px -10px,-10px 0;">
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center max-w-xl w-full">
+
+            <!-- Logo -->
+            <a href="index.html" class="anim-fade d1 mb-6 block">
+                <img src="assets/logo.svg" alt="Pé de Cacau" class="h-8 opacity-70 hover:opacity-100 transition-opacity"
+                    style="filter:invert(100%);">
+            </a>
+
+            <!-- Headline -->
             <h1
-                class="text-5xl sm:text-7xl font-slab mb-6 tracking-tighter leading-[0.8] text-primary uppercase drop-shadow-sm">
-                Obrigado <br> por participar!
+                class="anim-slide d2 font-headline text-5xl sm:text-6xl lg:text-7xl uppercase tracking-tighter leading-[0.85] text-white">
+                Obrigado<br>por participar!
             </h1>
-            <div class="max-w-xs mb-12 space-y-6">
+        </div>
+    </section>
 
-                <div class="h-px w-12 bg-primary/10 mx-auto"></div>
+    <!-- ============================================ -->
+    <!-- SEÇÃO 2: PRESENTE DO PATROCINADOR          -->
+    <!-- ============================================ -->
+    <section class="relative bg-creme overflow-hidden">
 
-                <p class="text-2xl font-slab uppercase tracking-tighter leading-tight text-primary">
-                    Que tal descobrir um<br>
-                    <span class="text-accent-red">novo sabor</span> agora?
-                </p>
+        <!-- Illustration — mulher entrando pela esquerda -->
+        <div class="relative flex flex-col items-center pt-8 pb-0">
+            <img src="assets/ilustra_2.png" alt="" aria-hidden="true" class="anim-fade d3 w-64 sm:w-72 object-contain"
+                style="mix-blend-mode: multiply;">
+        </div>
 
-                <p class="text-xs text-primary/60 font-light leading-relaxed">
-                    Explore o circuito e deixe sua marca em<br>outra pizzaria participante!
-                </p>
+        <!-- Text + CTA content -->
+        <div class="relative z-10 flex flex-col items-center px-6 pt-4 pb-14 text-center max-w-sm mx-auto">
 
-                <div class="pt-4">
-                    <a href="index.html"
-                        class="inline-flex items-center bg-primary text-background-paper px-10 py-4 rounded-xl font-condensed font-bold uppercase tracking-widest hover:bg-primary-light transition-all active:scale-95 shadow-lg group">
-                        <span>Ver outras pizzarias</span>
-                    </a>
+            <!-- Headline -->
+            <h2
+                class="anim-slide d5 font-slab text-5xl sm:text-6xl uppercase tracking-wide leading-none text-marrom mb-3">
+                Você ganhou<br><span class="text-azul">um presente!</span>
+            </h2>
+
+            <!-- Tagline em Valencia — humor e identidade -->
+            <p class="anim-slide d5 font-accent text-2xl text-marrom/70 leading-snug mb-6">
+                Não é chocolate,<br>mas é tão bom quanto
+            </p>
+
+            <!-- Description -->
+            <p class="anim-slide d7 font-body text-sm text-marrom/50 leading-relaxed mb-6">
+                Como participante do <strong class="text-marrom font-semibold">Pé de Cacau</strong>, você tem acesso a
+                um desconto exclusivo na conta de luz — cortesia da Hive Energy.
+            </p>
+
+            <!-- Hive Energy card -->
+            <div class="anim-fade d7 w-full bg-azul rounded-2xl px-6 py-5 mb-6 flex items-center gap-4">
+                <img src="assets/hive_logo.webp" alt="Hive Energy" class="h-8 object-contain flex-shrink-0">
+                <div class="text-left flex-1">
+                    <p class="font-slab text-xl uppercase tracking-wide text-white leading-none">Até 95% de economia</p>
+                    <p class="text-xs text-white/50 font-body mt-1">na conta de luz com energia solar</p>
                 </div>
             </div>
+
+            <!-- WhatsApp CTA -->
+            <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Participei%20do%20P%C3%A9%20de%20Cacau%20e%20gostaria%20de%20saber%20mais%20sobre%20meu%20desconto%20exclusivo%20com%20a%20Hive%20Energy."
+                target="_blank" rel="noopener noreferrer"
+                class="whatsapp-btn anim-slide d9 w-full flex items-center justify-center gap-3 text-white font-slab uppercase tracking-widest text-xl py-5 rounded-2xl mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24"
+                    fill="currentColor">
+                    <path
+                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+                </svg>
+                <span>Quero meu desconto</span>
+            </a>
+
+            <p class="text-[10px] text-marrom/30 font-body leading-relaxed mb-6">
+                Consulta gratuita e sem compromisso.
+            </p>
+
+            <!-- Quiet back link -->
+            <a href="index.html"
+                class="text-[11px] font-body text-marrom/35 hover:text-marrom/70 transition-colors uppercase tracking-widest">
+                ← Ver outras cafeterias
+            </a>
         </div>
-    </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="w-full bg-azul text-creme pt-12 pb-16 px-6">
+        <div class="max-w-xl mx-auto flex flex-col items-center text-center">
+            <img src="assets/logo.svg" class="h-12 mb-8" alt="Pé de Cacau Logo"
+                style="filter:invert(100%);opacity:0.5;">
+            <div class="flex justify-center gap-6 mb-8 text-[10px]">
+                <a href="index.html"
+                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Início</a>
+                <span class="text-rosa font-bold">/</span>
+                <a href="sobre.html"
+                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Sobre</a>
+            </div>
+            <div class="flex flex-col items-center gap-2 opacity-30 text-[8px] uppercase tracking-[0.3em] font-body">
+                <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank" class="font-bold">O que
+                        fazer em JF</a></p>
+                <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank" class="font-bold">Primitiva</a></p>
+                <p class="mt-8">© 2026 Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Confetti burst on load
+        const colors = ['#f1c8df', 'rgba(255,255,255,0.8)', 'rgba(255,255,255,0.4)', '#efefef'];
+        const container = document.getElementById('confetti-container');
+
+        function spawnPiece() {
+            const el = document.createElement('div');
+            el.className = 'confetti-piece';
+            const size = Math.random() * 9 + 4;
+            const left = Math.random() * 100;
+            const dur = Math.random() * 3 + 2.5;
+            const del = Math.random() * 3;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            el.style.cssText = `left:${left}%;top:-16px;width:${size}px;height:${size}px;background:${color};border-radius:${Math.random() > .5 ? '50%' : '3px'};animation-duration:${dur}s;animation-delay:${del}s;`;
+            container.appendChild(el);
+            setTimeout(() => el.remove(), (dur + del) * 1000 + 300);
+        }
+
+        // Initial burst
+        for (let i = 0; i < 50; i++) spawnPiece();
+    </script>
 </body>
 
 </html>
