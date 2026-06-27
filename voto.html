@@ -193,16 +193,21 @@
     class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul relative lg:h-screen lg:overflow-hidden">
 
     <!-- Navigation -->
-    <nav class="absolute top-0 inset-x-0 z-[60] flex justify-between items-center p-6 lg:px-12 lg:py-10 text-white">
-        <!-- Mobile: back arrow hidden intentionally for vote flow -->
-        <div class="lg:hidden"></div>
-        <!-- Desktop: Logo -->
+    <nav class="absolute top-0 inset-x-0 z-[60] flex items-center justify-center lg:justify-between p-6 lg:px-12 lg:py-10 text-white">
+        <!-- Mobile: Back Arrow -->
+        <a href="javascript:history.back()"
+            class="absolute left-6 w-10 h-10 lg:hidden flex items-center justify-center rounded-full bg-black/20 backdrop-blur-md hover:bg-black/30 transition-all text-white">
+            <span class="material-symbols-outlined">arrow_back</span>
+        </a>
+
+        <!-- Desktop: Logo in place of Back Arrow -->
         <a href="index.html" class="hidden lg:block">
             <img src="assets/logo.svg" class="h-10 opacity-90 hover:opacity-70 transition-opacity" alt="Logo"
                 style="filter: invert(100%);">
         </a>
-        <!-- Mobile: Logo on Right -->
-        <img src="assets/logo.svg" class="h-8 opacity-90 hidden" alt="Logo" style="filter: invert(100%);">
+        
+        <!-- Mobile: Centered Logo -->
+        <img src="assets/logo.svg" class="h-8 opacity-90 lg:hidden" alt="Logo" style="filter: invert(100%);">
     </nav>
 
     <!-- Desktop Split Container -->
@@ -275,7 +280,7 @@
                                 </div>
                                 <div class="w-full flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-1">
                                     <div
-                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start">
+                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start mb-4 lg:mb-0">
                                         <div id="val-1"
                                             class="text-7xl lg:text-5xl font-slab text-azul leading-none transition-transform duration-150">
                                             5</div>
@@ -306,13 +311,13 @@
                                 </div>
                                 <div class="w-full flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-1">
                                     <div
-                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start">
+                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start mb-4 lg:mb-0">
                                         <div id="val-2"
                                             class="text-7xl lg:text-5xl font-slab text-azul leading-none transition-transform duration-150">
                                             5</div>
                                         <span id="label-2"
                                             class="text-[10px] lg:text-[9px] uppercase font-bold text-marrom tracking-[0.2em] lg:tracking-wider bg-rosa px-2.5 py-0.5 rounded-full text-center whitespace-nowrap font-semibold mt-1 lg:mt-0">Mais
-                                            ou menos</span>
+                                             ou menos</span>
                                     </div>
                                     <div class="relative flex-1 w-full h-8 flex items-center px-1">
                                         <input type="range" min="0" max="10" step="1" value="5" id="slider-2"
@@ -338,7 +343,7 @@
                                 </div>
                                 <div class="w-full flex flex-col lg:flex-row items-center gap-4 lg:gap-6 pt-1">
                                     <div
-                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start">
+                                        class="flex flex-col lg:flex-row items-center gap-1.5 lg:gap-3 flex-shrink-0 w-full lg:w-52 justify-center lg:justify-start mb-4 lg:mb-0">
                                         <div id="val-3"
                                             class="text-7xl lg:text-5xl font-slab text-azul leading-none transition-transform duration-150">
                                             5</div>
@@ -408,7 +413,7 @@
             <footer class="w-full bg-azul text-creme pt-16 pb-20 px-6 mt-auto relative z-10 lg:hidden">
                 <div class="max-w-xl mx-auto flex flex-col items-center text-center">
                     <img src="assets/logo.svg" class="h-16 mb-12" alt="Pé de Cacau Logo"
-                        style="filter: invert(100%); opacity: 0.6;">
+                        style="filter: invert(100%); opacity: 1;">
                     <div class="flex justify-center gap-6 mb-12 text-[10px]">
                         <a href="index.html"
                             class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Início</a>

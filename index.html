@@ -116,65 +116,52 @@
     <!-- Hero Block -->
     <div
         class="bg-azul text-creme rounded-b-[2rem] lg:rounded-b-[4rem] shadow-[0_15px_30px_rgba(5,81,167,0.15)] relative z-20">
-        <!-- Original Top Header -->
-        <header class="w-full flex justify-between items-center p-6 lg:px-12 lg:py-10 max-w-7xl mx-auto">
+        <!-- Original Top Header / Centralized Header Info -->
+        <header
+            class="w-full flex flex-col items-center justify-center p-6 lg:px-12 lg:py-10 max-w-7xl mx-auto text-center gap-4">
             <a href="index.html">
-                <img src="assets/logo.svg" class="h-10 sm:h-12" alt="Pé de Cacau" style="filter: invert(100%);">
+                <img src="assets/logo.svg" class="h-8 sm:h-9 mx-auto" alt="Pé de Cacau" style="filter: invert(100%);">
             </a>
-            <div class="flex flex-col items-end">
-                <span class="font-body text-[8px] tracking-[0.4em] uppercase text-creme/60">Julho 2026</span>
-                <span class="font-slab text-lg uppercase tracking-tighter text-creme">Juiz de Fora</span>
-            </div>
         </header>
 
         <!-- Original Hero Section (Headline) -->
         <section
-            class="flex flex-col items-center justify-center text-center px-4 pt-8 lg:pt-16 pb-20 lg:pb-28 max-w-5xl mx-auto">
+            class="flex flex-col items-center justify-center text-center px-4 pt-4 lg:pt-8 pb-20 lg:pb-28 max-w-5xl mx-auto gap-6">
             <h1 class="font-headline text-[13vw] sm:text-7xl md:text-8xl lg:text-[7rem] uppercase tracking-tighter text-creme drop-shadow-sm"
                 style="line-height: 0.85; letter-spacing: -0.02em;">
                 QUAL SUA <br>
                 SOBREMESA <br>
                 FAVORITA?
             </h1>
+
+            <div class="flex flex-col items-center text-center mt-2 gap-1">
+                <div class="flex items-center gap-2 font-slab uppercase tracking-wider text-sm">
+                    <span class="text-creme/80 text-[10px] tracking-widest">De</span>
+                    <span class="font-headline text-rosa text-3xl leading-none">01</span>
+                    <span class="text-creme/80 text-[10px] tracking-widest">a</span>
+                    <span class="font-headline text-rosa text-3xl leading-none">31</span>
+                    <span class="text-creme/80 text-[10px] tracking-widest">de Julho</span>
+                </div>
+                <span class="font-slab text-xl uppercase tracking-tighter text-creme">Juiz de Fora</span>
+            </div>
+
+            <!-- Search Bar (below Juiz de Fora on all devices) -->
+            <div class="relative w-full max-w-[280px] sm:max-w-sm mt-6 z-30">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <span class="material-symbols-outlined text-marrom/40 text-xl sm:text-2xl">search</span>
+                </div>
+                <input type="text" id="searchInput"
+                    class="block w-full pl-11 pr-4 py-2 sm:py-3 bg-white border border-azul/20 rounded-2xl text-marrom placeholder-marrom/40 focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition-all font-body text-sm sm:text-base shadow-sm"
+                    placeholder="Busque pelo nome da cafeteria..." autocomplete="off">
+            </div>
         </section>
         <!-- Header Illustration -->
         <img src="assets/header.svg" alt="Ilustração"
-            class="absolute bottom-0 right-0 transform translate-x-1/4 lg:translate-x-16 translate-y-1/4 lg:translate-y-12 w-64 sm:w-80 lg:w-[34rem] xl:w-[40rem] z-10 pointer-events-none drop-shadow-2xl object-contain">
-    </div>
-
-    <!-- Sticky Search & Filter Section -->
-    <div class="sticky top-0 z-50 bg-creme/95 backdrop-blur-md border-y border-azul/10 shadow-sm py-4">
-        <div class="max-w-7xl mx-auto px-6">
-            
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-                <!-- A-Z Alphabet Filter Carousel (Left on Desktop, Bottom on Mobile) -->
-                <div class="relative flex items-center w-full md:max-w-xl -mx-6 px-6 md:mx-0 md:px-0 order-2 md:order-1">
-                    <!-- Fade out edges for mobile scrolling -->
-                    <div class="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-creme/95 to-transparent z-10 pointer-events-none sm:hidden"></div>
-                    <div class="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-creme/95 to-transparent z-10 pointer-events-none sm:hidden"></div>
-                    
-                    <div class="flex overflow-x-auto no-scrollbar gap-2 py-2 items-center w-full" id="alphabetFilter">
-                        <button class="filter-btn active flex-shrink-0 text-marrom/40 font-body rounded-full w-auto px-4 h-8 flex items-center justify-center text-xs transition-all hover:text-marrom" data-letter="all">Todos</button>
-                        <!-- Letters will be generated via JS -->
-                    </div>
-                </div>
-
-                <!-- Search Bar (Right on Desktop, Top on Mobile) -->
-                <div class="relative w-full md:max-w-md order-1 md:order-2">
-                    <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                        <span class="material-symbols-outlined text-marrom/40">search</span>
-                    </div>
-                    <input type="text" id="searchInput"
-                        class="block w-full pl-12 pr-4 py-3 bg-white border border-azul/20 rounded-2xl text-marrom placeholder-marrom/40 focus:outline-none focus:ring-2 focus:ring-rosa focus:border-rosa transition-all font-body shadow-sm"
-                        placeholder="Busque pelo nome da cafeteria..." autocomplete="off">
-                </div>
-            </div>
-
-        </div>
+            class="absolute bottom-0 right-0 transform translate-x-1/4 lg:translate-x-16 translate-y-8 sm:translate-y-1/4 lg:translate-y-12 w-64 sm:w-80 lg:w-[34rem] xl:w-[40rem] z-10 pointer-events-none drop-shadow-2xl object-contain">
     </div>
 
     <!-- Main Content Grid -->
-    <main class="flex-1 px-6 py-12 max-w-7xl mx-auto w-full z-10 relative">
+    <main class="flex-1 px-6 py-12 lg:py-24 max-w-7xl mx-auto w-full z-10 relative">
 
 
 
@@ -192,7 +179,7 @@
         <!-- Wrapper para permitir sangria completa com fade nas laterais -->
         <div class="relative w-screen left-1/2 -translate-x-1/2 overflow-visible">
             <!-- Grid Container (Scroll horizontal no desktop/tablet, flex vertical no mobile) -->
-            <div class="flex flex-row overflow-x-auto no-scrollbar gap-6 sm:gap-8 lg:gap-10 pb-6 scroll-smooth px-[calc((100vw-280px)/2)] sm:px-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))] snap-x snap-mandatory sm:snap-none"
+            <div class="flex flex-row overflow-x-auto no-scrollbar gap-6 sm:gap-8 lg:gap-10 pb-12 scroll-smooth px-[calc((100vw-280px)/2)] sm:px-[max(1.5rem,calc((100vw-1280px)/2+1.5rem))] snap-x snap-mandatory sm:snap-none"
                 id="cafeteriaGrid">
 
                 <!-- Participant 1: Café Bloom -->
@@ -451,16 +438,7 @@
     <footer class="w-full bg-azul text-creme pt-16 pb-20 px-6 mt-auto relative z-10">
         <div class="max-w-xl mx-auto flex flex-col items-center text-center">
             <img src="assets/logo.svg" class="h-16 mb-12" alt="Pé de Cacau Logo"
-                style="filter: invert(100%); opacity: 0.6;">
-
-            <div class="flex justify-center gap-6 mb-12 text-[10px]">
-                <a href="sobre.html"
-                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Sobre
-                    o concurso</a>
-                <span class="text-rosa font-bold">/</span>
-                <a href="descubra.html"
-                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Descubra</a>
-            </div>
+                style="filter: invert(100%); opacity: 1;">
 
             <div class="flex flex-col items-center gap-2 opacity-40 text-[8px] uppercase tracking-[0.3em] font-body">
                 <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
@@ -476,35 +454,12 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
-            const alphabetFilter = document.getElementById('alphabetFilter');
             const cards = document.querySelectorAll('.cafeteria-card');
             const noResults = document.getElementById('no-results');
             const resultCountMobile = document.getElementById('resultCountMobile');
             const cafeteriaGrid = document.getElementById('cafeteriaGrid');
 
             let currentSearchTerm = '';
-            let currentActiveLetter = 'all';
-
-            // Generate letters dynamically based on existing participants
-            const availableLetters = new Set();
-            cards.forEach(card => {
-                const name = card.dataset.name;
-                if (name) {
-                    availableLetters.add(name.charAt(0).toUpperCase());
-                }
-            });
-
-            const sortedLetters = Array.from(availableLetters).sort();
-
-            sortedLetters.forEach(letter => {
-                const btn = document.createElement('button');
-                btn.className = "filter-btn flex-shrink-0 text-marrom/40 font-body rounded-full w-8 h-8 flex items-center justify-center text-xs transition-all hover:text-marrom";
-                btn.dataset.letter = letter;
-                btn.innerText = letter;
-                alphabetFilter.appendChild(btn);
-            });
-
-            const filterBtns = document.querySelectorAll('.filter-btn');
 
             function filterCards() {
                 let visibleCount = 0;
@@ -516,10 +471,7 @@
                     const matchesSearch = name.toLowerCase().includes(currentSearchTerm) ||
                         neighborhood.toLowerCase().includes(currentSearchTerm);
 
-                    const firstLetter = name.charAt(0).toUpperCase();
-                    const matchesLetter = currentActiveLetter === 'all' || firstLetter === currentActiveLetter;
-
-                    if (matchesSearch && matchesLetter) {
+                    if (matchesSearch) {
                         card.style.display = 'flex';
                         visibleCount++;
                     } else {
@@ -547,32 +499,12 @@
             }
 
             // Search input listener
-            searchInput.addEventListener('input', (e) => {
-                currentSearchTerm = e.target.value.toLowerCase();
-                filterCards();
-            });
-
-            // Alphabet buttons listener
-            alphabetFilter.addEventListener('click', (e) => {
-                if (e.target.tagName === 'BUTTON' && e.target.classList.contains('filter-btn')) {
-                    // Remove active from all
-                    filterBtns.forEach(b => b.classList.remove('active'));
-                    // Add active to clicked
-                    e.target.classList.add('active');
-
-                    currentActiveLetter = e.target.dataset.letter;
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    currentSearchTerm = e.target.value.toLowerCase();
                     filterCards();
-
-                    // Scroll ONLY the horizontal container to center the clicked button
-                    const btn = e.target;
-                    const container = alphabetFilter;
-                    const scrollLeft = btn.offsetLeft - (container.offsetWidth / 2) + (btn.offsetWidth / 2);
-                    container.scrollTo({
-                        left: scrollLeft,
-                        behavior: 'smooth'
-                    });
-                }
-            });
+                });
+            }
 
             // Scroll helper for desktop horizontal grid
             window.scrollGrid = (direction) => {
@@ -593,16 +525,11 @@
 
             // Global reset function
             window.resetFilters = () => {
-                searchInput.value = '';
+                if (searchInput) searchInput.value = '';
                 currentSearchTerm = '';
-
-                filterBtns.forEach(b => b.classList.remove('active'));
-                const allBtn = document.querySelector('[data-letter="all"]');
-                if (allBtn) allBtn.classList.add('active');
-                currentActiveLetter = 'all';
-
                 filterCards();
             };
+
             // Scroll indicator and button navigation logic
             const leftBtn = document.getElementById('scroll-left-btn');
             const rightBtn = document.getElementById('scroll-right-btn');
