@@ -1632,6 +1632,51 @@
             const cafeteriaGrid = document.getElementById('cafeteriaGrid');
 
             let currentSearchTerm = '';
+            let clonedPrefix = [];
+            let clonedSuffix = [];
+            let isJumping = false;
+            const CLONE_COUNT = 6; // Number of cards to clone at each end for smooth loop on big screens
+
+            function setupInfiniteScroll() {
+                // Remove existing clones
+                clonedPrefix.forEach(el => el.remove());
+                clonedSuffix.forEach(el => el.remove());
+                clonedPrefix = [];
+                clonedSuffix = [];
+
+                // Get original cards that are currently visible
+                const originalCards = Array.from(cards).filter(card => card.style.display !== 'none');
+                if (originalCards.length < 2) return;
+
+                // Clone from the end and prepend to the start
+                const toPrepend = originalCards.slice(-CLONE_COUNT);
+                toPrepend.reverse().forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('cloned-card');
+                    cafeteriaGrid.insertBefore(clone, cafeteriaGrid.firstChild);
+                    clonedPrefix.push(clone);
+                });
+                clonedPrefix.reverse();
+
+                // Clone from the start and append to the end
+                const toAppend = originalCards.slice(0, CLONE_COUNT);
+                toAppend.forEach(card => {
+                    const clone = card.cloneNode(true);
+                    clone.classList.add('cloned-card');
+                    cafeteriaGrid.appendChild(clone);
+                    clonedSuffix.push(clone);
+                });
+
+                // Instantly snap to the first real card without visual delay
+                const firstRealCard = originalCards[0];
+                if (firstRealCard) {
+                    cafeteriaGrid.classList.remove('scroll-smooth', 'snap-x', 'snap-mandatory');
+                    cafeteriaGrid.offsetWidth; // Force layout reflow
+                    cafeteriaGrid.scrollLeft = firstRealCard.offsetLeft;
+                    cafeteriaGrid.offsetWidth;
+                    cafeteriaGrid.classList.add('scroll-smooth', 'snap-x', 'snap-mandatory');
+                }
+            }
 
             function filterCards() {
                 let visibleCount = 0;
@@ -1660,6 +1705,9 @@
                     noResults.classList.add('hidden');
                 }
 
+                // Re-setup the clones for infinite looping based on search results
+                setupInfiniteScroll();
+
                 // Update navigation scroll buttons
                 if (typeof updateScrollButtons === 'function') {
                     updateScrollButtons();
@@ -1682,10 +1730,9 @@
             window.scrollGrid = (direction) => {
                 const grid = document.getElementById('cafeteriaGrid');
                 if (!grid) return;
-                const card = grid.querySelector('.cafeteria-card');
+                const card = grid.querySelector('.cafeteria-card:not(.cloned-card)');
                 if (!card) return;
 
-                // Card width + Gap (gap-10 on desktop is 2.5rem = 40px)
                 const cardWidth = card.offsetWidth + 40;
                 const scrollAmount = direction === 'left' ? -cardWidth : cardWidth;
 
@@ -1709,34 +1756,17 @@
             window.updateScrollButtons = () => {
                 if (!cafeteriaGrid || !leftBtn || !rightBtn) return;
 
-                const scrollLeft = cafeteriaGrid.scrollLeft;
                 const scrollWidth = cafeteriaGrid.scrollWidth;
                 const clientWidth = cafeteriaGrid.clientWidth;
 
-                const isAtStart = scrollLeft <= 15;
-                const isAtEnd = scrollLeft + clientWidth >= scrollWidth - 15;
+                // With infinite scroll, buttons should stay visible if there's overflow
                 const hasOverflow = scrollWidth > clientWidth;
 
                 if (hasOverflow && window.innerWidth >= 640) {
-                    if (isAtStart) {
-                        leftBtn.classList.add('opacity-0', 'pointer-events-none');
-                        leftBtn.classList.remove('opacity-100');
-
-                        rightBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        rightBtn.classList.add('opacity-100');
-                    } else if (isAtEnd) {
-                        leftBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        leftBtn.classList.add('opacity-100');
-
-                        rightBtn.classList.add('opacity-0', 'pointer-events-none');
-                        rightBtn.classList.remove('opacity-100');
-                    } else {
-                        leftBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        leftBtn.classList.add('opacity-100');
-
-                        rightBtn.classList.remove('opacity-0', 'pointer-events-none');
-                        rightBtn.classList.add('opacity-100');
-                    }
+                    leftBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    leftBtn.classList.add('opacity-100');
+                    rightBtn.classList.remove('opacity-0', 'pointer-events-none');
+                    rightBtn.classList.add('opacity-100');
                 } else {
                     leftBtn.classList.add('opacity-0', 'pointer-events-none');
                     rightBtn.classList.add('opacity-0', 'pointer-events-none');
@@ -1747,12 +1777,65 @@
             if (leftBtn) leftBtn.addEventListener('click', () => scrollGrid('left'));
             if (rightBtn) rightBtn.addEventListener('click', () => scrollGrid('right'));
 
-            // Listeners
+            // Safe instant jumping to keep the infinite loop silent
+            function performJump(targetScrollLeft) {
+                isJumping = true;
+                cafeteriaGrid.classList.remove('scroll-smooth', 'snap-x', 'snap-mandatory');
+                cafeteriaGrid.offsetWidth; // Force layout recalculation
+                cafeteriaGrid.scrollLeft = targetScrollLeft;
+                cafeteriaGrid.offsetWidth; // Force layout recalculation
+                cafeteriaGrid.classList.add('scroll-smooth', 'snap-x', 'snap-mandatory');
+                
+                setTimeout(() => {
+                    isJumping = false;
+                }, 50);
+            }
+
+            let scrollTimeout;
+
+            // Infinite loop scroll listener
             if (cafeteriaGrid) {
-                cafeteriaGrid.addEventListener('scroll', window.updateScrollButtons);
+                cafeteriaGrid.addEventListener('scroll', () => {
+                    window.updateScrollButtons();
+
+                    if (isJumping) return;
+
+                    // Clear the timeout while scrolling is active to preserve native momentum/inertia
+                    clearTimeout(scrollTimeout);
+
+                    // Only check and perform the jump when scrolling has completely stopped
+                    scrollTimeout = setTimeout(() => {
+                        const originalCards = Array.from(cards).filter(card => card.style.display !== 'none');
+                        if (originalCards.length < 2) return;
+
+                        const firstRealCard = originalCards[0];
+                        const lastRealCard = originalCards[originalCards.length - 1];
+                        const cardWidth = firstRealCard.offsetWidth + 40; // width + gap-10
+
+                        const scrollLeft = cafeteriaGrid.scrollLeft;
+                        const clientWidth = cafeteriaGrid.clientWidth;
+
+                        // Calculate the width of one full cycle of original cards
+                        const cycleWidth = lastRealCard.offsetLeft - firstRealCard.offsetLeft + cardWidth;
+
+                        // Boundaries for jumping (2 cards deep into the clones)
+                        const startThreshold = firstRealCard.offsetLeft;
+                        const endThreshold = lastRealCard.offsetLeft + cardWidth - clientWidth;
+
+                        if (scrollLeft < startThreshold - (cardWidth * 2)) {
+                            // Jump forward by one full cycle
+                            performJump(scrollLeft + cycleWidth);
+                        } else if (scrollLeft > endThreshold + (cardWidth * 2)) {
+                            // Jump backward by one full cycle
+                            performJump(scrollLeft - cycleWidth);
+                        }
+                    }, 150); // 150ms of inactivity means scrolling/inertia has stopped
+                });
+
                 window.addEventListener('resize', window.updateScrollButtons);
 
-                // Initial check after rendering
+                // Initial setup
+                setupInfiniteScroll();
                 setTimeout(window.updateScrollButtons, 100);
             }
         });
