@@ -63,8 +63,8 @@
 
         .diamond-pattern {
             background-color: #0551a7;
-            background-image: 
-                linear-gradient(45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9), 
+            background-image:
+                linear-gradient(45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9),
                 linear-gradient(-45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9);
             background-size: 30px 30px;
         }
@@ -115,7 +115,7 @@
         class="bg-azul text-creme rounded-b-[2rem] lg:rounded-b-[4rem] shadow-[0_15px_30px_rgba(5,81,167,0.15)] relative z-20">
         <!-- Original Top Header / Centralized Header Info -->
         <header
-            class="w-full flex flex-col items-center justify-center p-6 lg:px-12 lg:py-10 max-w-7xl mx-auto text-center gap-4">
+            class="w-full flex flex-col items-center justify-center pt-12 pb-6 px-6 lg:pt-20 lg:pb-10 lg:px-12 max-w-7xl mx-auto text-center gap-4">
             <a href="index.html">
                 <img src="assets/logo.svg" class="h-8 sm:h-9 mx-auto" alt="Pé de Cacau" style="filter: invert(100%);">
             </a>
@@ -164,7 +164,7 @@
 
         <!-- No Results State -->
         <div id="no-results" class="hidden flex flex-col items-center justify-center py-20 text-center">
-            <span class="material-symbols-outlined text-6xl text-azul/20 mb-4">search_off</span>
+            <img src="assets/notfound.svg" alt="Não encontrado" class="w-16 object-contain mb-6 opacity-85">
             <h3 class="font-slab text-2xl text-marrom uppercase tracking-widest mb-2">Nenhuma cafeteria encontrada</h3>
             <p class="font-body text-marrom/60 max-w-xs mx-auto">Tente buscar por outro nome ou remova os filtros
                 selecionados.</p>
@@ -202,7 +202,9 @@
                                 <h2
                                     class="font-headline text-4xl uppercase leading-none mb-1 text-creme tracking-tighter">
                                     Café Bloom</h2>
-                                <span class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Brownie Trufado</span>
+                                <span
+                                    class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Brownie
+                                    Trufado</span>
                             </div>
 
                             <div class="flex items-center gap-3 mt-auto">
@@ -242,7 +244,9 @@
                                 <h2
                                     class="font-headline text-4xl uppercase leading-none mb-1 text-creme tracking-tighter">
                                     Espaço Café Central</h2>
-                                <span class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Torta de Chocolate Belga</span>
+                                <span
+                                    class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Torta
+                                    de Chocolate Belga</span>
                             </div>
                             <div class="flex items-center gap-3 mt-auto">
                                 <a href="perfil-cafeteria.html"
@@ -281,7 +285,9 @@
                                 <h2
                                     class="font-headline text-4xl uppercase leading-none mb-1 text-creme tracking-tighter">
                                     Grão & Mel</h2>
-                                <span class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Cheesecake de Cacau Silvestre</span>
+                                <span
+                                    class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Cheesecake
+                                    de Cacau Silvestre</span>
                             </div>
                             <div class="flex items-center gap-3 mt-auto">
                                 <a href="perfil-cafeteria.html"
@@ -320,7 +326,9 @@
                                 <h2
                                     class="font-headline text-4xl uppercase leading-none mb-1 text-creme tracking-tighter">
                                     Cacau Noir</h2>
-                                <span class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Mousse de Chocolate Intenso</span>
+                                <span
+                                    class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Mousse
+                                    de Chocolate Intenso</span>
                             </div>
                             <div class="flex items-center gap-3 mt-auto">
                                 <a href="perfil-cafeteria.html"
@@ -359,7 +367,9 @@
                                 <h2
                                     class="font-headline text-4xl uppercase leading-none mb-1 text-creme tracking-tighter">
                                     Confeitaria Sol</h2>
-                                <span class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Mil-Folhas com Creme de Cacau</span>
+                                <span
+                                    class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Mil-Folhas
+                                    com Creme de Cacau</span>
                             </div>
                             <div class="flex items-center gap-3 mt-auto">
                                 <a href="perfil-cafeteria.html"
@@ -398,7 +408,9 @@
                                 <h2
                                     class="font-headline text-4xl uppercase leading-none mb-1 text-creme tracking-tighter">
                                     Atelier Doce</h2>
-                                <span class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Pavê de Chocolate Gourmet</span>
+                                <span
+                                    class="font-body text-xs text-rosa/80 uppercase tracking-widest font-semibold block mb-5">Pavê
+                                    de Chocolate Gourmet</span>
                             </div>
                             <div class="flex items-center gap-3 mt-auto">
                                 <a href="perfil-cafeteria.html"
@@ -438,17 +450,20 @@
 
     <!-- Footer -->
     <div class="h-10 w-full diamond-pattern opacity-100 relative z-10"></div>
-    <footer class="w-full bg-azul text-creme pt-16 pb-20 px-6 mt-auto relative z-10">
+    <footer class="w-full bg-azul text-creme py-16 px-6 relative z-10">
         <div class="max-w-xl mx-auto flex flex-col items-center text-center">
-            <img src="assets/logo.svg" class="h-16 mb-12" alt="Pé de Cacau Logo"
-                style="filter: invert(100%); opacity: 1;">
+            <img src="assets/logo.svg" class="h-12 mb-8" alt="Pé de Cacau Logo" style="filter:invert(100%);opacity:0.5;">
+            
+            <div class="flex justify-center gap-6 mb-8 text-[10px]">
+                <a href="index.html" class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Início</a>
+                <span class="text-rosa font-bold">/</span>
+                <a href="sobre.html" class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Sobre</a>
+            </div>
 
-            <div class="flex flex-col items-center gap-2 opacity-40 text-[8px] uppercase tracking-[0.3em] font-body">
-                <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
-                        class="font-bold hover:opacity-100 transition-opacity">O que fazer em JF</a></p>
-                <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank"
-                        class="font-bold hover:opacity-100 transition-opacity">Primitiva</a></p>
-                <p class="mt-10">© 2026 Todos os direitos reservados</p>
+            <div class="flex flex-col items-center gap-2 opacity-35 text-[8px] uppercase tracking-[0.3em] font-body">
+                <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank" class="font-bold hover:text-rosa transition-colors">O que fazer em JF</a></p>
+                <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank" class="font-bold hover:text-rosa transition-colors">Primitiva</a></p>
+                <p class="mt-8">© 2026 Todos os direitos reservados</p>
             </div>
         </div>
     </footer>

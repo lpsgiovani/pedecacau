@@ -11,11 +11,9 @@
     <link rel="manifest" href="assets/favicon/site.webmanifest">
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Staatliches&family=Outfit:wght@300;400;600&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Outfit:wght@300;400;600&display=swap"
         rel="stylesheet" />
-    <link
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
         rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style>
@@ -39,8 +37,8 @@
         /* Diamond checkerboard pattern */
         .diamond-pattern {
             background-color: #0551a7;
-            background-image: 
-                linear-gradient(45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9), 
+            background-image:
+                linear-gradient(45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9),
                 linear-gradient(-45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9);
             background-size: 30px 30px;
         }
@@ -124,8 +122,7 @@
     </style>
 </head>
 
-<body
-    class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul relative min-h-screen">
+<body class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul relative min-h-screen">
 
     <nav class="relative z-20 border-b border-azul/10 bg-white/80 backdrop-blur-md sticky top-0">
         <div class="max-w-6xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -133,7 +130,8 @@
                 <img src="assets/logo.svg" class="w-10 h-auto" alt="Logo">
             </a>
             <div class="flex items-center gap-4">
-                <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/40">Atualizado há 5min</span>
+                <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/40">Atualizado há
+                    5min</span>
                 <span class="w-2.5 h-2.5 bg-rosa rounded-full animate-pulse shadow-sm"></span>
             </div>
         </div>
@@ -148,7 +146,8 @@
             <div class="lg:col-span-2 space-y-6">
                 <div
                     class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-8 border-b-2 border-azul pb-2 gap-2">
-                    <h2 class="text-3xl sm:text-4xl font-slab uppercase tracking-tighter leading-none text-azul">Ranking de Apuração</h2>
+                    <h2 class="text-3xl sm:text-4xl font-slab uppercase tracking-tighter leading-none text-azul">Ranking
+                        de Apuração</h2>
                 </div>
 
                 <div class="space-y-4">
@@ -240,7 +239,8 @@
                             class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100">
                             <div
                                 class="ranking-header p-2.5 sm:p-3 px-4 sm:px-8 flex justify-between items-center w-full">
-                                <span class="font-slab text-xs sm:text-sm uppercase truncate pr-4 text-marrom">04. Cacau Noir</span>
+                                <span class="font-slab text-xs sm:text-sm uppercase truncate pr-4 text-marrom">04. Cacau
+                                    Noir</span>
                                 <span class="font-body font-bold text-xs shrink-0 text-marrom/60">412 | 9.0</span>
                             </div>
                             <!-- Mobile Details Container -->
@@ -252,7 +252,8 @@
                             class="ranking-item glass-card p-1.5 flex flex-col group cursor-pointer transition-all duration-300 opacity-70 hover:opacity-100">
                             <div
                                 class="ranking-header p-2.5 sm:p-3 px-4 sm:px-8 flex justify-between items-center w-full">
-                                <span class="font-slab text-xs sm:text-sm uppercase truncate pr-4 text-marrom">05. Confeitaria Sol</span>
+                                <span class="font-slab text-xs sm:text-sm uppercase truncate pr-4 text-marrom">05.
+                                    Confeitaria Sol</span>
                                 <span class="font-body font-bold text-xs shrink-0 text-marrom/60">389 | 8.6</span>
                             </div>
                             <!-- Mobile Details Container -->
@@ -269,7 +270,8 @@
                 <div class="glass-card p-8 space-y-8">
                     <div>
                         <div class="flex justify-between items-end mb-3">
-                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">Sabor (Média)</span>
+                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">Sabor
+                                (Média)</span>
                             <span id="score-sabor" class="font-slab text-xl uppercase leading-none text-azul">9.6</span>
                         </div>
                         <div class="score-bar">
@@ -278,8 +280,10 @@
                     </div>
                     <div>
                         <div class="flex justify-between items-end mb-3">
-                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">O quanto marcou (Média)</span>
-                            <span id="score-marcou" class="font-slab text-xl uppercase leading-none text-azul">9.8</span>
+                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">O
+                                quanto marcou (Média)</span>
+                            <span id="score-marcou"
+                                class="font-slab text-xl uppercase leading-none text-azul">9.8</span>
                         </div>
                         <div class="score-bar">
                             <div id="bar-marcou" class="score-progress" style="width: 98%"></div>
@@ -287,7 +291,9 @@
                     </div>
                     <div>
                         <div class="flex justify-between items-end mb-3">
-                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">Apresentação (Média)</span>
+                            <span
+                                class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">Apresentação
+                                (Média)</span>
                             <span id="score-apresentacao"
                                 class="font-slab text-xl uppercase leading-none text-azul">9.8</span>
                         </div>
@@ -297,7 +303,8 @@
                     </div>
                     <div>
                         <div class="flex justify-between items-end mb-3">
-                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">Nota Geral (Média)</span>
+                            <span class="text-[10px] font-body font-bold uppercase tracking-widest text-marrom/50">Nota
+                                Geral (Média)</span>
                             <span id="score-geral" class="font-slab text-xl uppercase leading-none text-azul">9.8</span>
                         </div>
                         <div class="score-bar">
