@@ -98,6 +98,14 @@
         .d4 {
             animation-delay: 0.4s;
         }
+
+        .d5 {
+            animation-delay: 0.5s;
+        }
+
+        .d6 {
+            animation-delay: 0.6s;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -133,8 +141,10 @@
                 <img src="assets/mascote.svg" alt="Mascote Pé de Cacau"
                     class="w-16 h-16 lg:w-11 lg:h-11 mb-4 lg:mb-2 filter brightness-0 invert opacity-95 anim-slide d1">
                 <!-- Title -->
-                <h1 class="font-headline text-5xl lg:text-4xl uppercase tracking-tighter leading-[0.85] text-white anim-slide d2">
-                    Obrigado<br>por participar!
+                <h1 class="font-headline text-5xl lg:text-4xl uppercase tracking-tighter leading-[0.85] text-white">
+                    <span class="inline-block anim-slide d2">Obrigado</span><br>
+                    <span class="inline-block anim-slide d3">por</span>
+                    <span class="inline-block anim-slide d4">participar!</span>
                 </h1>
             </div>
         </header>
@@ -142,7 +152,7 @@
         <!-- Main Content (Sponsor & Interactive Gift Section) -->
         <main class="flex items-center justify-center px-4 pt-2 pb-12 lg:pb-2">
             <div
-                class="max-w-md lg:max-w-4xl w-full bg-white rounded-3xl border border-azul/10 shadow-2xl p-8 sm:p-10 lg:p-8 lg:py-6 relative overflow-hidden anim-slide d2">
+                class="max-w-md lg:max-w-4xl w-full bg-white rounded-3xl border border-azul/10 shadow-2xl p-8 sm:p-10 lg:p-8 lg:py-6 relative overflow-hidden anim-slide d5">
                 <!-- Subtle background texture -->
                 <div class="absolute inset-0 opacity-[0.02] diamond-pattern pointer-events-none"></div>
 
