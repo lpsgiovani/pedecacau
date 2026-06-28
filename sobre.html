@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Sobre o Concurso | Pé de Cacau</title>
+    <title>Sobre o Circuito | Pé de Cacau</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -33,6 +33,42 @@
             font-style: normal;
             font-display: swap;
         }
+
+        .diamond-pattern {
+            background-color: #0551a7;
+            background-image:
+                linear-gradient(45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9),
+                linear-gradient(-45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9);
+            background-size: 30px 30px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .delay-100 {
+            animation-delay: 100ms;
+        }
+
+        .delay-200 {
+            animation-delay: 200ms;
+        }
+
+        .delay-300 {
+            animation-delay: 300ms;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -49,132 +85,156 @@
                         "accent": ["Valencia", "cursive"],
                         "slab": ["Staatliches", "sans-serif"],
                         "body": ["Outfit", "sans-serif"],
-                    },
+                    }
                 },
             },
         }
     </script>
-    <style>
-        .nav-scrolled {
-            background: rgba(239, 239, 239, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(5, 81, 167, 0.05);
-            padding-top: 1rem !important;
-            padding-bottom: 1rem !important;
-        }
-
-        .diamond-pattern {
-            background-color: #0551a7;
-            background-image: 
-                linear-gradient(45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9), 
-                linear-gradient(-45deg, #a4c6e9 25%, transparent 25%, transparent 75%, #a4c6e9 75%, #a4c6e9);
-            background-size: 30px 30px;
-        }
-    </style>
 </head>
 
-<body class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul">
+<body
+    class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul min-h-screen flex flex-col justify-between">
 
-    <!-- Navigation -->
-    <nav id="main-nav" class="absolute top-0 inset-x-0 z-[60] p-6 lg:px-12 lg:py-16 transition-all duration-300">
-        <div class="max-w-4xl lg:max-w-none mx-auto flex justify-between items-center">
-            <!-- Mobile: Back Arrow -->
-            <a href="index.html"
-                class="w-10 h-10 lg:hidden flex items-center justify-center rounded-full bg-azul/10 text-azul hover:bg-azul/20 transition-all">
-                <span class="material-symbols-outlined">arrow_back</span>
-            </a>
-            <a href="index.html" class="inline-block hidden lg:block">
-                <img src="assets/logo.svg" class="h-8 lg:h-12" alt="Logo"
-                    style="filter: invert(15%) sepia(60%) saturate(1800%) hue-rotate(195deg) brightness(60%) contrast(110%);">
-            </a>
-        </div>
-    </nav>
+    <!-- Main Content -->
+    <main class="flex-grow">
 
-    <!-- Hero Section -->
-    <header class="relative pt-40 pb-20 px-6 text-left overflow-hidden">
-        <div class="max-w-4xl mx-auto relative z-10">
+        <!-- Editorial Header Section -->
+        <section class="max-w-5xl mx-auto pt-24 pb-12 px-6 text-center lg:text-left">
+            <!-- Brand Logo instead of "Quem Somos" -->
+            <div class="flex justify-center lg:justify-start mb-10 animate-fade-in">
+                <a href="index.html" class="inline-block hover:opacity-85 transition-opacity">
+                    <img src="assets/logo.svg" class="h-8" alt="Pé de Cacau Logo"
+                        style="filter: invert(19%) sepia(91%) saturate(2224%) hue-rotate(205deg) brightness(91%) contrast(101%);">
+                </a>
+            </div>
             <h1
-                class="text-6xl lg:text-8xl font-headline tracking-tighter leading-[0.8] lg:leading-[0.85] uppercase mb-10 text-azul">
-                A sua próxima <span class="lg:block">sobremesa favorita</span> está em algum
-                lugar de JF.
+                class="text-5xl sm:text-7xl font-headline tracking-tighter leading-[0.85] uppercase text-azul mb-1 animate-fade-in delay-100">
+                A sua próxima<br>sobremesa favorita
             </h1>
-            <p class="font-accent text-3xl lg:text-5xl text-rosa mb-12">
-                Descubra qual.
+            <p class="font-accent text-4xl sm:text-4xl text-rosa animate-fade-in delay-200 -mt-1">
+                em Juiz de Fora.
             </p>
-            <p class="font-body text-xl lg:text-2xl text-marrom/80 max-w-2xl leading-relaxed mb-12">
-                O Pé de Cacau é um convite para explorar as confeitarias mais charmosas de Juiz
-                de Fora e celebrar a arte de fazer sobremesas incríveis.
-            </p>
-        </div>
-    </header>
+        </section>
 
-    <!-- Content Sections -->
-    <main class="relative z-10 px-6 pb-32">
-        <div class="max-w-4xl mx-auto space-y-32">
+        <!-- Magazine Cover Layout Section -->
+        <section class="max-w-5xl mx-auto px-6 pb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-            <!-- Story/Manifesto -->
-            <section class="grid lg:grid-cols-2 gap-16 lg:gap-24 items-start">
-                <div class="relative group lg:sticky lg:top-32">
-                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1925&auto=format&fit=crop"
-                        class="w-full aspect-[4/5] object-cover rounded-[4rem] rounded-bl-none shadow-2xl transition-all duration-700"
-                        alt="Sobre o Pé de Cacau">
-                    <div
-                        class="absolute -bottom-4 -right-2 lg:-bottom-6 lg:-right-6 bg-rosa text-marrom p-6 lg:p-8 rounded-2xl rotate-3 shadow-xl z-20">
-                        <span
-                            class="font-slab font-bold text-2xl lg:text-3xl uppercase leading-none">Conheça,<br>Experimente<br>e
-                            Avalie!</span>
+                <!-- Styled Image Frame -->
+                <div class="lg:col-span-5 animate-fade-in delay-200">
+                    <div class="relative">
+                        <!-- Background decorative color block -->
+                        <div class="absolute -inset-3 bg-rosa rounded-[3rem] rotate-3 opacity-40"></div>
+                        <!-- Main image -->
+                        <div
+                            class="relative rounded-[2.8rem] overflow-hidden shadow-xl border-4 border-white aspect-[4/5]">
+                            <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?q=80&w=1925&auto=format&fit=crop"
+                                class="w-full h-full object-cover" alt="Cacau e Sobremesas">
+                        </div>
                     </div>
                 </div>
-                <div class="lg:pt-4 space-y-12">
-                    <div class="space-y-8 font-body text-lg lg:text-xl leading-relaxed text-marrom/90 text-left">
-                        <p
-                            class="text-2xl lg:text-3xl font-headline uppercase tracking-tighter text-azul leading-tight">
-                            Nossa cidade é feita de encontros, e o <strong>Pé de Cacau</strong> nasceu para adoçar
-                            ainda mais esses momentos.
+
+                <!-- Editorial Content -->
+                <div class="lg:col-span-7 space-y-8 text-left animate-fade-in delay-300">
+                    <p class="text-xl sm:text-2xl font-body font-light text-marrom/90 leading-relaxed">
+                        O <strong class="text-azul font-bold">Pé de Cacau</strong> surge como o aquecimento ideal para quem está com saudades do tradicional <strong class="text-marrom font-semibold">Pé de Café</strong>, o concurso de cafeterias que acontece anualmente em Juiz de Fora.
+                    </p>
+
+                    <div class="h-px w-full bg-azul/10"></div>
+
+                    <div class="space-y-6 text-base sm:text-lg text-marrom/75 leading-relaxed font-body">
+                        <p>
+                            Diferente do festival principal, onde cada participante oferece um combo completo (doce, salgado e bebida), o <strong>Pé de Cacau</strong> nasceu com o foco exclusivo em celebrar as sobremesas que tanto amamos.
                         </p>
                         <p>
-                            Durante todo o mês de julho, selecionamos
-                            <strong>26 cafeterias</strong> para apresentarem suas melhores criações autorais por um
-                            preço fixo de <strong>R$25</strong>.
-                        </p>
-                        <p class="opacity-70">
-                            Mais do que um concurso, somos o evento prévio ao tradicional Pé de Café. Uma curadoria para
-                            quem quer descobrir que a melhor
-                            experiência gastronômica de Juiz de Fora pode estar em uma
-                            casa que você ainda não conhece.
+                            Nesta edição de aquecimento, selecionamos <strong class="text-azul font-semibold">26 cafeterias parceiras</strong> para criarem receitas autorais incríveis com o ingrediente protagonista, todas ao preço fixo promocional de <strong class="text-azul font-semibold">R$ 25</strong>. É a oportunidade perfeita de explorar novos sabores na cidade!
                         </p>
                     </div>
 
-                    <div class="pt-12 text-left flex flex-col items-start">
-                        <div class="h-px w-20 bg-rosa mb-8"></div>
-                        <p
-                            class="font-headline text-5xl lg:text-7xl leading-[0.8] uppercase tracking-tighter text-azul">
-                            Prepare o seu paladar.<br>
-                            <span class="text-marrom/30 font-accent tracking-normal capitalize text-4xl lg:text-6xl">O
-                                circuito começou.</span>
+                    <div class="pt-4 flex justify-center lg:justify-start">
+                        <a href="index.html"
+                            class="inline-flex items-center gap-3 bg-azul text-white font-slab uppercase tracking-widest text-xs px-8 py-4 rounded-xl hover:bg-[#044085] transition-all hover:shadow-md">
+                            Ver Cafeterias <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Pillars Grid Section -->
+        <section class="bg-white/80 border-t border-b border-azul/5 py-20 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="text-center mb-16">
+                    <h2 class="font-headline text-3xl sm:text-4xl uppercase tracking-tighter text-azul">Como funciona o
+                        festival</h2>
+                    <p class="font-body text-sm text-marrom/50 uppercase tracking-widest mt-2">Três passos simples para
+                        adoçar o seu mês</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <!-- Pillar 1 -->
+                    <div class="flex flex-col items-center space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rosa/30 text-azul flex items-center justify-center">
+                            <span class="material-symbols-outlined text-2xl font-bold">store</span>
+                        </div>
+                        <h3 class="font-slab text-xl uppercase text-azul tracking-wide">1. Escolha & Visite</h3>
+                        <p class="text-sm text-marrom/60 leading-relaxed font-body max-w-xs">
+                            Navegue pelas cafeterias participantes e vá até os estabelecimentos experimentar as receitas
+                            especiais do evento.
+                        </p>
+                    </div>
+                    <!-- Pillar 2 -->
+                    <div class="flex flex-col items-center space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rosa/30 text-azul flex items-center justify-center">
+                            <span class="material-symbols-outlined text-2xl font-bold">payments</span>
+                        </div>
+                        <h3 class="font-slab text-xl uppercase text-azul tracking-wide">2. Valor Fixo</h3>
+                        <p class="text-sm text-marrom/60 leading-relaxed font-body max-w-xs">
+                            Todas as receitas exclusivas criadas para o Pé de Cacau possuem o valor único promocional de
+                            R$ 25.
+                        </p>
+                    </div>
+                    <!-- Pillar 3 -->
+                    <div class="flex flex-col items-center space-y-4">
+                        <div class="w-12 h-12 rounded-2xl bg-rosa/30 text-azul flex items-center justify-center">
+                            <span class="material-symbols-outlined text-2xl font-bold">grade</span>
+                        </div>
+                        <h3 class="font-slab text-xl uppercase text-azul tracking-wide">3. Vote no Site</h3>
+                        <p class="text-sm text-marrom/60 leading-relaxed font-body max-w-xs">
+                            Escaneie o QR Code em cada mesa, avalie as sobremesas com estrelas e ajude a eleger a grande
+                            vencedora.
                         </p>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
     </main>
 
     <!-- Checkerboard Pattern -->
     <div class="h-10 w-full diamond-pattern opacity-100 relative z-10"></div>
 
     <!-- Footer -->
-    <footer class="w-full bg-azul text-creme py-16 px-6 mt-auto">
+    <footer class="w-full bg-azul text-creme py-16 px-6">
         <div class="max-w-xl mx-auto flex flex-col items-center text-center">
-            <img src="assets/logo.svg" class="h-16 mb-12" alt="Pé de Cacau Logo"
-                style="filter: invert(100%); opacity: 0.6;">
+            <img src="assets/logo.svg" class="h-12 mb-8" alt="Pé de Cacau Logo"
+                style="filter:invert(100%);opacity:0.5;">
 
-            <div class="flex flex-col items-center gap-2 opacity-40 text-[8px] uppercase tracking-[0.3em] font-body">
+            <div class="flex justify-center gap-6 mb-8 text-[10px]">
+                <a href="index.html"
+                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Início</a>
+                <span class="text-rosa font-bold">/</span>
+                <a href="sobre.html"
+                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Sobre</a>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 opacity-35 text-[8px] uppercase tracking-[0.3em] font-body">
                 <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank"
-                        class="font-bold hover:opacity-100 transition-opacity">O que fazer em JF</a></p>
+                        class="font-bold hover:text-rosa transition-colors">O que fazer em JF</a></p>
                 <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank"
-                        class="font-bold hover:opacity-100 transition-opacity">Primitiva</a></p>
-                <p class="mt-10">© 2026 Todos os direitos reservados</p>
+                        class="font-bold hover:text-rosa transition-colors">Primitiva</a></p>
+                <p class="mt-8">© 2026 Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
