@@ -161,26 +161,30 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         .animate-fade-in-up {
             opacity: 0;
             animation: fade-in-up 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
         }
-        
+
         @keyframes word-fade-in {
             from {
                 opacity: 0;
                 transform: translateY(15px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
+
         .animate-word {
             display: inline-block;
             opacity: 0;
@@ -269,7 +273,8 @@
 
         <!-- Original Top Header / Centralized Header Info -->
         <header
-            class="w-full flex flex-col items-center justify-center pt-12 pb-6 px-6 lg:pt-20 lg:pb-10 lg:px-12 max-w-7xl mx-auto text-center gap-4 relative z-10 animate-fade-in-up" style="animation-delay: 0.1s;">
+            class="w-full flex flex-col items-center justify-center pt-12 pb-6 px-6 lg:pt-20 lg:pb-10 lg:px-12 max-w-7xl mx-auto text-center gap-4 relative z-10 animate-fade-in-up"
+            style="animation-delay: 0.1s;">
             <a href="index.html">
                 <img src="assets/logo.svg" class="h-8 sm:h-9 mx-auto" alt="Pé de Cacau" style="filter: invert(100%);">
             </a>
@@ -286,7 +291,8 @@
                 <span class="animate-word" style="animation-delay: 0.66s;">FAVORITA?</span>
             </h1>
 
-            <div class="flex flex-col items-center text-center mt-2 gap-1 animate-fade-in-up" style="animation-delay: 0.85s;">
+            <div class="flex flex-col items-center text-center mt-2 gap-1 animate-fade-in-up"
+                style="animation-delay: 0.85s;">
                 <div class="flex items-center gap-2 font-slab uppercase tracking-wider text-sm">
                     <span class="text-creme/80 text-[10px] tracking-widest">De</span>
                     <span class="font-headline text-rosa text-3xl leading-none">01</span>
@@ -298,7 +304,8 @@
             </div>
 
             <!-- Search Bar (below Juiz de Fora on all devices) -->
-            <div class="relative w-full max-w-[280px] sm:max-w-sm mt-6 z-30 animate-fade-in-up" style="animation-delay: 1s;">
+            <div class="relative w-full max-w-[280px] sm:max-w-sm mt-6 z-30 animate-fade-in-up"
+                style="animation-delay: 1s;">
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <span class="material-symbols-outlined text-marrom/40 text-xl sm:text-2xl">search</span>
                 </div>
@@ -308,8 +315,10 @@
             </div>
         </section>
         <!-- Header Illustration (Wrapper to isolate positioning transforms from keyframe animation overrides) -->
-        <div class="absolute bottom-0 right-0 transform translate-x-1/4 lg:translate-x-16 translate-y-8 sm:translate-y-1/4 lg:translate-y-12 w-64 sm:w-80 lg:w-[34rem] xl:w-[40rem] z-10 pointer-events-none drop-shadow-2xl object-contain">
-            <img src="assets/header.svg" alt="Ilustração" class="w-full h-full object-contain animate-fade-in-up" style="animation-delay: 0.4s; animation-duration: 1.2s;">
+        <div
+            class="absolute bottom-0 right-0 transform translate-x-1/4 lg:translate-x-16 translate-y-8 sm:translate-y-1/4 lg:translate-y-12 w-64 sm:w-80 lg:w-[34rem] xl:w-[40rem] z-10 pointer-events-none drop-shadow-2xl object-contain">
+            <img src="assets/header.svg" alt="Ilustração" class="w-full h-full object-contain animate-fade-in-up"
+                style="animation-delay: 0.4s; animation-duration: 1.2s;">
         </div>
 
         <!-- Parallax Foreground Clouds (In Front of Illustration - Hidden on Mobile) -->
@@ -352,7 +361,8 @@
 
 
     <!-- Main Content Grid -->
-    <main class="flex-1 px-6 py-12 lg:py-24 max-w-7xl mx-auto w-full z-10 relative animate-fade-in-up" style="animation-delay: 1.15s;">
+    <main class="flex-1 px-6 py-12 lg:py-24 max-w-7xl mx-auto w-full z-10 relative animate-fade-in-up"
+        style="animation-delay: 1.15s;">
 
 
 
