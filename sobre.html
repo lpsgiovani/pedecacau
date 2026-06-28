@@ -255,10 +255,17 @@
                         class="font-bold hover:text-rosa transition-colors">Primitiva</a></p>
                 <p class="mt-8">© 2026 Todos os direitos reservados</p>
             </div>
-        </div>
     </footer>
 
-
+    <!-- Prevent right-click and drag-to-save on all images -->
+    <script>
+        document.addEventListener('contextmenu', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+        document.addEventListener('dragstart', (e) => {
+            if (e.target.tagName === 'IMG') e.preventDefault();
+        });
+    </script>
 </body>
 
 </html>

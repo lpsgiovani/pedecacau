@@ -1672,7 +1672,14 @@
                 if (firstRealCard) {
                     cafeteriaGrid.classList.remove('scroll-smooth', 'snap-x', 'snap-mandatory');
                     cafeteriaGrid.offsetWidth; // Force layout reflow
-                    cafeteriaGrid.scrollLeft = firstRealCard.offsetLeft;
+
+                    let initialScroll = firstRealCard.offsetLeft;
+                    if (window.innerWidth >= 640) {
+                        const cardWidth = firstRealCard.offsetWidth + 40; // width + gap-10
+                        initialScroll = firstRealCard.offsetLeft - cardWidth;
+                    }
+
+                    cafeteriaGrid.scrollLeft = initialScroll;
                     cafeteriaGrid.offsetWidth;
                     cafeteriaGrid.classList.add('scroll-smooth', 'snap-x', 'snap-mandatory');
                 }
@@ -1838,6 +1845,14 @@
                 setupInfiniteScroll();
                 setTimeout(window.updateScrollButtons, 100);
             }
+
+            // Prevent right-click and drag-to-save on all images
+            document.addEventListener('contextmenu', (e) => {
+                if (e.target.tagName === 'IMG') e.preventDefault();
+            });
+            document.addEventListener('dragstart', (e) => {
+                if (e.target.tagName === 'IMG') e.preventDefault();
+            });
         });
     </script>
 </body>

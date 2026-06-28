@@ -252,6 +252,14 @@
                     disableForReducedMotion: true
                 });
             }, 300);
+
+            // Prevent right-click and drag-to-save on all images
+            document.addEventListener('contextmenu', (e) => {
+                if (e.target.tagName === 'IMG') e.preventDefault();
+            });
+            document.addEventListener('dragstart', (e) => {
+                if (e.target.tagName === 'IMG') e.preventDefault();
+            });
         });
     </script>
 </body>
