@@ -64,23 +64,7 @@
             animation: float 4s ease-in-out infinite;
         }
 
-        .confetti-piece {
-            position: absolute;
-            opacity: 0;
-            animation: confettiFall linear infinite;
-        }
 
-        @keyframes confettiFall {
-            0% {
-                transform: translateY(-20px) rotate(0deg);
-                opacity: 1;
-            }
-
-            100% {
-                transform: translateY(220px) rotate(720deg);
-                opacity: 0;
-            }
-        }
 
         @keyframes slideUp {
             from {
@@ -138,14 +122,12 @@
 </head>
 
 <body
-    class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul min-h-screen flex flex-col justify-between">
+    class="bg-azul text-marrom font-body antialiased selection:bg-rosa selection:text-azul min-h-screen flex flex-col justify-between">
 
     <!-- Header Section (Compact, Blue, Elegant with Confetti) -->
-    <header id="header-section"
-        class="bg-azul relative overflow-hidden py-14 px-6 text-center border-b-4 border-rosa shadow-lg">
+    <header id="header-section" class="relative overflow-hidden pt-14 pb-6 px-6 text-center">
 
-        <!-- Confetti container -->
-        <div id="confetti-container" class="absolute inset-0 pointer-events-none overflow-hidden z-0"></div>
+
 
         <div class="relative z-10 max-w-md mx-auto flex flex-col items-center">
             <!-- Mascot Icon instead of generic check -->
@@ -159,7 +141,7 @@
     </header>
 
     <!-- Main Content (Sponsor & Interactive Gift Section) -->
-    <main class="flex-grow flex items-center justify-center px-4 py-12">
+    <main class="flex-grow flex items-center justify-center px-4 pt-2 pb-12">
         <div
             class="max-w-md lg:max-w-4xl w-full bg-white rounded-3xl border border-azul/10 shadow-2xl p-8 sm:p-10 lg:p-12 relative overflow-hidden anim-slide d2">
             <!-- Subtle background texture -->
@@ -256,42 +238,21 @@
         </div>
     </footer>
 
-    <!-- Confetti Script -->
+    <!-- Canvas Confetti Library & Trigger -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script>
-        const container = document.getElementById('confetti-container');
-        const colors = ['#f1c8df', '#ffffff', '#a4c6e9', '#efefef'];
-
-        function spawnConfetti() {
-            const el = document.createElement('div');
-            el.className = 'confetti-piece';
-
-            const size = Math.random() * 8 + 4;
-            const left = Math.random() * 100;
-            const dur = Math.random() * 2 + 2;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-
-            el.style.cssText = `
-                left: ${left}%;
-                top: -10px;
-                width: ${size}px;
-                height: ${size}px;
-                background: ${color};
-                border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
-                animation-duration: ${dur}s;
-            `;
-
-            container.appendChild(el);
-            setTimeout(() => el.remove(), dur * 1000);
-        }
-
-        // Spawn initial pieces
-        for (let i = 0; i < 30; i++) {
-            setTimeout(spawnConfetti, Math.random() * 1500);
-        }
-
-        // Keep spawning occasionally
-        setInterval(spawnConfetti, 120);
+        window.addEventListener('DOMContentLoaded', () => {
+            // Trigger confetti burst with brand colors shortly after loading
+            setTimeout(() => {
+                confetti({
+                    particleCount: 140,
+                    spread: 85,
+                    origin: { y: 0.6 },
+                    colors: ['#0551a7', '#f1c8df', '#ffffff', '#efefef'],
+                    disableForReducedMotion: true
+                });
+            }, 300);
+        });
     </script>
 </body>
-
 </html>
