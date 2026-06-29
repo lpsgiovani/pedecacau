@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Voto já Confirmado - Pé de Cacau</title>
+    <title>Voto Já Confirmado | Pé de Cacau</title>
     <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -33,6 +33,79 @@
             font-style: normal;
             font-display: swap;
         }
+
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .diamond-pattern {
+            background-color: #0551a7;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' fill='%23a4c6e9'/%3E%3Cpath d='M15 0 L30 15 L15 30 L0 15 Z' fill='%230551a7'/%3E%3C/svg%3E");
+            background-size: 30px 30px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .floating-illustra {
+            animation: float 4s ease-in-out infinite;
+        }
+
+
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .anim-slide {
+            animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        .d1 {
+            animation-delay: 0.1s;
+        }
+
+        .d2 {
+            animation-delay: 0.2s;
+        }
+
+        .d3 {
+            animation-delay: 0.3s;
+        }
+
+        .d4 {
+            animation-delay: 0.4s;
+        }
+
+        .d5 {
+            animation-delay: 0.5s;
+        }
+
+        .d6 {
+            animation-delay: 0.6s;
+        }
     </style>
     <script>
         tailwind.config = {
@@ -49,54 +122,283 @@
                         "accent": ["Valencia", "cursive"],
                         "slab": ["Staatliches", "sans-serif"],
                         "body": ["Outfit", "sans-serif"],
-                    },
+                    }
                 },
             },
         }
     </script>
-    <style>
-        body {
-            background-color: #efefef;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-    </style>
 </head>
 
 <body
-    class="bg-creme text-marrom font-body antialiased selection:bg-rosa selection:text-azul relative min-h-screen flex flex-col">
+    class="bg-azul text-marrom font-body antialiased selection:bg-rosa selection:text-azul min-h-screen lg:h-screen lg:overflow-hidden flex flex-col justify-between">
 
-    <div class="relative z-10 flex-grow flex flex-col items-center justify-center px-6 py-12 text-center">
-        <div class="mb-6 flex justify-center items-center w-16 h-16 rounded-full bg-azul/10 text-azul">
-            <span class="material-symbols-outlined text-4xl">info</span>
-        </div>
+    <div class="flex-grow flex flex-col justify-center lg:py-2">
+        <!-- Header Section (Compact, Blue, Elegant with Confetti) -->
+        <header id="header-section" class="relative overflow-hidden pt-14 pb-6 lg:pt-8 lg:pb-2 px-6 text-center">
 
-        <h1
-            class="text-6xl sm:text-7xl font-headline mb-4 tracking-tighter leading-[0.8] text-azul uppercase drop-shadow-sm">
-            Seu&nbsp;voto já<br>foi&nbsp;confirmado <br>para essa cafeteria!
-        </h1>
-        <div class="max-w-xs mb-12 space-y-6">
+            <div class="relative z-10 max-w-md mx-auto flex flex-col items-center">
+                <!-- Mascot Icon instead of generic check -->
+                <img src="assets/mascote.svg" alt="Mascote Pé de Cacau"
+                    class="w-16 h-16 lg:w-11 lg:h-11 mb-4 lg:mb-2 filter brightness-0 invert opacity-95 anim-slide d1">
+                <!-- Title -->
+                <h1 class="font-headline text-5xl lg:text-4xl uppercase tracking-tighter leading-[0.85] text-white">
+                    <span class="inline-block anim-slide d3">Tudo</span>
+                    <span class="inline-block anim-slide d4">Certo!</span>
+                </h1>
+            </div>
+        </header>
 
-            <div class="h-px w-12 bg-marrom/10 mx-auto"></div>
+        <!-- Main Content (Sponsor & Interactive Gift Section) -->
+        <main class="flex items-center justify-center px-4 pt-2 pb-12 lg:pb-2">
+            <div
+                class="max-w-md lg:max-w-4xl w-full bg-white rounded-3xl border border-azul/10 shadow-2xl p-8 sm:p-10 lg:p-8 lg:py-6 relative overflow-hidden anim-slide d5">
+                <!-- Subtle background texture -->
+                <div class="absolute inset-0 opacity-[0.02] diamond-pattern pointer-events-none"></div>
 
-            <p class="text-3xl font-accent tracking-normal leading-tight text-marrom">
-                Que tal descobrir um<br>
-                <span class="text-rosa font-bold text-4xl">novo sabor</span> agora?
-            </p>
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
-            <p class="text-xs text-marrom/60 font-body font-bold leading-relaxed">
-                Explore o circuito e deixe sua marca em<br>outra cafeteria participante!
-            </p>
+                    <!-- Left Column (Mascot, Title & Tagline) -->
+                    <div
+                        class="flex flex-col items-center text-center lg:border-r lg:border-azul/10 lg:pr-12 lg:h-full lg:justify-center">
+                        <!-- Illustration — Centered -->
+                        <div class="w-full flex justify-center mb-6 lg:mb-4 anim-slide d3">
+                            <img src="assets/header.svg" alt="Ilustração Pé de Cacau"
+                                class="w-44 sm:w-48 lg:w-40 object-contain">
+                        </div>
 
-            <div class="pt-4">
+                        <!-- Title & Tagline -->
+                        <div class="w-full anim-slide d3">
+                            <h2
+                                class="font-headline text-3xl sm:text-4xl lg:text-3xl uppercase tracking-tighter leading-[0.9] text-azul">
+                                Seu voto já foi confirmado para essa cafeteria!
+                            </h2>
+                            <p
+                                class="font-body text-xs text-marrom/60 font-semibold uppercase tracking-[0.12em] mt-4 leading-relaxed">
+                                Que tal conhecer sua próxima sobremesa favorita?
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column (Interactive Roulette) -->
+                    <div class="flex flex-col justify-center">
+                        <div class="text-center lg:text-left mb-4 anim-slide d3">
+                            <h3 class="font-slab text-xl uppercase tracking-wider text-azul">Não sabe qual escolher?
+                            </h3>
+                            <p class="text-xs text-marrom/60 leading-relaxed font-body">
+                                Deixe a roleta do Pé de Cacau sugerir sua próxima parada doce:
+                            </p>
+                        </div>
+
+                        <!-- Card Preview -->
+                        <div id="roulette-card"
+                            class="w-full bg-azul text-white rounded-2xl overflow-hidden shadow-lg border border-white/10 hover:shadow-xl transition-all duration-300 mb-5 anim-slide d4 relative">
+                            <!-- Image container with fixed ratio -->
+                            <div class="relative h-44 w-full overflow-hidden bg-black/10">
+                                <img id="roulette-img" src="assets/fotos/pedecacau_Acallento.webp" alt="Sobremesa"
+                                    class="w-full h-full object-cover transition-opacity duration-200 opacity-100">
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none">
+                                </div>
+                                <div
+                                    class="absolute bottom-3 left-4 flex items-center gap-1 text-white/90 font-body uppercase tracking-[0.15em] text-[9px] font-bold">
+                                    <span class="material-symbols-outlined text-[12px] text-rosa">location_on</span>
+                                    <span id="roulette-neighborhood">São Mateus</span>
+                                </div>
+                            </div>
+                            <!-- Card Body -->
+                            <div class="p-4 flex flex-col justify-between">
+                                <div>
+                                    <h4 id="roulette-name"
+                                        class="font-headline text-2xl uppercase tracking-tighter text-creme leading-none mb-1">
+                                        Acallento</h4>
+                                    <span id="roulette-dessert"
+                                        class="font-body text-xs text-rosa font-semibold tracking-wider uppercase block mb-1">Gelato
+                                        com Cookie</span>
+                                    <p id="roulette-desc" class="font-body text-[11px] text-creme/65 leading-normal mt-2 line-clamp-3">
+                                        Gelato artesanal de baunilha com açúcar mascavo, cremoso, acompanhado de um cookie de chocolate quentinho, repleto de gotas de chocolate branco.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Buttons / CTA -->
+                        <div class="w-full flex flex-col sm:flex-row gap-3 anim-slide d5">
+                            <button id="btn-shuffle"
+                                class="flex-1 flex items-center justify-center gap-2 bg-rosa text-azul font-slab uppercase tracking-widest text-sm py-3.5 rounded-xl hover:bg-[#f3a6cf] active:scale-[0.98] transition-all shadow-md font-bold">
+                                <span class="material-symbols-outlined text-lg">casino</span>
+                                <span>Sortear Sobremesa</span>
+                            </button>
+                            <a href="index.html"
+                                class="flex-1 flex items-center justify-center gap-2 bg-white border border-azul/20 text-azul font-slab uppercase tracking-widest text-sm py-3.5 rounded-xl hover:bg-creme/50 active:scale-[0.98] transition-all shadow-sm">
+                                <span class="material-symbols-outlined text-lg">list</span>
+                                <span>Ver lista completa</span>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="w-full bg-azul text-creme pt-12 pb-16 lg:pt-4 lg:pb-6 px-6">
+        <div class="max-w-xl mx-auto flex flex-col items-center text-center">
+            <img src="assets/logo.svg" class="h-12 lg:h-8 mb-8 lg:mb-3" alt="Pé de Cacau Logo"
+                style="filter:invert(100%);opacity:0.5;">
+            <div class="flex justify-center gap-6 mb-8 lg:mb-3 text-[10px]">
                 <a href="index.html"
-                    class="inline-flex items-center bg-azul text-creme px-10 py-5 rounded-xl font-slab uppercase tracking-widest text-lg hover:bg-[#044085] transition-all active:scale-95 shadow-lg group">
-                    <span>Ver outras cafeterias</span>
-                </a>
+                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Início</a>
+                <span class="text-rosa font-bold">/</span>
+                <a href="sobre.html"
+                    class="font-slab uppercase tracking-widest hover:text-rosa transition-colors opacity-60 hover:opacity-100">Sobre</a>
+            </div>
+            <div class="flex flex-col items-center gap-2 opacity-30 text-[8px] uppercase tracking-[0.3em] font-body">
+                <p>Realização: <a href="https://instagram.com/oquefazerem.jf" target="_blank" class="font-bold">O que
+                        fazer em JF</a></p>
+                <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank" class="font-bold">Primitiva</a></p>
+                <p class="mt-8 lg:mt-2">© 2026 Todos os direitos reservados</p>
             </div>
         </div>
-    </div>
+    </footer>
+
+    <!-- Canvas Confetti Library & Trigger -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script>
+        const cafeterias = [
+            { name: "Acallento", neighborhood: "São Mateus", dessert: "Gelato com Cookie", desc: "Gelato artesanal de baunilha com açúcar mascavo, cremoso, acompanhado de um cookie de chocolate quentinho, repleto de gotas de chocolate branco." },
+            { name: "Bom Brasileiro", neighborhood: "Centro", dessert: "Brownie com Ganache", desc: "Brownie de chocolate com nozes e recheio de ganache meio amargo." },
+            { name: "Brownie da Fabi", neighborhood: "Bom Pastor", dessert: "Torta Bombom de Morango", desc: "Base crocante de biscoito, creme branco superaveludado, morangos fresquinhos e uma ganache intensa 70% cacau." },
+            { name: "Café com Limão", neighborhood: "Granbery", dessert: "Tortinha de Chocolate e Limão", desc: "Tortinha artesanal de chocolate com recheio cremoso de ganache de chocolate ao leite e creme de baunilha, coberta por morangos frescos e chantilly. Acompanha sorvete de creme e calda de chocolate meio amargo." },
+            { name: "Camafeu", neighborhood: "Centro", dessert: "Chocolate Quente Camafeu", desc: "Chocolate quente, chantilly de baunilha com marshmallow maçaricado, finalizado com raspas de chocolate." },
+            { name: "Cheirin Bão", neighborhood: "São Mateus", dessert: "Brownie Recheado", desc: "Brownie recheado com Nutella, acompanhado de sorvete de creme." },
+            { name: "Damy", neighborhood: "São Mateus", dessert: "Sensação", desc: "Massa de cacau black, com uma camada de brigadeiro meio amargo, outra camada de brigadeiro de Ninho e uma camada de geleia de morango. Finalizada com raspas de chocolate, ganache de chocolate e morango para decorar." },
+            { name: "Delícias da Lili", neighborhood: "Granbery", dessert: "Cascata de Chocolate", desc: "Um irresistível bolo de chocolate envolto por uma delicada cesta artesanal de chocolate, acompanhado de um leve chiffon de chocolate. A finalização fica por sua conta: despeje a ganache quente sobre a sobremesa e veja a casquinha se derreter." },
+            { name: "Dois Amores", neighborhood: "São Mateus", dessert: "Tentação de Chocolate", desc: "Base crocante de biscoito de chocolate, recheada com um creme extremamente aveludado de cream cheese, doce de leite e cacau 50%. Finalizada com generosas raspas de chocolate meio amargo." },
+            { name: "Empório Life Gourmet", neighborhood: "São Mateus", dessert: "Novidade Concurso Choco", desc: "Dark Mousse Protein: com farofinha amanteigada de castanhas, acompanhado de Creme Ninho Life. Baixo carboidrato, 21g de proteína e zero açúcar." },
+            { name: "Espaço Café Central", neighborhood: "Centro", dessert: "Devil's Cake", desc: "Massa úmida de chocolate 50% cacau, com recheio e cobertura de ganache aerada de chocolate meio amargo." },
+            { name: "Estação Urbana", neighborhood: "Cascatinha", dessert: "Cannoncini alla Crema", desc: "Cone de massa folhada com recheio de creme de baunilha clássico, banhado em uma calda de chocolate nobre derretido." },
+            { name: "Inverno D'Itália", neighborhood: "São Mateus", dessert: "Abbraccio di Cioccolato", desc: "Bolo de chocolate quente, com base de creme de KitKat, ganache cremosa de chocolate com café, finalizado com farofa crocante de KitKat." },
+            { name: "Madame", neighborhood: "Centro", dessert: "Brownie com Cookie", desc: "Brownie com cookie, servido com nosso delicioso brigadeiro ao leite, uma bola de sorvete de creme e, para finalizar, ganache de chocolate." },
+            { name: "Manchester", neighborhood: "Centro", dessert: "Toast Manchester", desc: "Toast de pão doce com fios de Nutella, mergulhados em chocolate quente cremoso." },
+            { name: "Meiuca", neighborhood: "São Mateus", dessert: "Torta Vegana de Chocolate", desc: "Torta vegana de chocolate com brigadeiro e mousse de morango — totalmente vegana." },
+            { name: "Milklândia", neighborhood: "Centro", dessert: "Brownie Delícia", desc: "Brownie com calda de Ninho, calda de brigadeiro, chantilly, morango e casquinha de chocolate." },
+            { name: "Mr. Pina", neighborhood: "São Mateus", dessert: "Dark Rum Tarte", desc: "Torta de chocolate dark 100% cacau belga, feita com massa amanteigada de chocolate premium, em camadas de mousse dark de chocolate meio amargo e essência de rum picante." },
+            { name: "Mulino", neighborhood: "Centro", dessert: "Fondue", desc: "Fondue: chocolate derretido, frutas da época disponíveis (morango, banana, uva...) e waffle." },
+            { name: "Orvalho", neighborhood: "Cascatinha", dessert: "Donuts DUO", desc: "Donuts DUO sem glúten, com massa de longa fermentação, recheio de brigadeiro meio amargo, cobertos com chocolate branco e calda extra de chocolate." },
+            { name: "Oui Uai", neighborhood: "Centro", dessert: "Maria Antonieta", desc: "Croissant recheado com ganache quentinha de chocolate meio amargo, coberto com chantilly e mel." },
+            { name: "Prosa", neighborhood: "Granbery", dessert: "Brasileirinha", desc: "Tortinha de chocolate com massa crocante, recheio cremoso de brigadeiro e cobertura de geleia artesanal de frutas amarelas (manga, pêssego e maracujá)." },
+            { name: "R Grife", neighborhood: "São Mateus", dessert: "Bolo Matilda", desc: "Massa de chocolate fofinha, recheio cremoso de brigadeiro e muita cobertura de chocolate, finalizado com calda quente." },
+            { name: "Reza Brava", neighborhood: "Centro", dessert: "Cookie Reza Brava", desc: "Palitos crocantes de cookie de chocolate com gergelim torrado, servidos com ganache de chocolate branco caramelizado e missô." },
+            { name: "Sodiê", neighborhood: "São Mateus", dessert: "S'Mores Chocolate Quente", desc: "Chocolate quente cremoso, envolto por marshmallows maçaricados, coroado com chantilly gelado, cobertura de Nutella e topping de brownie." },
+            { name: "Unni", neighborhood: "Cascatinha", dessert: "Choco Rocks!", desc: "Nosso brownie ultra cremoso e chocolatudo, finalizado com uma surpreendente camada crocante." }
+        ];
+
+        window.addEventListener('DOMContentLoaded', () => {
+            // Trigger confetti burst with brand colors shortly after loading
+            setTimeout(() => {
+                confetti({
+                    particleCount: 140,
+                    spread: 85,
+                    origin: { y: 0.6 },
+                    colors: ['#0551a7', '#f1c8df', '#ffffff', '#efefef'],
+                    disableForReducedMotion: true
+                });
+            }, 300);
+
+            // Prevent right-click and drag-to-save on all images
+            document.addEventListener('contextmenu', (e) => {
+                if (e.target.tagName === 'IMG') e.preventDefault();
+            });
+            document.addEventListener('dragstart', (e) => {
+                if (e.target.tagName === 'IMG') e.preventDefault();
+            });
+
+            // Roulette logic
+            const imgEl = document.getElementById('roulette-img');
+            const neighborhoodEl = document.getElementById('roulette-neighborhood');
+            const nameEl = document.getElementById('roulette-name');
+            const dessertEl = document.getElementById('roulette-dessert');
+            const descEl = document.getElementById('roulette-desc');
+            const btnShuffle = document.getElementById('btn-shuffle');
+            const cardEl = document.getElementById('roulette-card');
+
+            let isShuffling = false;
+
+            function updateCard(item) {
+                imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
+                imgEl.alt = item.name;
+                nameEl.textContent = item.name;
+                neighborhoodEl.textContent = item.neighborhood;
+                dessertEl.textContent = item.dessert;
+                descEl.textContent = item.desc;
+            }
+
+            function shuffle() {
+                if (isShuffling) return;
+                isShuffling = true;
+                btnShuffle.disabled = true;
+                btnShuffle.classList.add('opacity-75', 'cursor-not-allowed');
+
+                let duration = 1000; // ms
+                let intervalTime = 60; // start fast
+                let elapsed = 0;
+
+                const timer = setInterval(() => {
+                    elapsed += intervalTime;
+
+                    // Select a random one
+                    const randomItem = cafeterias[Math.floor(Math.random() * cafeterias.length)];
+                    updateCard(randomItem);
+
+                    // Add a tiny random rotate & scale vibration to feel alive
+                    cardEl.style.transform = `scale(0.99) rotate(${(Math.random() - 0.5) * 1.5}deg)`;
+
+                    // Gradually slow down
+                    if (elapsed >= duration) {
+                        clearInterval(timer);
+
+                        // Final selection
+                        const finalItem = cafeterias[Math.floor(Math.random() * cafeterias.length)];
+                        updateCard(finalItem);
+
+                        // Reset style & add pop effect
+                        cardEl.style.transform = '';
+                        cardEl.classList.add('scale-[1.03]', 'border-rosa/30');
+                        setTimeout(() => {
+                            cardEl.classList.remove('scale-[1.03]', 'border-rosa/30');
+                        }, 150);
+
+                        isShuffling = false;
+                        btnShuffle.disabled = false;
+                        btnShuffle.classList.remove('opacity-75', 'cursor-not-allowed');
+
+                        // Little confetti shower for landing!
+                        confetti({
+                            particleCount: 30,
+                            angle: 60,
+                            spread: 55,
+                            origin: { x: 0, y: 0.8 },
+                            colors: ['#0551a7', '#f1c8df', '#ffffff']
+                        });
+                        confetti({
+                            particleCount: 30,
+                            angle: 120,
+                            spread: 55,
+                            origin: { x: 1, y: 0.8 },
+                            colors: ['#0551a7', '#f1c8df', '#ffffff']
+                        });
+                    }
+                }, intervalTime);
+            }
+
+            // Set initial random cafeteria on page load
+            const initialRandom = cafeterias[Math.floor(Math.random() * cafeterias.length)];
+            updateCard(initialRandom);
+
+            btnShuffle.addEventListener('click', shuffle);
+        });
+    </script>
 </body>
 
 </html>
