@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pé de Cacau - Concurso de Sobremesas</title>
+    <meta name="description"
+        content="Pé de Cacau — O concurso das melhores sobremesas de Juiz de Fora. 26 cafeterias, R$25 fixo. De 1 a 31 de julho." />
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon-DnxsW_9_.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32-DIgOmC8B.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16-DrwOn73f.png">
+    <link rel="manifest" href="/assets/site-BwHFeIBa.webmanifest">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Staatliches&family=Outfit:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <style>
+        @font-face {
+            font-family: 'Bringbold';
+            src: url('/assets/Bringboldninetiesdemo-aY5Wa-BD1KMXmv.otf') format('opentype'),
+                url('/assets/BringboldNinetiesDemo-E4O9r-CDd_EZxL.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Valencia';
+            src: url('/assets/Valencia-DHVmeyss.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        "azul": "#0551a7",
+                        "rosa": "#f1c8df",
+                        "creme": "#efefef",
+                        "marrom": "#2d1a12",
+                    },
+                    fontFamily: {
+                        "headline": ["Bringbold", "sans-serif"],
+                        "accent": ["Valencia", "cursive"],
+                        "slab": ["Staatliches", "sans-serif"],
+                        "body": ["Outfit", "sans-serif"],
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #efefef;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        .diamond-pattern {
+            background-color: #0551a7;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' fill='%23a4c6e9'/%3E%3Cpath d='M15 0 L30 15 L15 30 L0 15 Z' fill='%230551a7'/%3E%3C/svg%3E");
+            background-size: 30px 30px;
+        }
+
+        /* Hide scrollbar for the alphabet filter but allow scrolling */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .arch-card {
+            border-radius: 10rem 10rem 1.5rem 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 15px 35px -10px rgba(5, 81, 167, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .arch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 45px -15px rgba(5, 81, 167, 0.3);
+        }
+
+        /* Highlight styling for active letter filter */
+        .filter-btn.active {
+            background-color: rgba(5, 81, 167, 0.1) !important;
+            color: #0551a7 !important;
+            font-weight: 700;
+        }
+
+        /* Prevent horizontal scroll from absolutely positioned elements */
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        /* Parallax Clouds Animations */
+        @keyframes drift-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        @keyframes drift-right {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
+        }
+
+        /* Very slow, calm animation durations */
+        .cloud-track-1 {
+            display: flex;
+            width: 200%;
+            animation: drift-left 260s linear infinite;
+        }
+
+        .cloud-track-2 {
+            display: flex;
+            width: 200%;
+            animation: drift-right 190s linear infinite;
+        }
+
+        .cloud-track-3 {
+            display: flex;
+            width: 200%;
+            animation: drift-left 110s linear infinite;
+        }
+
+        /* Depth of field blurs */
+        .cloud-blur-bg {
+            filter: blur(5px);
+        }
+
+        .cloud-blur-mid {
+            filter: blur(2px);
+        }
+
+        /* Entrance Animations */
+        @keyframes fade-in-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            opacity: 0;
+            animation: fade-in-up 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+
+        @keyframes word-fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-word {
+            display: inline-block;
+            opacity: 0;
+            animation: word-fade-in 0.7s cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+        }
+    </style>
+  <script type="module" crossorigin src="/assets/index-BHMrP-hC.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BBGOmc-u.css">
+</head>
+
+<body>
+    <div id="root"></div>
+</body>
+
+</html>

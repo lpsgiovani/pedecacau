@@ -19,7 +19,14 @@
   },
   "homepage": "https://github.com/lpsgiovani/pedecacau#readme",
   "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.3",
     "sharp": "^0.35.2",
     "vite": "^8.1.0"
+  },
+  "dependencies": {
+    "motion": "^12.42.0",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-router-dom": "^7.18.1"
   }
 }
