@@ -164,19 +164,13 @@
                 <!-- Subtle background texture -->
                 <div class="absolute inset-0 opacity-[0.02] diamond-pattern pointer-events-none"></div>
 
-                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
 
                     <!-- Left Column (Mascot, Title & Tagline) -->
                     <div
-                        class="flex flex-col items-center text-center lg:border-r lg:border-azul/10 lg:pr-12 lg:h-full lg:justify-center">
-                        <!-- Illustration — Centered -->
-                        <div class="w-full flex justify-center mb-6 lg:mb-4 anim-slide d3">
-                            <img src="assets/header.svg" alt="Ilustração Pé de Cacau"
-                                class="w-44 sm:w-48 lg:w-40 object-contain">
-                        </div>
-
+                        class="lg:col-span-5 flex flex-col items-center text-center lg:border-r lg:border-azul/10 lg:pr-12 lg:h-full lg:justify-center">
                         <!-- Title & Tagline -->
-                        <div class="w-full anim-slide d3 mt-4 lg:mt-8">
+                        <div class="w-full anim-slide d3 mt-0 lg:mt-0">
                             <h2
                                 class="font-headline text-3xl sm:text-4xl lg:text-4xl uppercase tracking-tighter leading-[0.9] text-azul">
                                 Que tal conhecer sua próxima sobremesa favorita?
@@ -185,12 +179,12 @@
                     </div>
 
                     <!-- Right Column (Interactive Roulette) -->
-                    <div class="flex flex-col justify-center">
+                    <div class="lg:col-span-7 flex flex-col justify-center">
 
                         <!-- Card Preview (Organic) -->
                         <div id="roulette-card"
                             class="w-full text-azul transition-all duration-300 mb-4 anim-slide d4 relative flex flex-col lg:flex-row items-center lg:items-center lg:justify-center">
-                            <!-- Image container (Circle) -->
+                            <!-- Left Column (Image & Subtitle) -->
                             <div id="roulette-img-container"
                                 class="relative h-44 w-44 lg:h-48 lg:w-48 overflow-hidden bg-[#bed3ea] rounded-full shadow-xl ring-4 ring-azul/5 mb-4 lg:mb-0 mx-auto lg:mx-0 lg:mr-8 lg:shrink-0 cursor-pointer group">
                                 <img id="roulette-img" src="assets/fotos/pedecacau_acallento.webp" alt="Descubra"
@@ -209,9 +203,11 @@
                                 class="flex flex-col justify-between flex-grow items-center lg:items-start text-center lg:text-left w-full px-2 lg:px-0">
                                 <div
                                     class="h-[180px] lg:h-[216px] flex flex-col items-center lg:items-start justify-center w-full">
-                                    <h4 id="roulette-name"
-                                        class="font-headline text-2xl lg:text-3xl uppercase tracking-tighter text-azul leading-none mb-2 line-clamp-2 min-h-[1em]">
-                                        Não sabe qual escolher?</h4>
+                                    <a id="roulette-link" href="perfil-cafeteria.html" class="pointer-events-none group">
+                                        <h4 id="roulette-name"
+                                            class="font-headline text-2xl lg:text-3xl uppercase tracking-tighter text-azul leading-none mb-2 line-clamp-2 min-h-[1em] group-hover:underline decoration-azul/50 underline-offset-4 transition-all">
+                                            ???</h4>
+                                    </a>
                                     <!-- Instagram Handle -->
                                     <div
                                         class="flex items-center justify-center lg:justify-start gap-1 text-marrom/70 font-body uppercase tracking-[0.15em] text-[10px] font-bold mb-3">
@@ -232,13 +228,13 @@
                                 <div
                                     class="w-full flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:gap-6">
                                     <button id="btn-shuffle"
-                                        class="w-full lg:w-auto px-8 lg:px-0 py-3 lg:py-1 mt-4 lg:mt-6 flex items-center justify-center lg:justify-start gap-2 bg-rosa lg:bg-transparent text-azul lg:text-marrom/60 font-slab lg:font-body uppercase lg:normal-case tracking-widest lg:tracking-normal text-sm rounded-full lg:rounded-none hover:bg-[#f3a6cf] lg:hover:bg-transparent lg:hover:text-azul lg:hover:underline lg:decoration-marrom/30 lg:underline-offset-4 active:scale-[0.98] transition-all shadow-md lg:shadow-none font-bold lg:font-semibold hidden">
-                                        <span class="material-symbols-outlined text-xl lg:hidden">casino</span>
-                                        <span>Sortear Agora</span>
+                                        class="w-full lg:w-auto px-8 lg:px-0 py-3 lg:py-1 mt-4 lg:mt-6 flex items-center justify-center lg:justify-start gap-2 bg-rosa lg:bg-transparent text-azul lg:text-marrom/60 font-slab lg:font-body uppercase lg:normal-case tracking-widest lg:tracking-normal text-sm rounded-full lg:rounded-none hover:bg-[#f3a6cf] lg:hover:bg-transparent lg:hover:text-azul active:scale-[0.98] transition-all shadow-md lg:shadow-none font-bold lg:font-semibold hidden">
+                                        <span class="material-symbols-outlined text-xl">casino</span>
+                                        <span class="whitespace-nowrap">Sortear Agora</span>
                                     </button>
                                     <a href="index.html"
-                                        class="text-[10px] lg:text-sm font-body font-semibold text-marrom/50 lg:text-marrom/60 hover:text-azul transition-colors underline decoration-marrom/20 lg:decoration-marrom/30 underline-offset-4 mt-3 lg:mt-6">
-                                        Ver todas as cafeterias
+                                        class="whitespace-nowrap text-[10px] lg:text-sm font-body font-semibold text-marrom/50 lg:text-marrom/60 hover:text-azul transition-colors underline decoration-marrom/20 lg:decoration-marrom/30 underline-offset-4 mt-3 lg:mt-6">
+                                        Ver todas
                                     </a>
                                 </div>
                             </div>
@@ -338,7 +334,7 @@
             // Define the initial state (Mystery)
             const initialMysteryState = {
                 isMystery: true,
-                name: "Não sabe qual escolher?",
+                name: "???",
                 instagram: "concursopedecacau",
                 dessert: "Sua Próxima Parada",
                 desc: "Clique no botão para rodar a roleta e descobrir qual cafeteria deliciosa você deve conhecer a seguir!",
@@ -353,19 +349,23 @@
                 if (!imgEl) return;
 
                 const mysteryOverlay = document.getElementById('mystery-overlay');
+                const rouletteLink = document.getElementById('roulette-link');
 
                 if (item.isMystery) {
                     imgEl.src = 'assets/fotos/pedecacau_acallento.webp';
                     imgEl.className = 'w-full h-full object-cover transition-all duration-200 blur-xl scale-110 brightness-75';
                     if (mysteryOverlay) mysteryOverlay.classList.remove('opacity-0');
+                    if (rouletteLink) rouletteLink.classList.add('pointer-events-none');
                 } else if (isShuffling) {
                     imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
                     imgEl.className = 'w-full h-full object-cover transition-all duration-100 opacity-100';
                     if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                    if (rouletteLink) rouletteLink.classList.add('pointer-events-none');
                 } else {
                     imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
                     imgEl.className = 'w-full h-full object-cover transition-all duration-500 opacity-100 scale-100 brightness-100';
                     if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                    if (rouletteLink) rouletteLink.classList.remove('pointer-events-none');
                 }
 
                 imgEl.alt = item.name;
@@ -400,6 +400,7 @@
                         clearInterval(timer);
 
                         // Final selection
+                        isShuffling = false;
                         const finalItem = cafeterias[Math.floor(Math.random() * cafeterias.length)];
                         updateCard(finalItem);
 
@@ -410,10 +411,9 @@
                             cardEl.classList.remove('scale-[1.03]', 'border-rosa/30');
                         }, 150);
 
-                        isShuffling = false;
                         btnShuffle.disabled = false;
                         btnShuffle.classList.remove('opacity-75', 'cursor-not-allowed', 'hidden');
-                        btnShuffle.innerHTML = '<span class="material-symbols-outlined text-xl">casino</span><span>Sortear Novamente</span>';
+                        btnShuffle.innerHTML = '<span class="material-symbols-outlined text-xl">casino</span><span class="whitespace-nowrap">Sortear Novamente</span>';
 
                         // Little confetti shower for landing!
                         confetti({

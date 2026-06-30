@@ -267,9 +267,11 @@
                             class="flex flex-col justify-between flex-grow items-center lg:items-start text-center lg:text-left w-full px-2 lg:px-0">
                             <div
                                 class="h-[180px] lg:h-[216px] flex flex-col items-center lg:items-start justify-center w-full">
-                                <h4 id="roulette-name"
-                                    class="font-headline text-3xl lg:text-4xl uppercase tracking-tighter text-white leading-none mb-2 drop-shadow-sm line-clamp-2 min-h-[1em]">
-                                    ???</h4>
+                                <a id="roulette-link" href="perfil-cafeteria.html" class="pointer-events-none group">
+                                    <h4 id="roulette-name"
+                                        class="font-headline text-3xl lg:text-4xl uppercase tracking-tighter text-white leading-none mb-2 drop-shadow-sm line-clamp-2 min-h-[1em] group-hover:underline decoration-white/50 underline-offset-4 transition-all">
+                                        ???</h4>
+                                </a>
 
                                 <!-- Instagram Handle -->
                                 <div
@@ -293,12 +295,12 @@
                             <div
                                 class="w-full flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:gap-6">
                                 <button id="btn-shuffle"
-                                    class="w-full lg:w-auto px-10 lg:px-0 py-4 lg:py-1 mt-8 lg:mt-6 flex items-center justify-center lg:justify-start gap-2 bg-rosa lg:bg-transparent text-azul lg:text-white/60 font-slab lg:font-body uppercase lg:normal-case tracking-widest lg:tracking-normal text-base lg:text-[13px] rounded-full lg:rounded-none hover:bg-[#f3a6cf] lg:hover:bg-transparent lg:hover:text-white lg:hover:underline lg:decoration-white/30 lg:underline-offset-4 active:scale-[0.98] transition-all shadow-xl lg:shadow-none font-bold lg:font-semibold hidden">
-                                    <span class="material-symbols-outlined text-xl lg:hidden">casino</span>
-                                    <span>Sortear Agora</span>
+                                    class="w-full lg:w-auto px-10 lg:px-0 py-4 lg:py-1 mt-8 lg:mt-6 flex items-center justify-center lg:justify-start gap-2 bg-rosa lg:bg-transparent text-azul lg:text-white/60 font-slab lg:font-body uppercase lg:normal-case tracking-widest lg:tracking-normal text-base lg:text-[13px] rounded-full lg:rounded-none hover:bg-[#f3a6cf] lg:hover:bg-transparent lg:hover:text-white active:scale-[0.98] transition-all shadow-xl lg:shadow-none font-bold lg:font-semibold hidden">
+                                    <span class="material-symbols-outlined text-xl">casino</span>
+                                    <span class="whitespace-nowrap">Sortear Agora</span>
                                 </button>
                                 <a href="index.html"
-                                    class="text-xs font-body font-semibold text-white/50 lg:text-white/60 hover:text-white transition-colors underline decoration-white/20 lg:decoration-white/30 underline-offset-4 mt-4 lg:mt-6">
+                                    class="whitespace-nowrap text-xs font-body font-semibold text-white/50 lg:text-white/60 hover:text-white transition-colors underline decoration-white/20 lg:decoration-white/30 underline-offset-4 mt-4 lg:mt-6">
                                     Ver todas as cafeterias
                                 </a>
                             </div>
@@ -382,19 +384,23 @@
                 if (!imgEl) return;
 
                 const mysteryOverlay = document.getElementById('mystery-overlay');
+                const rouletteLink = document.getElementById('roulette-link');
 
                 if (item.isMystery) {
                     imgEl.src = 'assets/fotos/pedecacau_acallento.webp';
                     imgEl.className = 'w-full h-full object-cover transition-all duration-200 blur-xl scale-110 brightness-75';
                     if (mysteryOverlay) mysteryOverlay.classList.remove('opacity-0');
+                    if (rouletteLink) rouletteLink.classList.add('pointer-events-none');
                 } else if (isShuffling) {
                     imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
                     imgEl.className = 'w-full h-full object-cover transition-all duration-100 opacity-100';
                     if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                    if (rouletteLink) rouletteLink.classList.add('pointer-events-none');
                 } else {
                     imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
                     imgEl.className = 'w-full h-full object-cover transition-all duration-500 opacity-100 scale-100 brightness-100';
                     if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                    if (rouletteLink) rouletteLink.classList.remove('pointer-events-none');
                 }
 
                 imgEl.alt = item.name;
@@ -429,6 +435,7 @@
                         clearInterval(timer);
 
                         // Final selection
+                        isShuffling = false;
                         const finalItem = cafeterias[Math.floor(Math.random() * cafeterias.length)];
                         updateCard(finalItem);
 
@@ -439,10 +446,9 @@
                             cardEl.classList.remove('scale-[1.03]', 'border-rosa/30');
                         }, 150);
 
-                        isShuffling = false;
                         btnShuffle.disabled = false;
                         btnShuffle.classList.remove('opacity-75', 'cursor-not-allowed', 'hidden');
-                        btnShuffle.innerHTML = '<span class="material-symbols-outlined text-xl">casino</span><span>Sortear Novamente</span>';
+                        btnShuffle.innerHTML = '<span class="material-symbols-outlined text-xl">casino</span><span class="whitespace-nowrap">Sortear Novamente</span>';
 
                         // Little confetti shower for landing!
                         if (typeof confetti !== 'undefined') {

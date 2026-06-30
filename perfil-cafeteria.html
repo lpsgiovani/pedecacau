@@ -117,6 +117,11 @@
 
         <!-- Mobile: Centered Logo -->
         <img src="assets/logo.svg" class="h-8 opacity-90 lg:hidden" alt="Logo" style="filter: invert(100%);">
+
+        <!-- Share Button -->
+        <button onclick="shareProfile()" title="Compartilhar página" class="absolute right-6 w-10 h-10 lg:relative lg:right-auto flex items-center justify-center rounded-full bg-black/20 lg:bg-white/10 backdrop-blur-md hover:bg-black/30 lg:hover:bg-white/20 transition-all text-white">
+            <span class="material-symbols-outlined text-xl">share</span>
+        </button>
     </nav>
 
     <!-- Desktop Container -->
@@ -271,6 +276,23 @@
         document.addEventListener('dragstart', (e) => {
             if (e.target.tagName === 'IMG') e.preventDefault();
         });
+    </script>
+    <script>
+        function shareProfile() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.title,
+                    text: 'Dá uma olhada nessa cafeteria no Pé de Cacau!',
+                    url: window.location.href
+                }).catch(err => {
+                    if (err.name !== 'AbortError') console.error('Share failed:', err);
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    alert('Link copiado para a área de transferência!');
+                }).catch(err => console.error('Copy failed:', err));
+            }
+        }
     </script>
 </body>
 
