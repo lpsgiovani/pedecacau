@@ -131,7 +131,7 @@
 </head>
 
 <body
-    class="bg-azul text-marrom font-body antialiased selection:bg-rosa selection:text-azul min-h-screen lg:h-screen lg:overflow-hidden flex flex-col justify-between">
+    class="bg-azul text-marrom font-body antialiased selection:bg-rosa selection:text-azul min-h-screen flex flex-col">
 
     <div class="flex-grow flex flex-col justify-center lg:py-2">
         <!-- Header Section (Compact, Blue, Elegant with Confetti) -->
@@ -198,7 +198,8 @@
                                 <p
                                     class="font-slab text-xl uppercase tracking-wide text-white leading-none whitespace-nowrap">
                                     Até 95% de economia</p>
-                                <p class="text-[10px] text-white/60 font-body mt-0.5">na conta de luz com energia solar</p>
+                                <p class="text-[10px] text-white/60 font-body mt-0.5">na conta de luz com energia solar
+                                </p>
                             </div>
                         </div>
 
@@ -207,8 +208,8 @@
                             <a href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Participei%20do%20P%C3%A9%20de%20Cacau%20e%20gostaria%20de%20saber%20mais%20sobre%20meu%20desconto%20exclusivo%20com%20a%20Hive%20Energy."
                                 target="_blank" rel="noopener noreferrer"
                                 class="w-full flex items-center justify-center gap-3 bg-[#25D366] text-white font-slab uppercase tracking-widest text-lg lg:text-base py-4 lg:py-3.5 rounded-xl hover:bg-[#1ebe5d] transition-all hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] shadow-lg hover:shadow-xl">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24"
-                                    fill="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 flex-shrink-0"
+                                    viewBox="0 0 24 24" fill="currentColor">
                                     <path
                                         d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
                                 </svg>
@@ -226,10 +227,90 @@
                 </div>
             </div>
         </main>
+
+        <!-- Sorteador Section (Below the fold) -->
+        <section class="px-4 pb-8 lg:pb-16 flex justify-center w-full anim-slide d5">
+            <div
+                class="max-w-md lg:max-w-2xl w-full p-8 lg:p-10 flex flex-col items-center justify-center gap-8 lg:gap-10 relative z-10 mx-auto">
+                <!-- Text Header -->
+                <div class="text-center w-full">
+                    <h3
+                        class="font-headline text-4xl lg:text-6xl uppercase tracking-tighter text-white leading-[0.85] mb-4">
+                        Já pensando no amanhã?</h3>
+                    <p class="text-sm lg:text-base text-white/70 leading-relaxed font-body lg:max-w-lg lg:mx-auto">Eu
+                        sei,
+                        são muitas sobremesas pra conhecer e você não sabe por onde começar. Vem que eu te ajudo!</p>
+                </div>
+
+                <!-- Roulette Card & Buttons -->
+                <div class="w-full max-w-sm lg:max-w-4xl flex flex-col justify-center relative z-10">
+                    <!-- Card Preview -->
+                    <div id="roulette-card"
+                        class="text-white transition-all duration-300 mb-4 relative flex flex-col lg:flex-row items-center lg:items-center lg:justify-center">
+                        <!-- Image container (Circle on All Screens) -->
+                        <div id="roulette-img-container"
+                            class="relative h-48 w-48 lg:h-64 lg:w-64 overflow-hidden bg-[#bed3ea] rounded-full shadow-2xl ring-4 ring-white/10 mb-6 lg:mb-0 mx-auto lg:mx-0 lg:mr-8 lg:shrink-0 cursor-pointer group">
+                            <img id="roulette-img" src="assets/fotos/pedecacau_acallento.webp" alt="Descubra"
+                                class="w-full h-full object-cover transition-all duration-200 blur-xl scale-110 brightness-75 group-hover:brightness-50">
+
+                            <div id="mystery-overlay"
+                                class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 drop-shadow-lg">
+                                <span
+                                    class="material-symbols-outlined text-white text-4xl lg:text-5xl mb-1 opacity-90 group-hover:scale-110 transition-transform">casino</span>
+                                <span
+                                    class="text-white font-slab uppercase tracking-widest text-sm lg:text-base opacity-90">Sortear</span>
+                            </div>
+                        </div>
+
+                        <!-- Card Body -->
+                        <div
+                            class="flex flex-col justify-between flex-grow items-center lg:items-start text-center lg:text-left w-full px-2 lg:px-0">
+                            <div
+                                class="h-[180px] lg:h-[216px] flex flex-col items-center lg:items-start justify-center w-full">
+                                <h4 id="roulette-name"
+                                    class="font-headline text-3xl lg:text-4xl uppercase tracking-tighter text-white leading-none mb-2 drop-shadow-sm line-clamp-2 min-h-[1em]">
+                                    ???</h4>
+
+                                <!-- Instagram Handle -->
+                                <div
+                                    class="flex items-center justify-center lg:justify-start gap-1 text-white/80 font-body uppercase tracking-[0.15em] text-[10px] lg:text-xs font-bold mb-3 drop-shadow-sm">
+                                    <span
+                                        class="material-symbols-outlined text-[13px] lg:text-sm text-rosa">alternate_email</span>
+                                    <span id="roulette-instagram">concursopedecacau</span>
+                                </div>
+
+                                <span id="roulette-dessert"
+                                    class="font-body text-xs lg:text-sm text-rosa font-semibold tracking-wider uppercase block mb-2 lg:mb-4 drop-shadow-sm line-clamp-2">Sua
+                                    Próxima Parada</span>
+                                <p id="roulette-desc"
+                                    class="font-body text-xs lg:text-[13px] text-white/70 leading-relaxed mt-2 max-w-md lg:max-w-lg mx-auto lg:mx-0 line-clamp-4">
+                                    Clique no botão para rodar a roleta e descobrir qual cafeteria deliciosa você
+                                    deve conhecer a seguir!
+                                </p>
+                            </div>
+
+                            <!-- Actions -->
+                            <div
+                                class="w-full flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:gap-6">
+                                <button id="btn-shuffle"
+                                    class="w-full lg:w-auto px-10 lg:px-0 py-4 lg:py-1 mt-8 lg:mt-6 flex items-center justify-center lg:justify-start gap-2 bg-rosa lg:bg-transparent text-azul lg:text-white/60 font-slab lg:font-body uppercase lg:normal-case tracking-widest lg:tracking-normal text-base lg:text-[13px] rounded-full lg:rounded-none hover:bg-[#f3a6cf] lg:hover:bg-transparent lg:hover:text-white lg:hover:underline lg:decoration-white/30 lg:underline-offset-4 active:scale-[0.98] transition-all shadow-xl lg:shadow-none font-bold lg:font-semibold hidden">
+                                    <span class="material-symbols-outlined text-xl lg:hidden">casino</span>
+                                    <span>Sortear Agora</span>
+                                </button>
+                                <a href="index.html"
+                                    class="text-xs font-body font-semibold text-white/50 lg:text-white/60 hover:text-white transition-colors underline decoration-white/20 lg:decoration-white/30 underline-offset-4 mt-4 lg:mt-6">
+                                    Ver todas as cafeterias
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 
     <!-- Footer -->
-    <footer class="w-full bg-azul text-creme pt-12 pb-16 lg:pt-4 lg:pb-6 px-6">
+    <footer class="w-full bg-azul text-creme pt-8 pb-10 lg:pt-4 lg:pb-6 px-6">
         <div class="max-w-xl mx-auto flex flex-col items-center text-center">
             <img src="assets/logo.svg" class="h-12 lg:h-8 mb-8 lg:mb-3" alt="Pé de Cacau Logo"
                 style="filter:invert(100%);opacity:0.5;">
@@ -245,7 +326,9 @@
                         fazer em JF</a></p>
                 <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank" class="font-bold">Primitiva</a></p>
                 <p class="mt-8 lg:mt-2 mb-1">© 2026 Todos os direitos reservados</p>
-                <p><a href="politica-privacidade.html" class="font-bold hover:text-rosa transition-colors border-b border-rosa/30 pb-0.5 hover:border-rosa">Política de Privacidade</a></p>
+                <p><a href="politica-privacidade.html"
+                        class="font-bold hover:text-rosa transition-colors border-b border-rosa/30 pb-0.5 hover:border-rosa">Política
+                        de Privacidade</a></p>
             </div>
         </div>
     </footer>
@@ -253,7 +336,149 @@
     <!-- Canvas Confetti Library & Trigger -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
     <script>
+        const cafeterias = [
+            { name: "Acallento", neighborhood: "São Mateus", dessert: "Gelato com Cookie", desc: "Gelato artesanal de baunilha com açúcar mascavo, cremoso, acompanhado de um cookie de chocolate quentinho, repleto de gotas de chocolate branco." },
+            { name: "Bom Brasileiro", neighborhood: "Centro", dessert: "Brownie com Ganache", desc: "Brownie de chocolate com nozes e recheio de ganache meio amargo." },
+            { name: "Brownie da Fabi", neighborhood: "Bom Pastor", dessert: "Torta Bombom de Morango", desc: "Base crocante de biscoito, creme branco superaveludado, morangos fresquinhos e uma ganache intensa 70% cacau." },
+            { name: "Café com Limão", neighborhood: "Granbery", dessert: "Tortinha de Chocolate e Limão", desc: "Tortinha artesanal de chocolate com recheio cremoso de ganache de chocolate ao leite e creme de baunilha, coberta por morangos frescos e chantilly. Acompanha sorvete de creme e calda de chocolate meio amargo." },
+            { name: "Camafeu", neighborhood: "Centro", dessert: "Chocolate Quente Camafeu", desc: "Chocolate quente, chantilly de baunilha com marshmallow maçaricado, finalizado com raspas de chocolate." },
+            { name: "Cheirin Bão", neighborhood: "São Mateus", dessert: "Brownie Recheado", desc: "Brownie recheado com Nutella, acompanhado de sorvete de creme." },
+            { name: "Damy", neighborhood: "São Mateus", dessert: "Sensação", desc: "Massa de cacau black, com uma camada de brigadeiro meio amargo, outra camada de brigadeiro de Ninho e uma camada de geleia de morango. Finalizada com raspas de chocolate, ganache de chocolate e morango para decorar." },
+            { name: "Delícias da Lili", neighborhood: "Granbery", dessert: "Cascata de Chocolate", desc: "Um irresistível bolo de chocolate envolto por uma delicada cesta artesanal de chocolate, acompanhado de um leve chiffon de chocolate. A finalização fica por sua conta: despeje a ganache quente sobre a sobremesa e veja a casquinha se derreter." },
+            { name: "Dois Amores", neighborhood: "São Mateus", dessert: "Tentação de Chocolate", desc: "Base crocante de biscoito de chocolate, recheada com um creme extremamente aveludado de cream cheese, doce de leite e cacau 50%. Finalizada com generosas raspas de chocolate meio amargo." },
+            { name: "Empório Life Gourmet", neighborhood: "São Mateus", dessert: "Novidade Concurso Choco", desc: "Dark Mousse Protein: com farofinha amanteigada de castanhas, acompanhado de Creme Ninho Life. Baixo carboidrato, 21g de proteína e zero açúcar." },
+            { name: "Espaço Café Central", neighborhood: "Centro", dessert: "Devil's Cake", desc: "Massa úmida de chocolate 50% cacau, com recheio e cobertura de ganache aerada de chocolate meio amargo." },
+            { name: "Estação Urbana", neighborhood: "Cascatinha", dessert: "Cannoncini alla Crema", desc: "Cone de massa folhada com recheio de creme de baunilha clássico, banhado em uma calda de chocolate nobre derretido." },
+            { name: "Inverno D'Itália", neighborhood: "São Mateus", dessert: "Abbraccio di Cioccolato", desc: "Bolo de chocolate quente, com base de creme de KitKat, ganache cremosa de chocolate com café, finalizado com farofa crocante de KitKat." },
+            { name: "Madame", neighborhood: "Centro", dessert: "Brownie com Cookie", desc: "Brownie com cookie, servido com nosso delicioso brigadeiro ao leite, uma bola de sorvete de creme e, para finalizar, ganache de chocolate." },
+            { name: "Manchester", neighborhood: "Centro", dessert: "Toast Manchester", desc: "Toast de pão doce com fios de Nutella, mergulhados em chocolate quente cremoso." },
+            { name: "Meiuca", neighborhood: "São Mateus", dessert: "Torta Vegana de Chocolate", desc: "Torta vegana de chocolate com brigadeiro e mousse de morango — totalmente vegana." },
+            { name: "Milklândia", neighborhood: "Centro", dessert: "Brownie Delícia", desc: "Brownie com calda de Ninho, calda de brigadeiro, chantilly, morango e casquinha de chocolate." },
+            { name: "Mr. Pina", neighborhood: "São Mateus", dessert: "Dark Rum Tarte", desc: "Torta de chocolate dark 100% cacau belga, feita com massa amanteigada de chocolate premium, em camadas de mousse dark de chocolate meio amargo e essência de rum picante." },
+            { name: "Mulino", neighborhood: "Centro", dessert: "Fondue", desc: "Fondue: chocolate derretido, frutas da época disponíveis (morango, banana, uva...) e waffle." },
+            { name: "Orvalho", neighborhood: "Cascatinha", dessert: "Donuts DUO", desc: "Donuts DUO sem glúten, com massa de longa fermentação, recheio de brigadeiro meio amargo, cobertos com chocolate branco e calda extra de chocolate." },
+            { name: "Oui Uai", neighborhood: "Centro", dessert: "Maria Antonieta", desc: "Croissant recheado com ganache quentinha de chocolate meio amargo, coberto com chantilly e mel." },
+            { name: "Prosa", neighborhood: "Granbery", dessert: "Brasileirinha", desc: "Tortinha de chocolate com massa crocante, recheio cremoso de brigadeiro e cobertura de geleia artesanal de frutas amarelas (manga, pêssego e maracujá)." },
+            { name: "R Grife", neighborhood: "São Mateus", dessert: "Bolo Matilda", desc: "Massa de chocolate fofinha, recheio cremoso de brigadeiro e muita cobertura de chocolate, finalizado com calda quente." },
+            { name: "Reza Brava", neighborhood: "Centro", dessert: "Cookie Reza Brava", desc: "Palitos crocantes de cookie de chocolate com gergelim torrado, servidos com ganache de chocolate branco caramelizado e missô." },
+            { name: "Sodiê", neighborhood: "São Mateus", dessert: "S'Mores Chocolate Quente", desc: "Chocolate quente cremoso, envolto por marshmallows maçaricados, coroado com chantilly gelado, cobertura de Nutella e topping de brownie." },
+            { name: "Unni", neighborhood: "Cascatinha", dessert: "Choco Rocks!", desc: "Nosso brownie ultra cremoso e chocolatudo, finalizado com uma surpreendente camada crocante." }
+        ];
+
         window.addEventListener('DOMContentLoaded', () => {
+            // Roulette logic
+            const imgEl = document.getElementById('roulette-img');
+            const instagramEl = document.getElementById('roulette-instagram');
+            const nameEl = document.getElementById('roulette-name');
+            const dessertEl = document.getElementById('roulette-dessert');
+            const descEl = document.getElementById('roulette-desc');
+            const btnShuffle = document.getElementById('btn-shuffle');
+            const cardEl = document.getElementById('roulette-card');
+            const imgContainerEl = document.getElementById('roulette-img-container');
+
+            let isShuffling = false;
+
+            function updateCard(item) {
+                if (!imgEl) return;
+
+                const mysteryOverlay = document.getElementById('mystery-overlay');
+
+                if (item.isMystery) {
+                    imgEl.src = 'assets/fotos/pedecacau_acallento.webp';
+                    imgEl.className = 'w-full h-full object-cover transition-all duration-200 blur-xl scale-110 brightness-75';
+                    if (mysteryOverlay) mysteryOverlay.classList.remove('opacity-0');
+                } else if (isShuffling) {
+                    imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
+                    imgEl.className = 'w-full h-full object-cover transition-all duration-100 opacity-100';
+                    if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                } else {
+                    imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
+                    imgEl.className = 'w-full h-full object-cover transition-all duration-500 opacity-100 scale-100 brightness-100';
+                    if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                }
+
+                imgEl.alt = item.name;
+                nameEl.textContent = item.name;
+                instagramEl.textContent = item.isMystery ? 'concursopedecacau' : item.name.toLowerCase().replace(/[^a-z0-9]/g, '');
+                dessertEl.textContent = item.dessert;
+                descEl.textContent = item.desc;
+            }
+
+            function shuffle() {
+                if (isShuffling) return;
+                isShuffling = true;
+                btnShuffle.disabled = true;
+                btnShuffle.classList.add('opacity-75', 'cursor-not-allowed');
+
+                let duration = 1000; // ms
+                let intervalTime = 60; // start fast
+                let elapsed = 0;
+
+                const timer = setInterval(() => {
+                    elapsed += intervalTime;
+
+                    // Select a random one
+                    const randomItem = cafeterias[Math.floor(Math.random() * cafeterias.length)];
+                    updateCard(randomItem);
+
+                    // Add a tiny random rotate & scale vibration to feel alive
+                    cardEl.style.transform = `scale(0.99) rotate(${(Math.random() - 0.5) * 1.5}deg)`;
+
+                    // Gradually slow down
+                    if (elapsed >= duration) {
+                        clearInterval(timer);
+
+                        // Final selection
+                        const finalItem = cafeterias[Math.floor(Math.random() * cafeterias.length)];
+                        updateCard(finalItem);
+
+                        // Reset style & add pop effect
+                        cardEl.style.transform = '';
+                        cardEl.classList.add('scale-[1.03]', 'border-rosa/30');
+                        setTimeout(() => {
+                            cardEl.classList.remove('scale-[1.03]', 'border-rosa/30');
+                        }, 150);
+
+                        isShuffling = false;
+                        btnShuffle.disabled = false;
+                        btnShuffle.classList.remove('opacity-75', 'cursor-not-allowed', 'hidden');
+                        btnShuffle.innerHTML = '<span class="material-symbols-outlined text-xl">casino</span><span>Sortear Novamente</span>';
+
+                        // Little confetti shower for landing!
+                        if (typeof confetti !== 'undefined') {
+                            confetti({
+                                particleCount: 30,
+                                angle: 60,
+                                spread: 55,
+                                origin: { x: 0, y: 0.8 },
+                                colors: ['#0551a7', '#f1c8df', '#ffffff']
+                            });
+                            confetti({
+                                particleCount: 30,
+                                angle: 120,
+                                spread: 55,
+                                origin: { x: 1, y: 0.8 },
+                                colors: ['#0551a7', '#f1c8df', '#ffffff']
+                            });
+                        }
+                    }
+                }, intervalTime);
+            }
+
+            // Set initial random cafeteria on page load
+            const mysteryItem = {
+                isMystery: true,
+                name: "???",
+                neighborhood: "Juiz de Fora",
+                dessert: "Sua Próxima Parada",
+                desc: "Clique no botão para rodar a roleta e descobrir qual cafeteria deliciosa você deve conhecer a seguir!"
+            };
+
+            if (imgEl) {
+                updateCard(mysteryItem);
+                btnShuffle.addEventListener('click', shuffle);
+                if (imgContainerEl) imgContainerEl.addEventListener('click', shuffle);
+            }
             // Trigger confetti burst with brand colors shortly after loading
             setTimeout(() => {
                 confetti({
@@ -275,4 +500,5 @@
         });
     </script>
 </body>
+
 </html>

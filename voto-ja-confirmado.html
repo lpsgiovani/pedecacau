@@ -127,7 +127,6 @@
             },
         }
     </script>
-<<<<<<< HEAD
     <style>
         body {
             background-color: #efefef;
@@ -137,8 +136,6 @@
         }
     </style>
     <script src="/cookie-consent.js" defer></script>
-=======
->>>>>>> 87ae92994c09a8e0d5641599cba7048c8cbacd3f
 </head>
 
 <body
@@ -152,10 +149,10 @@
                 <!-- Mascot Icon instead of generic check -->
                 <img src="assets/mascote.svg" alt="Mascote Pé de Cacau"
                     class="w-16 h-16 lg:w-11 lg:h-11 mb-4 lg:mb-2 filter brightness-0 invert opacity-95 anim-slide d1">
-                <!-- Title -->
-                <h1 class="font-headline text-5xl lg:text-4xl uppercase tracking-tighter leading-[0.85] text-white">
-                    <span class="inline-block anim-slide d3">Tudo</span>
-                    <span class="inline-block anim-slide d4">Certo!</span>
+                <h1
+                    class="font-headline text-3xl lg:text-4xl uppercase tracking-tighter leading-[0.85] text-white max-w-xl mx-auto">
+                    <span class="inline-block anim-slide d3">Seu voto já foi</span>
+                    <span class="inline-block anim-slide d4 text-rosa">confirmado para essa cafeteria!</span>
                 </h1>
             </div>
         </header>
@@ -163,7 +160,7 @@
         <!-- Main Content (Sponsor & Interactive Gift Section) -->
         <main class="flex items-center justify-center px-4 pt-2 pb-12 lg:pb-2">
             <div
-                class="max-w-md lg:max-w-4xl w-full bg-white rounded-3xl border border-azul/10 shadow-2xl p-8 sm:p-10 lg:p-8 lg:py-6 relative overflow-hidden anim-slide d5">
+                class="max-w-md lg:max-w-5xl w-full bg-white rounded-3xl border border-azul/10 shadow-2xl p-8 sm:p-10 lg:p-8 lg:py-6 relative overflow-hidden anim-slide d5">
                 <!-- Subtle background texture -->
                 <div class="absolute inset-0 opacity-[0.02] diamond-pattern pointer-events-none"></div>
 
@@ -179,74 +176,72 @@
                         </div>
 
                         <!-- Title & Tagline -->
-                        <div class="w-full anim-slide d3">
+                        <div class="w-full anim-slide d3 mt-4 lg:mt-8">
                             <h2
-                                class="font-headline text-3xl sm:text-4xl lg:text-3xl uppercase tracking-tighter leading-[0.9] text-azul">
-                                Seu voto já foi confirmado para essa cafeteria!
-                            </h2>
-                            <p
-                                class="font-body text-xs text-marrom/60 font-semibold uppercase tracking-[0.12em] mt-4 leading-relaxed">
+                                class="font-headline text-3xl sm:text-4xl lg:text-4xl uppercase tracking-tighter leading-[0.9] text-azul">
                                 Que tal conhecer sua próxima sobremesa favorita?
-                            </p>
+                            </h2>
                         </div>
                     </div>
 
                     <!-- Right Column (Interactive Roulette) -->
                     <div class="flex flex-col justify-center">
-                        <div class="text-center lg:text-left mb-4 anim-slide d3">
-                            <h3 class="font-slab text-xl uppercase tracking-wider text-azul">Não sabe qual escolher?
-                            </h3>
-                            <p class="text-xs text-marrom/60 leading-relaxed font-body">
-                                Deixe a roleta do Pé de Cacau sugerir sua próxima parada doce:
-                            </p>
-                        </div>
 
-                        <!-- Card Preview -->
+                        <!-- Card Preview (Organic) -->
                         <div id="roulette-card"
-                            class="w-full bg-azul text-white rounded-2xl overflow-hidden shadow-lg border border-white/10 hover:shadow-xl transition-all duration-300 mb-5 anim-slide d4 relative">
-                            <!-- Image container with fixed ratio -->
-                            <div class="relative h-44 w-full overflow-hidden bg-black/10">
-                                <img id="roulette-img" src="assets/fotos/pedecacau_Acallento.webp" alt="Sobremesa"
-                                    class="w-full h-full object-cover transition-opacity duration-200 opacity-100">
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent pointer-events-none">
-                                </div>
-                                <div
-                                    class="absolute bottom-3 left-4 flex items-center gap-1 text-white/90 font-body uppercase tracking-[0.15em] text-[9px] font-bold">
-                                    <span class="material-symbols-outlined text-[12px] text-rosa">location_on</span>
-                                    <span id="roulette-neighborhood">São Mateus</span>
+                            class="w-full text-azul transition-all duration-300 mb-4 anim-slide d4 relative flex flex-col lg:flex-row items-center lg:items-center lg:justify-center">
+                            <!-- Image container (Circle) -->
+                            <div id="roulette-img-container"
+                                class="relative h-44 w-44 lg:h-48 lg:w-48 overflow-hidden bg-[#bed3ea] rounded-full shadow-xl ring-4 ring-azul/5 mb-4 lg:mb-0 mx-auto lg:mx-0 lg:mr-8 lg:shrink-0 cursor-pointer group">
+                                <img id="roulette-img" src="assets/fotos/pedecacau_acallento.webp" alt="Descubra"
+                                    class="w-full h-full object-cover transition-all duration-200 blur-xl scale-110 brightness-75 group-hover:brightness-50">
+
+                                <div id="mystery-overlay"
+                                    class="absolute inset-0 flex flex-col items-center justify-center transition-opacity duration-300 drop-shadow-lg">
+                                    <span
+                                        class="material-symbols-outlined text-white text-4xl mb-1 opacity-90 group-hover:scale-110 transition-transform">casino</span>
+                                    <span
+                                        class="text-white font-slab uppercase tracking-widest text-sm opacity-90">Sortear</span>
                                 </div>
                             </div>
                             <!-- Card Body -->
-                            <div class="p-4 flex flex-col justify-between">
-                                <div>
+                            <div
+                                class="flex flex-col justify-between flex-grow items-center lg:items-start text-center lg:text-left w-full px-2 lg:px-0">
+                                <div
+                                    class="h-[180px] lg:h-[216px] flex flex-col items-center lg:items-start justify-center w-full">
                                     <h4 id="roulette-name"
-                                        class="font-headline text-2xl uppercase tracking-tighter text-creme leading-none mb-1">
-                                        Acallento</h4>
+                                        class="font-headline text-2xl lg:text-3xl uppercase tracking-tighter text-azul leading-none mb-2 line-clamp-2 min-h-[1em]">
+                                        Não sabe qual escolher?</h4>
+                                    <!-- Instagram Handle -->
+                                    <div
+                                        class="flex items-center justify-center lg:justify-start gap-1 text-marrom/70 font-body uppercase tracking-[0.15em] text-[10px] font-bold mb-3">
+                                        <span
+                                            class="material-symbols-outlined text-[13px] text-rosa">alternate_email</span>
+                                        <span id="roulette-instagram">concursopedecacau</span>
+                                    </div>
                                     <span id="roulette-dessert"
-                                        class="font-body text-xs text-rosa font-semibold tracking-wider uppercase block mb-1">Gelato
-                                        com Cookie</span>
+                                        class="font-body text-xs text-rosa font-semibold tracking-wider uppercase block mb-2 line-clamp-2">Sua
+                                        Próxima Parada</span>
                                     <p id="roulette-desc"
-                                        class="font-body text-[11px] text-creme/65 leading-normal mt-2 line-clamp-3">
-                                        Gelato artesanal de baunilha com açúcar mascavo, cremoso, acompanhado de um
-                                        cookie de chocolate quentinho, repleto de gotas de chocolate branco.
+                                        class="font-body text-xs text-marrom/70 leading-relaxed mt-2 max-w-md mx-auto lg:mx-0 line-clamp-4">
+                                        Clique no botão para rodar a roleta e descobrir qual cafeteria deliciosa você
+                                        deve conhecer a seguir!
                                     </p>
                                 </div>
+                                <!-- Actions -->
+                                <div
+                                    class="w-full flex flex-col lg:flex-row items-center justify-center lg:justify-start lg:gap-6">
+                                    <button id="btn-shuffle"
+                                        class="w-full lg:w-auto px-8 lg:px-0 py-3 lg:py-1 mt-4 lg:mt-6 flex items-center justify-center lg:justify-start gap-2 bg-rosa lg:bg-transparent text-azul lg:text-marrom/60 font-slab lg:font-body uppercase lg:normal-case tracking-widest lg:tracking-normal text-sm rounded-full lg:rounded-none hover:bg-[#f3a6cf] lg:hover:bg-transparent lg:hover:text-azul lg:hover:underline lg:decoration-marrom/30 lg:underline-offset-4 active:scale-[0.98] transition-all shadow-md lg:shadow-none font-bold lg:font-semibold hidden">
+                                        <span class="material-symbols-outlined text-xl lg:hidden">casino</span>
+                                        <span>Sortear Agora</span>
+                                    </button>
+                                    <a href="index.html"
+                                        class="text-[10px] lg:text-sm font-body font-semibold text-marrom/50 lg:text-marrom/60 hover:text-azul transition-colors underline decoration-marrom/20 lg:decoration-marrom/30 underline-offset-4 mt-3 lg:mt-6">
+                                        Ver todas as cafeterias
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Buttons / CTA -->
-                        <div class="w-full flex flex-col sm:flex-row gap-3 anim-slide d5">
-                            <button id="btn-shuffle"
-                                class="flex-1 flex items-center justify-center gap-2 bg-rosa text-azul font-slab uppercase tracking-widest text-sm py-3.5 rounded-xl hover:bg-[#f3a6cf] active:scale-[0.98] transition-all shadow-md font-bold">
-                                <span class="material-symbols-outlined text-lg">casino</span>
-                                <span>Sortear Sobremesa</span>
-                            </button>
-                            <a href="index.html"
-                                class="flex-1 flex items-center justify-center gap-2 bg-white border border-azul/20 text-azul font-slab uppercase tracking-widest text-sm py-3.5 rounded-xl hover:bg-creme/50 active:scale-[0.98] transition-all shadow-sm">
-                                <span class="material-symbols-outlined text-lg">list</span>
-                                <span>Ver lista completa</span>
-                            </a>
                         </div>
                     </div>
 
@@ -272,7 +267,9 @@
                         fazer em JF</a></p>
                 <p>Desenvolvido por: <a href="https://primitiva.cc" target="_blank" class="font-bold">Primitiva</a></p>
                 <p class="mt-8 lg:mt-2 mb-1">© 2026 Todos os direitos reservados</p>
-                <p><a href="politica-privacidade.html" class="font-bold hover:text-rosa transition-colors border-b border-rosa/30 pb-0.5 hover:border-rosa">Política de Privacidade</a></p>
+                <p><a href="politica-privacidade.html"
+                        class="font-bold hover:text-rosa transition-colors border-b border-rosa/30 pb-0.5 hover:border-rosa">Política
+                        de Privacidade</a></p>
             </div>
         </div>
     </footer>
@@ -329,22 +326,51 @@
                 if (e.target.tagName === 'IMG') e.preventDefault();
             });
 
-            // Roulette logic
             const imgEl = document.getElementById('roulette-img');
-            const neighborhoodEl = document.getElementById('roulette-neighborhood');
+            const instagramEl = document.getElementById('roulette-instagram');
             const nameEl = document.getElementById('roulette-name');
             const dessertEl = document.getElementById('roulette-dessert');
             const descEl = document.getElementById('roulette-desc');
             const btnShuffle = document.getElementById('btn-shuffle');
             const cardEl = document.getElementById('roulette-card');
+            const imgContainerEl = document.getElementById('roulette-img-container');
+
+            // Define the initial state (Mystery)
+            const initialMysteryState = {
+                isMystery: true,
+                name: "Não sabe qual escolher?",
+                instagram: "concursopedecacau",
+                dessert: "Sua Próxima Parada",
+                desc: "Clique no botão para rodar a roleta e descobrir qual cafeteria deliciosa você deve conhecer a seguir!",
+                image: "assets/fotos/pedecacau_acallento.webp"
+            };
+
+            updateCard(initialMysteryState);
 
             let isShuffling = false;
 
             function updateCard(item) {
-                imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
+                if (!imgEl) return;
+
+                const mysteryOverlay = document.getElementById('mystery-overlay');
+
+                if (item.isMystery) {
+                    imgEl.src = 'assets/fotos/pedecacau_acallento.webp';
+                    imgEl.className = 'w-full h-full object-cover transition-all duration-200 blur-xl scale-110 brightness-75';
+                    if (mysteryOverlay) mysteryOverlay.classList.remove('opacity-0');
+                } else if (isShuffling) {
+                    imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
+                    imgEl.className = 'w-full h-full object-cover transition-all duration-100 opacity-100';
+                    if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                } else {
+                    imgEl.src = `assets/fotos/pedecacau_${item.name}.webp`;
+                    imgEl.className = 'w-full h-full object-cover transition-all duration-500 opacity-100 scale-100 brightness-100';
+                    if (mysteryOverlay) mysteryOverlay.classList.add('opacity-0');
+                }
+
                 imgEl.alt = item.name;
                 nameEl.textContent = item.name;
-                neighborhoodEl.textContent = item.neighborhood;
+                instagramEl.textContent = item.isMystery ? 'concursopedecacau' : item.name.toLowerCase().replace(/[^a-z0-9]/g, '');
                 dessertEl.textContent = item.dessert;
                 descEl.textContent = item.desc;
             }
@@ -386,7 +412,8 @@
 
                         isShuffling = false;
                         btnShuffle.disabled = false;
-                        btnShuffle.classList.remove('opacity-75', 'cursor-not-allowed');
+                        btnShuffle.classList.remove('opacity-75', 'cursor-not-allowed', 'hidden');
+                        btnShuffle.innerHTML = '<span class="material-symbols-outlined text-xl">casino</span><span>Sortear Novamente</span>';
 
                         // Little confetti shower for landing!
                         confetti({
@@ -407,11 +434,8 @@
                 }, intervalTime);
             }
 
-            // Set initial random cafeteria on page load
-            const initialRandom = cafeterias[Math.floor(Math.random() * cafeterias.length)];
-            updateCard(initialRandom);
-
             btnShuffle.addEventListener('click', shuffle);
+            if (imgContainerEl) imgContainerEl.addEventListener('click', shuffle);
         });
     </script>
 </body>
