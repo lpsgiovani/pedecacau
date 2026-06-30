@@ -30,7 +30,7 @@
     // Initialize UI
     function init() {
         const consent = getConsent();
-        
+
         // Inject styles for animations and toggles
         injectStyles();
 
@@ -44,7 +44,7 @@
 
         if (!consent) {
             showBanner();
-            showFloatingButton();
+            hideFloatingButton();
         } else {
             hideFloatingButton();
             // Apply current consent settings (e.g., enable analytics if allowed)
@@ -84,7 +84,7 @@
         btn.className = 'fixed bottom-4 left-4 z-40 bg-creme text-marrom border border-azul/20 p-3 rounded-full shadow-lg hover:scale-110 active:scale-95 transition-all duration-300 flex items-center justify-center hidden';
         btn.setAttribute('aria-label', 'Configurações de Privacidade');
         btn.innerHTML = '<span class="material-symbols-outlined text-azul" style="font-size: 24px;">cookie</span>';
-        
+
         btn.addEventListener('click', () => {
             showModal();
         });
@@ -96,24 +96,24 @@
     function createBanner() {
         const banner = document.createElement('div');
         banner.id = 'cookie-consent-banner';
-        // Positioned fixed bottom center, hidden by default with opacity/translate
-        banner.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-11/12 max-w-xl bg-creme/95 backdrop-blur-md border border-azul/20 text-marrom shadow-2xl p-5 md:p-6 rounded-2xl transition-all duration-500 ease-in-out opacity-0 translate-y-10 pointer-events-none';
-        
+        // Positioned fixed bottom center on mobile, bottom-left on desktop
+        banner.className = 'fixed bottom-4 left-1/2 -translate-x-1/2 md:bottom-6 md:left-6 md:translate-x-0 z-50 w-[95%] md:w-96 max-w-sm md:max-w-none bg-creme/95 backdrop-blur-md border border-azul/20 text-marrom shadow-xl p-4 md:p-5 rounded-2xl transition-all duration-500 ease-in-out opacity-0 translate-y-10 pointer-events-none';
+
         banner.innerHTML = `
-            <div class="flex flex-col gap-4">
-                <div class="flex items-start gap-3">
-                    <span class="material-symbols-outlined text-azul text-3xl shrink-0 mt-0.5">cookie</span>
-                    <div>
-                        <h4 class="font-body font-bold text-base text-azul">Sua Privacidade é Importante</h4>
-                        <p class="font-body text-xs md:text-sm text-marrom/80 mt-1 leading-relaxed">
-                            Nós usamos cookies e outras tecnologias para melhorar sua experiência, analisar o tráfego do site e personalizar nosso conteúdo de acordo com a LGPD.
-                        </p>
-                    </div>
+            <div class="flex flex-col gap-3">
+                <div class="flex flex-col gap-1.5">
+                    <h4 class="font-body font-bold text-sm text-azul flex items-center gap-2">
+                        <span class="material-symbols-outlined text-azul text-xl shrink-0">cookie</span>
+                        Aceita um cookie?
+                    </h4>
+                    <p class="font-body text-[11px] md:text-xs text-marrom/80 leading-relaxed">
+                        Para deixar a sua experiência no Concurso Pé de Cacau ainda mais saborosa, nós usamos cookies. Eles nos ajudam a lembrar das suas preferências, garantir a segurança do seu voto e entender quais sobremesas estão bombando em Juiz de Fora! Prometemos que eles não engordam. Saiba mais na nossa <a href="politica-privacidade.html" class="text-azul font-bold hover:underline">Política de Privacidade</a>.
+                    </p>
                 </div>
-                <div class="flex flex-wrap items-center justify-end gap-2 mt-2 pt-3 border-t border-marrom/10">
-                    <button id="cookie-btn-reject" class="font-body text-xs md:text-sm font-semibold px-4 py-2 rounded-xl border border-marrom/20 text-marrom hover:bg-marrom/5 transition-all">Rejeitar</button>
-                    <button id="cookie-btn-customize" class="font-body text-xs md:text-sm font-semibold px-4 py-2 rounded-xl bg-rosa/30 text-azul hover:bg-rosa/60 transition-all">Personalizar</button>
-                    <button id="cookie-btn-accept" class="font-body text-xs md:text-sm font-semibold px-5 py-2 rounded-xl bg-azul text-white hover:bg-azul/90 shadow-md shadow-azul/20 transition-all">Aceitar Todos</button>
+                <div class="flex flex-wrap items-center justify-end gap-2 mt-1 pt-3 border-t border-marrom/10">
+                    <button id="cookie-btn-reject" class="font-body text-[11px] md:text-xs font-semibold px-3 py-1.5 rounded-xl border border-marrom/20 text-marrom hover:bg-marrom/5 transition-all">Rejeitar</button>
+                    <button id="cookie-btn-customize" class="font-body text-[11px] md:text-xs font-semibold px-3 py-1.5 rounded-xl bg-rosa/30 text-azul hover:bg-rosa/60 transition-all">Personalizar</button>
+                    <button id="cookie-btn-accept" class="font-body text-[11px] md:text-xs font-semibold px-4 py-1.5 rounded-xl bg-azul text-white hover:bg-azul/90 shadow-md shadow-azul/20 transition-all">Aceitar Todos</button>
                 </div>
             </div>
         `;
@@ -146,7 +146,7 @@
         const modal = document.createElement('div');
         modal.id = 'cookie-consent-modal';
         modal.className = 'fixed inset-0 z-50 bg-marrom/50 backdrop-blur-sm flex items-center justify-center p-4 opacity-0 pointer-events-none transition-all duration-300';
-        
+
         modal.innerHTML = `
             <div class="bg-creme border border-azul/20 rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden transform scale-95 transition-all duration-300 max-h-[90vh] flex flex-col">
                 <!-- Header -->
@@ -318,7 +318,7 @@
     // Apply active consent preferences (e.g. enable/disable external trackers)
     function applyConsent(consent) {
         console.log('[Pé de Cacau] Aplicando consentimento de cookies:', consent);
-        
+
         if (consent.analytics) {
             // Se houver Google Analytics ou similar, ativar aqui
             // E.g., window.gtag('consent', 'update', { 'analytics_storage': 'granted' });
